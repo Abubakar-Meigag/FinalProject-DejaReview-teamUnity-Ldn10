@@ -22,6 +22,7 @@ const Home = () => {
     <div className="home-container">
       <h1> Welcome to the Reality</h1>
       <h1>Team Unity</h1>
+      <p>test to check if it comment is deploy or not</p>
       {getData.map((data) => (
         <ul key={data.id}>
           <li className="home-list">
