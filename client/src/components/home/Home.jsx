@@ -4,11 +4,11 @@ import '../home/home.css';
 
 const Home = () => {
   const [getData, setGetData] = useState([]);
-  const apiUrl = "https://deja-review-backend.onrender.com";
+  const apiUrl = "https://deja-review-backend.onrender.com/test";
 
   const fetchData = async () => {
     try {
-      const res = await axios.get(`${apiUrl}/test`);
+      const res = await axios.get(apiUrl);
       const data = res.data;
       setGetData(data);
     } catch (error) {
@@ -22,7 +22,6 @@ const Home = () => {
     <div className="home-container">
       <h1> Welcome to the Reality</h1>
       <h1>Team Unity</h1>
-      <p>test to check if it comment is deploy or not</p>
       {getData.map((data) => (
         <ul key={data.id}>
           <li className="home-list">
