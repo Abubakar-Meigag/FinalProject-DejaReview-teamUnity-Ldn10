@@ -1,6 +1,6 @@
 # FinalProject-DejaReview-teamUnity-Ldn10
 
-# Deja Review
+# Deja Review 
 
 Business problem
 
@@ -30,3 +30,5 @@ Stretch goals
 Things to consider
 
 Leaning into browser storage seems like a good way to avoid building an auth system (which is a difficult challenge of its own).
+
+https://docs.google.com/document/d/15C6ZP0KEHl29n4_eX-CKuIpLxouarce0HCnkVz31lWE/edit
