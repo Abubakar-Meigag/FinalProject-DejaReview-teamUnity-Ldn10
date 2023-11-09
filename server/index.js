@@ -1,0 +1,24 @@
+require("dotenv").config();
+const express = require("express");
+const app = express();
+
+const cors = require("cors");
+const port = process.env.PORT || 5005;
+const pool = require("./database/db");
+
+app.use(cors());
+pool.connect();
+
+app.listen(port, () => {
+  console.log(`Server is running on Port: ${port}`);
+});
+
+
+app.get("/", (req, res) => {
+  res.send(`Welcome to Final Project server on port  ${port}`);
+});
+
+
+const getDataTest = require("./endPoints-file/testEndPoint");
+
+app.get("/test", getDataTest);
