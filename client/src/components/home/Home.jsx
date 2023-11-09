@@ -16,7 +16,9 @@ const Home = () => {
     }
   };
 
-  useEffect(() => fetchData, []);
+  useEffect(() => {
+    fetchData()
+  }, []);
 
   return (
     <div className="home-container">
