@@ -21,7 +21,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="home-container">
+    <div className="home-container text-sky-600">
       <h1> Welcome to the Reality</h1>
       <h1>Team Unity</h1>
       {getData.map((data) => (
