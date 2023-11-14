@@ -1,7 +1,7 @@
 const pool = require("../database/db");
 
 const getDataTest = async (req, res) => {
-  const query = "select * from team_unity";
+  const query = "select * from Modules";
   try {
     const data = await pool.query(query);
     res.status(200).json(data.rows);
