@@ -11,7 +11,6 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
-pool.connect();
 
 app.listen(port, () => {
   console.log(`Server is running on Port: ${port}`);
