@@ -27,7 +27,7 @@ const Home = () => {
       {getData.map((data) => (
         <ul key={data.id}>
           <li className="home-list">
-            Name: {data.trainee_name}, Cohort: {data.cohort}
+            id: {data.id}, Module: {data.module_name}
           </li>
         </ul>
       ))}
