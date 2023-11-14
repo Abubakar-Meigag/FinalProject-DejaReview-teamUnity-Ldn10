@@ -1,0 +1,1 @@
+/* All our data schema can be displayed here. For instance, we can split all tables, and each of us can create a table. Elena
