@@ -1,0 +1,176 @@
+{
+  "modules": [
+    {
+      "id": 1,
+      "moduleName": "Html-Css",
+      "topics": [
+        {
+          "topicId": 1,
+          "topicName": "Fundamentals • Semantics",
+          "topicRef": "www.HTML-CSS.com"
+        },
+        {
+          "topicId": 2,
+          "topicName": "Forms • Structuring Data",
+          "topicRef": "www.HTML-CSS.com"
+        },
+        {
+          "topicId": 3,
+          "topicName": "Layout • FlexBox • Grid",
+          "topicRef": "www.HTML-CSS.com"
+        },
+        {
+          "topicId": 3,
+          "topicName": "Ship it • Putting it all together",
+          "topicRef": "www.HTML-CSS.com"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "moduleName": "JavaScript_1",
+      "topics": [
+        {
+          "topicId": 1,
+          "topicName": "variables, strings, types, numbers, statements, expressions, functions",
+          "topicRef": "www.JavaScript.com"
+        },
+        {
+          "topicId": 2,
+          "topicName": "Logic and Loops",
+          "topicRef": "www.JavaScript.com"
+        },
+        {
+          "topicId": 3,
+          "topicName": "Logic and Arrays",
+          "topicRef": "www.JavaScript.com"
+        },
+        {
+          "topicId": 4,
+          "topicName": "Array methods and higher order functions",
+          "topicRef": "www.JavaScript.com"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "moduleName": "JavaScript_2",
+      "topics": [
+        {
+          "topicId": 1,
+          "topicName": "Objects",
+          "topicRef": "www.JavaScript.com"
+        },
+        {
+          "topicId": 2,
+          "topicName": "TDD, arrays of Objects",
+          "topicRef": "www.JavaScript.com"
+        },
+        {
+          "topicId": 3,
+          "topicName": "JS in the Browser (DOM, and AJAX)",
+          "topicRef": "www.JavaScript.com"
+        },
+        {
+          "topicId": 4,
+          "topicName": "More JS in the Browser",
+          "topicRef": "www.JavaScript.com"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "moduleName": "JavaScript_3",
+      "topics": [
+        {
+          "topicId": 1,
+          "topicName": "Debugging",
+          "topicRef": "www.JavaScript.com"
+        },
+        {
+          "topicId": 2,
+          "topicName": "Fetch, AJAX, APIS",
+          "topicRef": "www.JavaScript.com"
+        },
+        {
+          "topicId": 3,
+          "topicName": "Scope & this",
+          "topicRef": "www.JavaScript.com"
+        },
+        {
+          "topicId": 4,
+          "topicName": "Growth Mindset",
+          "topicRef": "www.JavaScript.com"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "moduleName": "ReactJS",
+      "topics": [
+        {
+          "topicId": 1,
+          "topicName": "React 101",
+          "topic-Ref": "www.React.com"
+        },
+        {
+          "topic_id": 2,
+          "topicName": "Reacting to Changes",
+          "topic-Ref": "www.React.com"
+        },
+        {
+          "topicId": 3,
+          "topicName": "Fetching Data",
+          "topic-Ref": "www.React.com"
+        },
+        {
+          "topicId": 4,
+          "topicName": "To be produced",
+          "topic-Ref": "www.React.com"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "moduleName": "Node Express",
+      "topics": [
+        {
+          "topicId": 1,
+          "topicName": "Node, Express workshop",
+          "topicRef": "www.Node.com"
+        },
+        {
+          "topicId": 2,
+          "topicName": "Templating",
+          "topicRef": "www.Node.com"
+        },
+        {
+          "topicId": 3,
+          "topicName": "Node Best Practices",
+          "topicRef": "www.Node.com"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "moduleName": "SQL",
+      "topics": [
+        {
+          "topicId": 1,
+          "topicName": "Introduction to SQL",
+          "topicRef": "www.SQL.com"
+        },
+        {
+          "topicId": 2,
+          "topicName": "More SQL and integration with NodeJS",
+          "topicRef": "www.SQL.com"
+        },
+        {
+          "topicId": 3,
+          "topicName": "More integration with NodeJS",
+          "topicRef": "www.SQL.com"
+        }
+      ]
+    }
+  ]
+}
