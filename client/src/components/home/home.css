@@ -2,13 +2,13 @@
     text-decoration: none;
     list-style: none;
     list-style-type: none;
-    font-size: 30px;
     color:teal;
     font-weight: bold;
 }
 
 .home-container{
-    margin-top: 190px;
-    font-size: 70px;
+    margin-top: 40px;
     font-weight: bold;
+    text-align: center;
+    color: black;
 }
