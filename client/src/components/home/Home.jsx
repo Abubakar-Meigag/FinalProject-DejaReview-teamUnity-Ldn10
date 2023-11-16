@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import '../home/home.css';
-import Footer from "../footer/Footer";
 
 const Home = () => {
   const [getData, setGetData] = useState([]);
@@ -33,9 +32,6 @@ const Home = () => {
             </li>
           </ul>
         ))}
-      </div>
-      <div>
-        <Footer />
       </div>
     </div>
   );
