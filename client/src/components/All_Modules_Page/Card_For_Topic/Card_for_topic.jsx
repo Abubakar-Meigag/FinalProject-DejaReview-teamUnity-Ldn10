@@ -1,7 +1,7 @@
 import React from "react";
 import "./card.css";
 
-export default function Card({ topic, showTopic, toggleTopic }) {
+export default function CardForTopic({ topic, showTopic, toggleTopic }) {
   const handleCloseClick = (e) => {
     // Stop the event propagation when the "close btn" is clicked
     e.stopPropagation();

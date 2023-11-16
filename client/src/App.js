@@ -1,6 +1,6 @@
 import Footer from "./components/footer/Footer";
 import Home from "./components/home/Home";
-import AllModulesPage from "./pages/All_Modules";
+import AllModulesPage from "./components/All_Modules_Page/AllModulesPage";
 import PersonalDashboard from "./components/personalDashboard/personalDashboard";
 
 function App() {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./style.css";
-import Card from "./Card_For_Topic/Card";
+import CardForTopic from "./Card_For_Topic/Card_for_topic";
 const fakedata = [
   {
     module: "HTML||CSS",
@@ -46,7 +46,7 @@ const fakedata = [
     ],
   },
 ];
-export default function AllModules() {
+export default function AllModulesPage() {
   const [openListIndex, setOpenListIndex] = useState(null);
 
   const handleListHeaderClick = (index) => {
@@ -88,7 +88,7 @@ export default function AllModules() {
                     className="topics-container-inner"
                   >
                     <h2>{topic.nameOfTopic}</h2>
-                    <Card
+                    <CardForTopic
                       showTopic={
                         topicStates[
                           index * fakedata[0].topics.length + subIndex
