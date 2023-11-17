@@ -21,16 +21,18 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="home-container text-sky-600">
-      <h1> Welcome to the Reality</h1>
-      <h1>Team Unity</h1>
-      {getData.map((data) => (
-        <ul key={data.id}>
-          <li className="home-list">
-            id: {data.id}, Module: {data.module_name}
-          </li>
-        </ul>
-      ))}
+    <div>
+      <div className="home-container lg:text-[50px] sx:text-[50px]">
+        <h1> Welcome to the Reality</h1>
+        <h1>Team Unity</h1>
+        {getData.map((data) => (
+          <ul key={data.id}>
+            <li className="home-list">
+              id: {data.id}, Module: {data.module_name}
+            </li>
+          </ul>
+        ))}
+      </div>
     </div>
   );
 };

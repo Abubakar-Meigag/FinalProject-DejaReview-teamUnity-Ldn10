@@ -1,3 +1,4 @@
+import Footer from "./components/footer/Footer";
 import Home from "./components/home/Home";
 import PersonalDashboard from "./components/personalDashboard/personalDashboard";
 
@@ -6,6 +7,7 @@ function App() {
     <div className="App-start">
       <Home />
       <PersonalDashboard />
+      <Footer />
     </div>
   );
 }
