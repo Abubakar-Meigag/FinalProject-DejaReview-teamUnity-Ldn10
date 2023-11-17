@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./style.css";
+import "./AllModulesPage.css";
 import CardForTopic from "./Card_For_Topic/Card_for_topic";
 const fakedata = [
   {
