@@ -1,5 +1,5 @@
 import React from "react";
-import "./card.css";
+import "./Card_for_topic.css";
 
 export default function CardForTopic({ topic, showTopic, toggleTopic }) {
   const handleCloseClick = (e) => {
