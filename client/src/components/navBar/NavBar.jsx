@@ -9,7 +9,6 @@ const NavBar = ({ open }) => {
   return (
     <div className="flex mt-16">
       <ul>
-
         <div>
           <li className="inline-flex">
             <Link to="/">
@@ -27,6 +26,27 @@ const NavBar = ({ open }) => {
               }`}
             >
               Dashboard
+            </Link>
+          </li>
+        </div>
+
+        <div>
+          <li className="inline-flex mt-3">
+            <Link to="/topics">
+              <LuClipboardEdit
+                className={`bg-amber-300 p-2 rounded cursor-pointer block float-left mr-4 duration-500 ${
+                  open ? "text-7xl" : "text-5xl"
+                  }
+                `}
+              />
+            </Link>
+            <Link
+              to="/topics"
+              className={`text-white origin-left font-semibold pt-3 text-[30px] cursor-pointer  ${
+                !open && "scale-0"
+              }`}
+            >
+              Topics
             </Link>
           </li>
         </div>
