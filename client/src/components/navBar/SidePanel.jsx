@@ -2,7 +2,8 @@ import { useState } from "react";
 import { BsArrowLeftShort } from "react-icons/bs";
 import { AiFillBell } from "react-icons/ai";
 import { BsSearch } from "react-icons/bs";
-
+import NavBar from './NavBar';
+import Profile from './Profile';
 
 const SidePanel = () => {
     const [open, setOpen] = useState(true);
@@ -34,7 +35,31 @@ const SidePanel = () => {
           </h1>
         </div>
 
+        <div
+          className={`flex item-center rounded-md bg-sky-900 mt-6 
+          ${!open ? "p-2.5" : "p-4"} py-2`}
+        >
+          <BsSearch
+            className={`text-white text-lg block float-left mb-1 cursor-pointer mr-2
+            ${open && "mt-2"}`}
+          />
 
+          <input
+            type={"search"}
+            placeholder="Search..."
+            className={`text-base bg-transparent w-full text-white focus:outline-none ${
+              !open && "hidden"
+            }`}
+          />
+        </div>
+
+        <div className="nav-items">
+          <NavBar open={open} setOpen={setOpen} />
+        </div>
+
+        <div>
+          <Profile open={open} setOpen={setOpen} />
+        </div>
       </div>
     </div>
   );
