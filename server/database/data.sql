@@ -9,5 +9,18 @@ CREATE TABLE modules (
   created_at timestamp DEFAULT now() 
 )
 
---
+-- Add users table
+CREATE TABLE users (
+	id SERIAL PRIMARY KEY,
+	first_name VARCHAR(255) NOT NULL,
+	last_name VARCHAR(255) NOT NULL, 
+	email VARCHAR(255) NOT NULL UNIQUE 
+)
+
+INSERT INTO users (first_name, last_name, email)
+VALUES
+  ('Elena', 'Barker', 'elena@gmail.com'),
+  ('Abubakar', 'Meigag', 'beko@gmail.com'),
+  ('Kristina', 'Dudnyk', 'kristina@gmail.com'),
+  ('Joseph', 'Mwanza' 'joseph@gmail.com');
 
