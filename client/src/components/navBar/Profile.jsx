@@ -17,7 +17,7 @@ const Profile = ({ open }) => {
             <h1
               className={`text-white origin-left font-semibold pt-3 cursor-pointer text-[15px] ${
                 !open && "scale-0"
-              }`}
+              } hover:text-fuchsia-400	`}
             >
               Profile
             </h1>
@@ -35,7 +35,7 @@ const Profile = ({ open }) => {
             <h1
               className={`text-white origin-left font-semibold pt-1 cursor-pointer text-[15px] ${
                 !open && "scale-0"
-              }`}
+              } hover:text-fuchsia-400`}
             >
               User Name
             </h1>
@@ -48,12 +48,12 @@ const Profile = ({ open }) => {
               className={`bg-amber-300 p-2 rounded cursor-pointer block float-left text-4xl mr-4 duration-500 ${
                 !open && "ml-2"
               }
-                `}
+               `}
             />
             <h1
               className={`text-white origin-left font-semibold pt-3 cursor-pointer text-[15px] ${
                 !open && "scale-0"
-              }`}
+              } hover:text-fuchsia-400`}
             >
               Sing Out
             </h1>

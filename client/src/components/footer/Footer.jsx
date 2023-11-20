@@ -3,7 +3,7 @@ import "../footer/footer.css";
 
 const Footer = () => {
   return (
-    <div className="footer p-1 bg-dark-purple text-neutral-content fixed bottom-0 overflow-scroll items-start w-full grid grid-cols-2 gap-2 pl-3">
+    <div className="footer p-1 bg-dark-purple text-neutral-content sticky bottom-0 overflow-scroll items-start w-full grid grid-cols-2 gap-2 pl-3">
       <div>
         <aside>
           <svg
