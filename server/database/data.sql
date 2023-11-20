@@ -17,6 +17,17 @@ CREATE TABLE users (
 	email VARCHAR(255) NOT NULL UNIQUE 
 )
 
+
+-- Topics table
+CREATE TABLE topics (
+id SERIAL PRIMARY KEY,
+module_id INT REFERENCES modules(id)
+);
+
+
+
+
+
 INSERT INTO users (first_name, last_name, email)
 VALUES
   ('Elena', 'Barker', 'elena@gmail.com'),
