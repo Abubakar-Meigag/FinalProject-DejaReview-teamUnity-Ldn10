@@ -32,16 +32,16 @@ const NavBar = ({ open }) => {
 
         <div>
           <li className="inline-flex mt-3">
-            <Link to="/topics">
+            <Link to="/">
               <LuClipboardEdit
                 className={`bg-amber-300 p-2 rounded cursor-pointer block float-left mr-4 duration-500 ${
                   open ? "text-7xl" : "text-5xl"
-                  }
+                }
                 `}
               />
             </Link>
             <Link
-              to="/topics"
+              to="/"
               className={`text-white origin-left font-semibold pt-3 text-[30px] cursor-pointer  ${
                 !open && "scale-0"
               }`}
@@ -51,7 +51,28 @@ const NavBar = ({ open }) => {
           </li>
         </div>
 
-        
+        <div>
+          <li className="inline-flex mt-3">
+            <Link to="/management">
+              <AiOutlineFundProjectionScreen
+                className={`bg-amber-300 p-2 rounded cursor-pointer block float-left mr-4 duration-500 ${
+                  open ? "text-7xl" : "text-5xl"
+                }
+                    `}
+              />
+            </Link>
+            <Link
+              to="/management"
+              className={`text-white origin-left font-semibold pt-3 text-[30px] cursor-pointer  ${
+                !open && "scale-0"
+              }`}
+            >
+              Management
+            </Link>
+          </li>
+        </div>
+
+
       </ul>
     </div>
   );

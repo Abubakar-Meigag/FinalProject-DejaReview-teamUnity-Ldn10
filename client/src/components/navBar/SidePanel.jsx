@@ -11,7 +11,7 @@ const SidePanel = () => {
   return (
     <div className="flex">
       <div
-        className={`bg-dark-purple h-auto p-5 pt-8 
+        className={`bg-dark-purple h-screen p-5 pt-8 
             ${open ? "w-[19rem]" : "w-24"} duration-300 relative`}
       >
         <BsArrowLeftShort
