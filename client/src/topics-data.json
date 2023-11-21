@@ -1,0 +1,156 @@
+"id": 1,
+      "moduleName": "Html-Css",
+      "topics": [
+        {
+          "topicName": "Fundamentals • Semantics",
+        },
+        {
+          "topicName": "Forms • Structuring Data",
+        },
+        {
+          "topicName": "Layout • FlexBox • Grid",
+        },
+        {
+          "topicName": "Ship it • Putting it all together",
+        }
+      ]
+
+      "id": 2,
+      "moduleName": "JavaScript_1",
+      "topics": [
+        {
+          
+          "topicName": "variables, strings, types, numbers, statements, expressions, functions",
+          
+        },
+        {
+          
+          "topicName": "Logic and Loops",
+         
+        },
+        {
+          
+          "topicName": "Logic and Arrays",
+          
+        },
+        {
+          
+          "topicName": "Array methods and higher order functions",
+          
+        }
+      ]
+
+      "id": 3,
+      "moduleName": "JavaScript_2",
+      "topics": [
+        {
+          
+          "topicName": "Objects",
+          
+        },
+        {
+          
+          "topicName": "TDD, arrays of Objects",
+          
+        },
+        {
+          
+          "topicName": "JS in the Browser (DOM, and AJAX)",
+          
+        },
+        {
+
+          "topicName": "More JS in the Browser",
+          
+        }
+      ]
+
+      "id": 4,
+      "moduleName": "JavaScript_3",
+      "topics": [
+        {
+          
+          "topicName": "Debugging",
+          
+        },
+        {
+          
+          "topicName": "Fetch, AJAX, APIS",
+          
+        },
+        {
+         
+          "topicName": "Scope & this",
+         
+        },
+        {
+          
+          "topicName": "Growth Mindset",
+          
+        }
+      ]
+
+      "id": 5,
+      "moduleName": "ReactJS",
+      "topics": [
+        {
+          
+          "topicName": "React 101",
+          
+        },
+        {
+          
+          "topicName": "Reacting to Changes",
+          
+        },
+        {
+          
+          "topicName": "Fetching Data",
+         
+        },
+        {
+          
+          "topicName": "To be produced",
+          
+        }
+      ]
+
+      "id": 6,
+      "moduleName": "Node Express",
+      "topics": [
+        {
+         
+          "topicName": "Node, Express workshop",
+         
+        },
+        {
+          
+          "topicName": "Templating",
+          
+        },
+        {
+         
+          "topicName": "Node Best Practices",
+          
+        }
+      ]
+
+      "id": 7,
+      "moduleName": "SQL",
+      "topics": [
+        {
+      
+          "topicName": "Introduction to SQL",
+          
+        },
+        {
+          
+          "topicName": "More SQL and integration with NodeJS",
+          
+        },
+        {
+          
+          "topicName": "More integration with NodeJS",
+          
+        }
+      ]
