@@ -35,3 +35,13 @@ VALUES
   ('Kristina', 'Dudnyk', 'kristina@gmail.com'),
   ('Joseph', 'Mwanza' 'joseph@gmail.com');
 
+
+-- topics table 
+CREATE TABLE topics (
+	id SERIAL PRIMARY KEY,
+	module_id INTEGER REFERENCES modules(id),
+	topic_name VARCHAR(300),
+	description VARCHAR,
+	reference_link VARCHAR,
+	test_link VARCHAR
+)
