@@ -31,7 +31,7 @@ const getDataUsers = require("./endPoints-file/usersEndPoint");
 
 app.get("/users", getDataUsers);
 
-const getTopicsTest = require("./endPoints-file/topicsEndpoint");
-app.get("/topics", getTopicsTest);
+const getTopics = require("./endPoints-file/topicsEndpoint");
+app.get("/topics", getTopics);
 
 
