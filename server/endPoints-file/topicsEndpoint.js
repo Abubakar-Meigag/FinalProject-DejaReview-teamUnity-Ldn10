@@ -14,6 +14,6 @@ const getTopics = async (req, res) => {
   }
 };
 
-module.exports = {
-  getTopics,
-};
+module.exports = 
+  getTopics
+
