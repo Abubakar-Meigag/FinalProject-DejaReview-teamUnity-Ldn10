@@ -24,9 +24,12 @@ app.get("/", (req, res) => {
 
 
 const getDataTest = require("./endPoints-file/testEndPoint");
+const getDataUsers = require("./endPoints-file/usersEndPoint");
+const getTopics = require("./endPoints-file/topicsEndpoint");
+
 
 app.get("/test", getDataTest);
-
-const getDataUsers = require("./endPoints-file/usersEndPoint");
-
 app.get("/users", getDataUsers);
+app.get("/topics", getTopics);
+
+
