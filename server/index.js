@@ -4,13 +4,13 @@ const app = express();
 
 const cors = require("cors");
 const port = process.env.PORT || 5005;
-const db = require("./database/db");
+const pool = require("./database/db");
 const bodyParser = require("body-parser");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
-db.connect();
+pool.connect();
 
 app.listen(port, () => {
   console.log(`Server is running on Port: ${port}`);
