@@ -1,4 +1,5 @@
 import React from "react";
+import ModuleDropdown from "../dashboard/ModuleDropdown";
 import AllModulesPage from "../All_Modules_Page/AllModulesPage";
 import PersonalDashboard from "../personalDashboard/personalDashboard";
 import '../home/home.css';
@@ -8,6 +9,7 @@ const Home = () => {
 
   return (
     <div>
+      <ModuleDropdown />
       <AllModulesPage />
       <PersonalDashboard />
       <Footer />

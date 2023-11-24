@@ -1,19 +1,18 @@
 import React from 'react'
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { MdDashboardCustomize } from "react-icons/md";
 import { LuClipboardEdit } from "react-icons/lu";
 import { AiOutlineFundProjectionScreen } from "react-icons/ai";
-import ModuleDropdown from "./components/dashboard/ModuleDropdown";
+
 
 const NavBar = ({ open }) => {
-  const location = useLocation();
-
+  
   return (
     <div className="flex mt-16">
       <ul>
         <div>
           <li className="inline-flex">
-            <Link to="/" onClick={() => setIsOpen(false)}>
+            <Link to="/">
               <MdDashboardCustomize
                 className={`bg-amber-300 p-2 rounded cursor-pointer block float-left mr-4 duration-500 ${
                   open ? "text-7xl" : "text-5xl"
@@ -29,7 +28,7 @@ const NavBar = ({ open }) => {
             >
               Dashboard
             </Link>
-            {location.pathname === '/' && <ModuleDropdown />}
+            
           </li>
         </div>
 
