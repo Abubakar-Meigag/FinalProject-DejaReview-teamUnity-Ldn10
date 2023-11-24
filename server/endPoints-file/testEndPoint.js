@@ -1,7 +1,7 @@
 const pool = require("../database/db");
 
-const getDataTest = async (req, res) => {
-  const query = "select * from Modules";
+const getDataModules = async (req, res) => {
+  const query = "select * from modules";
   try {
     const data = await pool.query(query);
     res.status(200).json(data.rows);
@@ -15,4 +15,4 @@ const getDataTest = async (req, res) => {
   }
 };
 
-module.exports = getDataTest;
+module.exports = getDataModules;
