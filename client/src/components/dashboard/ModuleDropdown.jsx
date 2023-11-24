@@ -6,6 +6,7 @@ const ModuleDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
+    if (isOpen) {
     
     const fetchData = async () => {
       try {
@@ -17,7 +18,9 @@ const ModuleDropdown = () => {
     };
 
     fetchData();
-  }, []); 
+  } 
+  
+}, [isOpen]); 
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
