@@ -3,10 +3,10 @@ import axios from 'axios';
 
 const ModuleDropdown = () => {
   const [modules, setModules] = useState([]);
-  const [isOpen, setIsOpen] = useState(false);
+  const [selectTopic, setTopics] = useState([]);
 
   useEffect(() => {
-    if (isOpen) {
+   
     
     const fetchData = async () => {
       try {
@@ -18,24 +18,47 @@ const ModuleDropdown = () => {
     };
 
     fetchData();
-  } 
+   
   
-}, [isOpen]); 
+}, []);
 
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
 
+
+
+useEffect(() => {
+   
+    
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('https://deja-review-backend.onrender.com/topics');
+        setTopics(response.data);
+      } catch (error) {
+        console.error('Error fetching modules:', error);
+      }
+    };
+
+    fetchData();
+   
+  
+}, [])
+
+  
   return (
     <div>
-      <button onClick={toggleDropdown}>Select Module</button>
-      {isOpen && (
-        <ul>
+      
+        <select>
           {modules.map((module) => (
-            <li key={module.id}>{module.name}</li>
+            <option key={module.id}>{module.name}</option>
           ))}
-        </ul>
-      )}
+        </select>
+
+        <select>
+          {selectTopic.map((topics) => (
+            <option key={topics.id}>{topics.name}</option>
+          ))}
+        </select>
+      
+      
     </div>
   );
 };
