@@ -54,7 +54,7 @@ useEffect(() => {
 
         <select>
           {selectTopic.map((topics) => (
-            <option key={topics.id}>{topics.name}</option>
+            <option key={topics.id}>{topics.topic_name}</option>
           ))}
         </select>
       
