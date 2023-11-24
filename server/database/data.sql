@@ -11,20 +11,9 @@ CREATE TABLE modules (
 CREATE TABLE users (
 	id SERIAL PRIMARY KEY,
 	first_name VARCHAR(255) NOT NULL,
-	last_name VARCHAR(255) NOT NULL, 
-	email VARCHAR(255) NOT NULL UNIQUE 
-)
-
-
--- Topics table
-CREATE TABLE topics (
-id SERIAL PRIMARY KEY,
-module_id INT REFERENCES modules(id)
+	last_name VARCHAR(255) NOT NULL,
+	email VARCHAR(255) NOT NULL UNIQUE
 );
-
-
-
-
 
 INSERT INTO
 	users (first_name, last_name, email)
@@ -34,7 +23,6 @@ VALUES
 	('Kristina', 'Dudnyk', 'kristina@gmail.com'),
 	('Joseph', 'Mwanza' 'joseph@gmail.com');
 
-
 -- topics table 
 CREATE TABLE topics (
 	id SERIAL PRIMARY KEY,
@@ -43,7 +31,8 @@ CREATE TABLE topics (
 	description VARCHAR,
 	reference_link VARCHAR,
 	test_link VARCHAR
-)
+);
+
 -- Dashboard table
 CREATE TABLE learning_topics_tracker (
 	id SERIAL PRIMARY KEY,
