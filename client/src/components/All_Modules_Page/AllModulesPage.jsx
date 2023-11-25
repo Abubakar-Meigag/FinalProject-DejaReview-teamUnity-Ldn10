@@ -8,7 +8,7 @@ export default function AllModulesPage({ refreshmodalData }) {
   const fetchData = async () => {
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_DB_URL}/allModulesPage`
+        `https://deja-review-backend.onrender.com/allModulesPage`
       );
       console.log("response", response);
 
