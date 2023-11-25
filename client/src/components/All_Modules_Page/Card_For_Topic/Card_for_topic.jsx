@@ -21,8 +21,10 @@ export default function CardForTopic({ topic, showTopic, toggleTopic }) {
           >
             close btn
           </button>
-          <h2>{topic.nameOfTopic}</h2>
-          <p>{topic.details}</p>
+          <h2>{topic.topic_name}</h2>
+          <p>{topic.topic_description}</p>
+          <h6>{topic.reference_link}</h6>
+          <h6>{topic.test_link}</h6>
         </div>
       </div>
     )
