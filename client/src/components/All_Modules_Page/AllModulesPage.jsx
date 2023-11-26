@@ -69,6 +69,7 @@ export default function AllModulesPage({ refreshmodalData }) {
                   >
                     <h2>{element.topic_name}</h2>
                     <CardForTopic
+                      key={element.id}
                       showTopic={
                         topicStates[
                           index * modalData[0].topics.length + subIndex
