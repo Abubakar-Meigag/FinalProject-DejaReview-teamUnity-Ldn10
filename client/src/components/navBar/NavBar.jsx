@@ -5,6 +5,7 @@ import { LuClipboardEdit } from "react-icons/lu";
 import { AiOutlineFundProjectionScreen } from "react-icons/ai";
 
 const NavBar = ({ open }) => {
+  
   return (
     <div className="flex mt-16">
       <ul>
@@ -26,6 +27,7 @@ const NavBar = ({ open }) => {
             >
               Dashboard
             </Link>
+            
           </li>
         </div>
 
