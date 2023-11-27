@@ -33,7 +33,7 @@ export default function CardForTopic({ topic, showTopic, toggleTopic }) {
     } catch (error) {
       console.log(console.log("handleAddingTopic error:", error));
     } finally {
-      // handleCloseClick();
+      handleCloseClick();
     }
   }
 
