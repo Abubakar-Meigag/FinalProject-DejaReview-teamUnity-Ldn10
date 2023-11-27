@@ -13,7 +13,7 @@ export default function CardForTopic({ topic, showTopic, toggleTopic }) {
     userId: 222,
   });
 
-  async function handleAddingTopic(event) {
+  async function handleAddingTopic() {
     setTopicData(topic.id);
     try {
       const request = await fetch(
