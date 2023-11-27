@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
 import { Link } from "react-router-dom";
 import { MdDashboardCustomize } from "react-icons/md";
 import { LuClipboardEdit } from "react-icons/lu";
 import { AiOutlineFundProjectionScreen } from "react-icons/ai";
-
 
 const NavBar = ({ open }) => {
   
@@ -43,12 +42,12 @@ const NavBar = ({ open }) => {
               />
             </Link>
             <Link
-              to="/"
+              to="/AllModulesPage"
               className={`text-white origin-left font-semibold pt-3 text-[30px] cursor-pointer  ${
                 !open && "scale-0"
               }`}
             >
-              Topics
+              All Topics
             </Link>
           </li>
         </div>
@@ -73,11 +72,9 @@ const NavBar = ({ open }) => {
             </Link>
           </li>
         </div>
-
-
       </ul>
     </div>
   );
-}
+};
 
-export default NavBar
+export default NavBar;

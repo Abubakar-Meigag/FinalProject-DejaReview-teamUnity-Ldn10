@@ -2,15 +2,15 @@ import { useState } from "react";
 import { BsArrowLeftShort } from "react-icons/bs";
 import { AiFillBell } from "react-icons/ai";
 import { BsSearch } from "react-icons/bs";
-import NavBar from './NavBar';
-import Profile from './Profile';
+import NavBar from "./NavBar";
+import Profile from "./Profile";
 
 const SidePanel = () => {
-    const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(true);
 
   return (
     <div className="flex">
-      <aside class="h-screen sticky top-0">
+      <aside className="h-screen sticky top-0">
         <div
           className={`bg-dark-purple h-screen p-5 pt-8 
             ${open ? "w-[19rem]" : "w-24"} duration-300 relative`}
@@ -65,6 +65,6 @@ const SidePanel = () => {
       </aside>
     </div>
   );
-}
+};
 
-export default SidePanel
+export default SidePanel;

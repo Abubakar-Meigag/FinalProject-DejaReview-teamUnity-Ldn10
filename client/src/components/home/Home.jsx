@@ -1,14 +1,13 @@
 import React from "react";
 import ModuleDropdown from "../dashboard/ModuleDropdown";
 import PersonalDashboard from "../personalDashboard/personalDashboard";
-import '../home/home.css';
+import "../home/home.css";
 import Footer from "../footer/Footer";
 
 const Home = () => {
-
   return (
     <div>
-      <ModuleDropdown />
+    <ModuleDropdown />
       <PersonalDashboard />
       <Footer />
     </div>
