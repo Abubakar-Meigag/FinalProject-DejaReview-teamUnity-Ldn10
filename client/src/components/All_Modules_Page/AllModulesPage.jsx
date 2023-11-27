@@ -7,15 +7,8 @@ export default function AllModulesPage({ refreshmodalData }) {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(
-        `https://deja-review-backend.onrender.com/allModulesPage`
-      );
-      console.log("response", response);
-
+      const response = await fetch(`https://localhost:3000/allModulesPage`);
       const data = await response.json();
-      console.log("data", data);
-
-      console.log("fetchData in modalData", data);
       setModalData(data);
     } catch (error) {
       console.log("The ERROR occured in fetchData in DisplaymodalData:", error);

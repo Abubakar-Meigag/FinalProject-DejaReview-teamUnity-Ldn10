@@ -2,19 +2,13 @@ import React, { useState } from "react";
 import "./Card_for_topic.css";
 
 export default function CardForTopic({ topic, showTopic, toggleTopic }) {
-  const handleCloseClick = (e) => {
-    // Stop the event propagation when the "close btn" is clicked
-    e.stopPropagation();
-    toggleTopic();
-  };
-
   const [topicData, setTopicData] = useState({
-    topicId: "",
+    topicId: topic.topic_id,
     userId: 222,
   });
 
   async function handleAddingTopic() {
-    setTopicData(topic.id);
+    console.log(topicData);
     try {
       const request = await fetch(
         `https://deja-review-backend.onrender.com/allModulesPage`,
@@ -32,8 +26,6 @@ export default function CardForTopic({ topic, showTopic, toggleTopic }) {
       console.log("handleAddingTopic json:", json);
     } catch (error) {
       console.log(console.log("handleAddingTopic error:", error));
-    } finally {
-      handleCloseClick();
     }
   }
 
@@ -48,10 +40,7 @@ export default function CardForTopic({ topic, showTopic, toggleTopic }) {
           className="selected-topic-card"
           onClick={(e) => e.stopPropagation()}
         >
-          <button
-            className="all_topics-card-button close-topic"
-            onClick={handleCloseClick}
-          >
+          <button className="all_topics-card-button close-topic">
             close btn
           </button>
           <h2>{topic.topic_name}</h2>
