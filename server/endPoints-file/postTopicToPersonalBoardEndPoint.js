@@ -2,7 +2,7 @@ const pool = require("../database/db");
 
 const postTopicToPersonalBoard = async (req, res) => {
   const { topicId, userId } = req.body;
-  const query = `INSERT INTO learning_topics_tracker (topic_id, user_id) VALUES ($1, $2)`;
+  const query = `INSERT INTO learning_topics_tracker (topic_id, user_id, due_date) VALUES ($1, $2, CURRENT_DATE + 7)`;
 
   try {
     const request = await pool.query(query, [topicId, userId]);

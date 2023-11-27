@@ -7,7 +7,9 @@ export default function AllModulesPage({ refreshmodalData }) {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(`https://localhost:3000/allModulesPage`);
+      const response = await fetch(
+        `https://deja-review-backend.onrender.com/allModulesPage`
+      );
       const data = await response.json();
       setModalData(data);
     } catch (error) {

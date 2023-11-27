@@ -31,11 +31,7 @@ export default function CardForTopic({ topic, showTopic, toggleTopic }) {
 
   return (
     showTopic && (
-      <div
-        className="selected-topic-container"
-        id={topic.id}
-        onClick={toggleTopic}
-      >
+      <div className="selected-topic-container" onClick={toggleTopic}>
         <div
           className="selected-topic-card"
           onClick={(e) => e.stopPropagation()}
