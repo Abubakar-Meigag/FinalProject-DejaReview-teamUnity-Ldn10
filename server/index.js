@@ -10,7 +10,7 @@ const bodyParser = require("body-parser");
 const corsOptions = {
   origin: function (origin, callback) {
     const allowedOrigins = [
-      "http://localhost:3001",
+      "http://localhost:3002",
       "https://fp-deja-review-frontend.onrender.com",
     ];
     if (!origin || allowedOrigins.includes(origin)) {
