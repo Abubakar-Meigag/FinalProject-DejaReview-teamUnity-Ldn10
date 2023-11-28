@@ -1,6 +1,7 @@
 const pool = require("../database/db");
 
-app.post("/api/storeUser", async (req, res) => {
+
+const storeUserInfo = async (req, res) => {
   try {
     const { name, email, picture, sub } = req.body;
     const existingUserQuery = "SELECT * FROM users WHERE email = $1";
@@ -30,4 +31,6 @@ app.post("/api/storeUser", async (req, res) => {
             console.log(error.detail);
             res.status(500).send("Internal Server Error");
     }
-});
+};
+
+module.exports = storeUserInfo;
