@@ -15,9 +15,9 @@ const ProfilePage = () => {
             sub: user.sub,
           };
 
-          const response = await axios.post(
-            "http://localhost:5005/storeUserInfo",
-            userData,
+          const url = "https://deja-review-backend.onrender.com/storeUserInfo";
+
+          const response = await axios.post(url, userData,
             {
               headers: {
                 "Content-Type": "application/json",
