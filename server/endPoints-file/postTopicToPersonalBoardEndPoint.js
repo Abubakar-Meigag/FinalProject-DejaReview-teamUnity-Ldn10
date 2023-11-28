@@ -6,7 +6,7 @@ const postTopicToPersonalBoard = async (req, res) => {
 
   try {
     const request = await pool.query(query, [topicId, userId]);
-    const insertedRow = request.rows[0];
+    const insertedRow = request.rows;
     return res.status(201).json(insertedRow);
   } catch (error) {
     console.log(
