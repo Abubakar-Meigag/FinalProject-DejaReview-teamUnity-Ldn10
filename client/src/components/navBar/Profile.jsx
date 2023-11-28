@@ -2,8 +2,20 @@ import React from "react";
 import image from "../../images/user.jpg";
 import { FaUserGraduate } from "react-icons/fa";
 import { TbLogout } from "react-icons/tb";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useNavigate } from "react-router-dom";
+
+
 
 const Profile = ({ open }) => {
+  const { logout } = useAuth0();
+  const navigate = useNavigate();
+
+  const handelLogout = () => {
+    logout();
+    navigate("/login");
+  };
+  
   return (
     <div className={`flex mt-[7rem] `}>
       <ul>
@@ -54,13 +66,12 @@ const Profile = ({ open }) => {
               className={`text-white origin-left font-semibold pt-3 cursor-pointer text-[15px] ${
                 !open && "scale-0"
               } hover:text-fuchsia-400`}
+              onClick={handelLogout}
             >
               Sing Out
             </h1>
           </li>
         </div>
-
-        
       </ul>
     </div>
   );
