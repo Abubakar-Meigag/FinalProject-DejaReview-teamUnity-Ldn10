@@ -10,16 +10,13 @@ export default function CardForTopic({ topic, showTopic, toggleTopic }) {
   async function handleAddingTopic() {
     console.log(topicData);
     try {
-      const request = await fetch(
-        `https://deja-review-backend.onrender.com/allModulesPage`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json", // Set the content type to JSON
-          },
-          body: JSON.stringify(topicData),
-        }
-      );
+      const request = await fetch(`https://localhost:5005/allModulesPage`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json", // Set the content type to JSON
+        },
+        body: JSON.stringify(topicData),
+      });
       console.log("handleSubmit response:", request);
 
       const json = await request.json();
@@ -29,6 +26,26 @@ export default function CardForTopic({ topic, showTopic, toggleTopic }) {
     }
   }
 
+  //   try {
+  //     const request = await axios.post(
+  //       "https://localhost:5005/allModulesPage",
+  //       {
+  //         // data to be sent in the request body
+  //         topicId: topicData.topicId,
+  //         userId: topicData.userId,
+  //       },
+  //       {
+  //         headers: {
+  //           "Content-Type": "application/json", // Set the content type to JSON
+  //         },
+  //       }
+  //     );
+
+  //     console.log("handleAddingTopic response:", request.data);
+  //   } catch (error) {
+  //     console.log(console.log("handleAddingTopic error:", error));
+  //   }
+  // }
   return (
     showTopic && (
       <div className="selected-topic-container" onClick={toggleTopic}>

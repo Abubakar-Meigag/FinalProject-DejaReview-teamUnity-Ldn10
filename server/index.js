@@ -25,13 +25,13 @@ const getDataUsers = require("./endPoints-file/usersEndPoint");
 const getTopics = require("./endPoints-file/topicsEndpoint");
 const getDataForAllModulesPage = require("./endPoints-file/all_modules_pageEndPoint");
 const postTopicToPB = require("./endPoints-file/postTopicToPersonalBoardEndPoint");
-const getlearningTopicsTracker = require("./endPoints-file/getlearningTopicsTrackerEndPoint");
+const getLearningTopicsTracker = require("./endPoints-file/getLearningTopicsTrackerEndPoint ");
 
 app.get("/modules", getDataModules);
 app.get("/users", getDataUsers);
 app.get("/topics", getTopics);
 app.get("/allModulesPage", getDataForAllModulesPage);
 
-app.get("/board", getlearningTopicsTracker);
+app.get("/board", getLearningTopicsTracker);
 
 app.post("/allModulesPage", postTopicToPB);

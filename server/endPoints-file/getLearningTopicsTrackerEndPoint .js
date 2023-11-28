@@ -1,6 +1,6 @@
 const pool = require("../database/db");
 
-const getlearningTopicsTracker = async (req, res) => {
+const getLearningTopicsTrackerEndPoint = async (req, res) => {
   const query = "SELECT * FROM learning_topics_tracker";
   try {
     const data = await pool.query(query);
@@ -14,4 +14,4 @@ const getlearningTopicsTracker = async (req, res) => {
   }
 };
 
-module.exports = getlearningTopicsTracker;
+module.exports = getLearningTopicsTrackerEndPoint;
