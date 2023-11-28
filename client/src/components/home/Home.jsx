@@ -8,6 +8,7 @@ import Management from "../management/Management"
 import Footer from "../footer/Footer";
 import "../home/home.css";
 import { useAuth0 } from "@auth0/auth0-react";
+import ProfilePage from "../login/ProfilePage";
 
 const Home = () => {
   const [refreshModalData, setRefreshModalData] = useState(false);
@@ -43,6 +44,7 @@ const Home = () => {
               />
 
               <Route path="/management" element={<Management />} />
+              <Route path="/profilePage" element={<ProfilePage />} />
               <Route path="/login" element={<Login />} />
             </Routes>
 
