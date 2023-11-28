@@ -1,0 +1,21 @@
+/* Add this CSS to your stylesheet or in your component */
+
+.ModuleDropdownContainer {
+    border: 1px solid lightblue;
+    padding: 20px;
+    text-align: center;
+    width: 300px; /* Adjust the width as needed */
+    margin: 0 auto; /* Center the container horizontally */
+  }
+  
+  select, input, button {
+    margin: 10px 0;
+  }
+ .SendButton {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
+    background-color: blue;
+    color: white;
+ } 

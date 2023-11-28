@@ -5,6 +5,8 @@ import AllModulesPage from "./components/All_Modules_Page/AllModulesPage";
 import Management from "./components/management/Management";
 import SidePanel from "./components/navBar/SidePanel";
 
+
+
 function App() {
   const [refreshModalData, setrefreshModalData] = useState(false);
 
