@@ -2,56 +2,58 @@ import React, { useState } from "react";
 import "./Card_for_topic.css";
 
 export default function CardForTopic({ topic, showTopic, toggleTopic }) {
-  const handleCloseClick = (e) => {
-    // Stop the event propagation when the "close btn" is clicked
-    e.stopPropagation();
-    toggleTopic();
-  };
-
   const [topicData, setTopicData] = useState({
-    topicId: "",
+    topicId: topic.topic_id,
     userId: 222,
   });
 
-  async function handleAddingTopic(event) {
-    setTopicData(topic.id);
+  async function handleAddingTopic() {
+    console.log(topicData);
     try {
-      const request = await fetch(
-        `https://deja-review-backend.onrender.com/allModulesPage`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json", // Set the content type to JSON
-          },
-          body: JSON.stringify(topicData),
-        }
-      );
+      const request = await fetch(`https://localhost:5005/allModulesPage`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json", // Set the content type to JSON
+        },
+        body: JSON.stringify(topicData),
+      });
       console.log("handleSubmit response:", request);
 
       const json = await request.json();
       console.log("handleAddingTopic json:", json);
     } catch (error) {
       console.log(console.log("handleAddingTopic error:", error));
-    } finally {
-      handleCloseClick();
     }
   }
 
+  //   try {
+  //     const request = await axios.post(
+  //       "https://localhost:5005/allModulesPage",
+  //       {
+  //         // data to be sent in the request body
+  //         topicId: topicData.topicId,
+  //         userId: topicData.userId,
+  //       },
+  //       {
+  //         headers: {
+  //           "Content-Type": "application/json", // Set the content type to JSON
+  //         },
+  //       }
+  //     );
+
+  //     console.log("handleAddingTopic response:", request.data);
+  //   } catch (error) {
+  //     console.log(console.log("handleAddingTopic error:", error));
+  //   }
+  // }
   return (
     showTopic && (
-      <div
-        className="selected-topic-container"
-        id={topic.id}
-        onClick={toggleTopic}
-      >
+      <div className="selected-topic-container" onClick={toggleTopic}>
         <div
           className="selected-topic-card"
           onClick={(e) => e.stopPropagation()}
         >
-          <button
-            className="all_topics-card-button close-topic"
-            onClick={handleCloseClick}
-          >
+          <button className="all_topics-card-button close-topic">
             close btn
           </button>
           <h2>{topic.topic_name}</h2>
