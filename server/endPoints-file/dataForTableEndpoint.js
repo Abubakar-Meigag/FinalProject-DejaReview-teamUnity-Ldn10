@@ -18,7 +18,6 @@ const getDataForTable = async (req, res) => {
   } catch (error) {
     console.error("Error fetching modules:", error);
     res.status(500).json({ error: "Internal Server Error" });
-    pool.end();
   }
 };
 
