@@ -1,12 +1,12 @@
 const pool = require("../database/db");
 
-const getDataUsers = async (req, res) => {
-  const query = "SELECT * FROM users";
+const getLearningTopicsTrackerEndPoint = async (req, res) => {
+  const query = "SELECT * FROM learning_topics_tracker";
   try {
     const data = await pool.query(query);
     res.status(200).json(data.rows);
   } catch (error) {
-    console.log(error);
+    console.error(error);
     res.status(500).json({
       result: "failure",
       message: "No data found",
@@ -14,4 +14,4 @@ const getDataUsers = async (req, res) => {
   }
 };
 
-module.exports = getDataUsers;
+module.exports = getLearningTopicsTrackerEndPoint;
