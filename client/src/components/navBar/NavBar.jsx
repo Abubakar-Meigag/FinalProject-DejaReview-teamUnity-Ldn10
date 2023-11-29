@@ -16,7 +16,7 @@ const NavBar = ({ open }) => {
                 className={`bg-amber-300 p-2 rounded cursor-pointer block float-left mr-4 duration-500 ${
                   open ? "text-7xl" : "text-5xl"
                 }
-                    `}
+              `}
               />
             </Link>
             <Link
