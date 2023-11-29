@@ -60,8 +60,8 @@ const Profile = ({ open }) => {
               <TbLogout
                 className={`bg-amber-300 p-2 rounded cursor-pointer block float-left text-4xl mr-4 duration-500 ${
                   !open && "ml-2"
-                }
-               `}
+                }`}
+                onClick={handelLogout}
               />
               <h1
                 className={`text-white origin-left font-semibold pt-3 cursor-pointer text-[15px] ${
