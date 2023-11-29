@@ -1,11 +1,49 @@
 import React from "react";
 import { FcGoogle } from "react-icons/fc";
 import { useAuth0 } from "@auth0/auth0-react";
-
+import axios from "axios";
 
 
 const Login = () => {
-    const { loginWithRedirect } = useAuth0();
+  const { user, loginWithRedirect } = useAuth0();
+    
+  const storeUserInfo = async () => {
+    try {
+      if (user) {
+        const userData = {
+          name: user.given_name || user.name || "DefaultName",
+          email: user.email || "DefaultEmail@example.com",
+          picture: user.picture || "default-profile-picture-url",
+          sub: user.sub,
+        };
+
+        const response = await axios.post(
+          "hhttp://localhost:5005/storeUserInfo",
+          userData,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (response.status < 200 || response.status >= 300) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = response.data;
+        console.log(data);
+      } else {
+        console.log("Error storing user: 'user' is undefined");
+      }
+    } catch (error) {
+      console.log("Error storing user:", error);
+    }
+  };
+
+  storeUserInfo();
+  
+
 
   return (
     <div
