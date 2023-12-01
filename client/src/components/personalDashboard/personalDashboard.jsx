@@ -1,16 +1,21 @@
 import React, {useState, useEffect} from "react";
 import ModuleDropdown from "../dashboard/ModuleDropdown";
+import { useAuth0 } from "@auth0/auth0-react";
+
 
 const PersonalDashboard = () => {
+  const { isAuthenticated, user } = useAuth0();
+console.log("IsAuthenticated:", isAuthenticated);
+console.log("User:", user);
 
-  const [userModules, setUserModules] = useState({ modules: [] });
+  const [userTopics, setUserTopics] = useState({ modules: [] });
 
 useEffect(() => {
   fetch('https://deja-review-backend.onrender.com/dataForTable')
     .then((response) => response.json())
     .then((data) => {
       console.log("Data received:", data);
-      setUserModules(data);
+      setUserTopics(data);
     })
     .catch((error) => console.error("Error fetching data:", error));
 }, []);
@@ -34,7 +39,7 @@ let rowNumber = 0;
           </tr>
         </thead>
         <tbody>
-          {userModules.modules.map((topic) => (
+          {userTopics.modules.map((topic) => (
             <tr key={topic.topicId} className="hover:bg-amber-300">
               <td className="border-b p-3 text-center">{++rowNumber}</td>
               <td className="border-b p-3 text-center">{topic.topic_name}</td>
