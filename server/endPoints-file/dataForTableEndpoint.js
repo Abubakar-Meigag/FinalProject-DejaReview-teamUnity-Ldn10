@@ -1,12 +1,9 @@
-
 const pool = require("../database/db");
 
 const getDataForTable = async (req, res) => {
-  console.log("User Object:", req.user);
   try {
-    console.log(req);
-    if (req.user && req.user.sub) {
-      const userId = req.user.sub;
+    if (req.query && req.query.sub) {
+      const userId = req.query.sub;
 
       const query = `
       SELECT

@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 import "./Card_for_topic.css";
 
 export default function CardForTopic({ topic, showTopic, toggleTopic }) {
+
+  const { user } = useAuth0();
   const [topicData, setTopicData] = useState({
     topicId: topic.topic_id,
-    userId: 222,
+    userId: user.sub,
   });
 
   async function handleAddingTopic() {

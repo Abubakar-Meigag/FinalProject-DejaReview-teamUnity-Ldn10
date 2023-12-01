@@ -4,14 +4,13 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 
 const PersonalDashboard = () => {
-  const { isAuthenticated, user } = useAuth0();
-console.log("IsAuthenticated:", isAuthenticated);
-console.log("User:", user);
 
-  const [userTopics, setUserTopics] = useState({ modules: [] });
+const { user } = useAuth0();
+const [userTopics, setUserTopics] = useState({ modules: [] });
+const { sub } = user
 
 useEffect(() => {
-  fetch('https://deja-review-backend.onrender.com/dataForTable')
+  fetch(`https://deja-review-backend.onrender.com/dataForTable?sub=${sub}`)
     .then((response) => response.json())
     .then((data) => {
       console.log("Data received:", data);
@@ -40,12 +39,12 @@ let rowNumber = 0;
         </thead>
         <tbody>
           {userTopics.modules.map((topic) => (
-            <tr key={topic.topicId} className="hover:bg-amber-300">
+            <tr key={topic.entry_id} className="hover:bg-amber-300">
               <td className="border-b p-3 text-center">{++rowNumber}</td>
               <td className="border-b p-3 text-center">{topic.topic_name}</td>
-              <td className="border-b p-3 text-center">{topic.name}</td>
+              <td className="border-b p-3 text-center">{topic.module_name}</td>
               <td className="border-b p-3 text-center">{topic.reference_link}</td>
-              <td className="border-b p-3 text-center">{topic.dueDate}</td>
+              <td className="border-b p-3 text-center">{new Date(topic.due_date).toDateString()}</td>
             </tr>
           ))}
         </tbody>
