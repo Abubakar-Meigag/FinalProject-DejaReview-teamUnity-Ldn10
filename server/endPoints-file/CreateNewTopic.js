@@ -15,7 +15,7 @@ const CreateNewTopic = async (req, res) => {
     }
 
     const insertQuery =
-      "INSERT INTO topics (module_id, topic_name, description, reference_link, test_link) VALUES ($1, $2, $3, $4, $5) RETURNING *";
+      "INSERT INTO topics (module_id, topic_name, description, reference_link, is_user_generated) VALUES ($1, $2, $3, $4, $5) RETURNING *";
 
     const result = await pool.query(insertQuery, [
         module_id,
