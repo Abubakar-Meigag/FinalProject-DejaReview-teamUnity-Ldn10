@@ -1,25 +1,38 @@
 import React, { useState, useEffect } from "react";
 import "./AllModulesPage.css";
 import CardForTopic from "./Card_For_Topic/Card_for_topic";
+import supabase from "../../config/supadaseClient";
 
 export default function AllModulesPage({ refreshmodalData }) {
+  const [fetchError, setFetchError] = useState(null);
   const [modalData, setModalData] = useState([]);
 
-  const fetchData = async () => {
-    try {
-      const response = await fetch(
-        `https://deja-review-backend.onrender.com/allModulesPage`
-      );
-      const data = await response.json();
-      setModalData(data);
-    } catch (error) {
-      console.log("The ERROR occured in fetchData in DisplaymodalData:", error);
-    }
-  };
-
   useEffect(() => {
-    fetchData();
+    const fetchAllModal = async () => {
+      const { data, error } = await supabase.from("modules").select(`
+          id,
+          name,
+          description,
+          topics (id,
+            topic_name,
+            description,
+            reference_link,
+            test_link)
+        `);
+      if (error) {
+        setFetchError("Could'n fetch modules");
+
+        setModalData(null);
+        console.log(error);
+      }
+      if (data) {
+        setModalData(data);
+        setFetchError(null);
+      }
+    };
+    fetchAllModal();
   }, [refreshmodalData]);
+  console.log(modalData);
 
   const [openListIndex, setOpenListIndex] = useState(null);
 
@@ -51,8 +64,8 @@ export default function AllModulesPage({ refreshmodalData }) {
               className="module-info"
               onClick={() => handleListHeaderClick(index)}
             >
-              <h2>{element.module_name}</h2>
-              <p>{element.module_description}</p>
+              <h2>{element.name}</h2>
+              <p>{element.description}</p>
             </div>
             <div className="topics-container">
               <ul className="topics-list">

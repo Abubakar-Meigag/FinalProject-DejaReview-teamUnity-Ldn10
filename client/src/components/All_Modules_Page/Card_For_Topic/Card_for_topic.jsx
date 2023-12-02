@@ -28,27 +28,6 @@ export default function CardForTopic({ topic, showTopic, toggleTopic }) {
       console.log(console.log("handleAddingTopic error:", error));
     }
   }
-
-  //   try {
-  //     const request = await axios.post(
-  //       "https://localhost:5005/allModulesPage",
-  //       {
-  //         // data to be sent in the request body
-  //         topicId: topicData.topicId,
-  //         userId: topicData.userId,
-  //       },
-  //       {
-  //         headers: {
-  //           "Content-Type": "application/json", // Set the content type to JSON
-  //         },
-  //       }
-  //     );
-
-  //     console.log("handleAddingTopic response:", request.data);
-  //   } catch (error) {
-  //     console.log(console.log("handleAddingTopic error:", error));
-  //   }
-  // }
   return (
     showTopic && (
       <div className="selected-topic-container" onClick={toggleTopic}>
@@ -60,7 +39,7 @@ export default function CardForTopic({ topic, showTopic, toggleTopic }) {
             close btn
           </button>
           <h2>{topic.topic_name}</h2>
-          <p>{topic.topic_description}</p>
+          <p>{topic.description}</p>
           <h6>{topic.reference_link}</h6>
           <h6>{topic.test_link}</h6>
           <button
