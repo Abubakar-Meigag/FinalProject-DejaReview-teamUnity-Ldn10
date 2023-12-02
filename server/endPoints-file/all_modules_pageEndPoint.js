@@ -15,6 +15,7 @@ const getAllDataForAllModulesPage = async (req, res) => {
   FROM topics
   INNER JOIN modules
   ON modules.id = topics.module_id
+  WHERE topics.is_user_generated = false
   `;
   // const query = `
   //   SELECT json_arrayagg(
