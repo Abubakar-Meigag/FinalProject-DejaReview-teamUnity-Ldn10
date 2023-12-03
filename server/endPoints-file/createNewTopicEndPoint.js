@@ -1,6 +1,6 @@
 const pool = require("../database/db");
 
-const CreateNewTopic = async (req, res) => {
+const createNewTopic = async (req, res) => {
   try {
     const {
         module_id,
@@ -34,4 +34,4 @@ const CreateNewTopic = async (req, res) => {
   }
 };
 
-module.exports = CreateNewTopic;
+module.exports = createNewTopic;

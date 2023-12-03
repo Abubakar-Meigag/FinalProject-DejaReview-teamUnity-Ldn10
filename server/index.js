@@ -28,7 +28,7 @@ const getDataForAllModulesPage = require("./endPoints-file/all_modules_pageEndPo
 const getDataForTable = require("./endPoints-file/dataForTableEndpoint");
 const postTopicToPB = require("./endPoints-file/postTopicToPersonalBoardEndPoint");
 const getLearningTopicsTracker = require("./endPoints-file/getLearningTopicsTrackerEndPoint ");
-const CreateNewTopic = require('./endPoints-file/CreateNewTopic')
+const createNewTopic = require("./endPoints-file/createNewTopicEndPoint");
 
 
 
@@ -40,5 +40,5 @@ app.get("/allModulesPage", getDataForAllModulesPage);
 app.get("/dataForTable", getDataForTable);
 app.get("/board", getLearningTopicsTracker);
 app.post("/allModulesPage", postTopicToPB);
-app.post("./createNewTopic", CreateNewTopic);
+app.post("/createNewTopic", createNewTopic);
 

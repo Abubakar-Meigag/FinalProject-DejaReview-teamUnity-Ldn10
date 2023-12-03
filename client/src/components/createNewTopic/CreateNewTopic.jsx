@@ -42,8 +42,8 @@ const CreateNewTopic = () => {
         };
 
         const res = await fetch(
-            "https://deja-review-backend.onrender.com/CreateNewTopic",
-            {
+          "https://deja-review-backend.onrender.com/createNewTopic",
+          {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(body),
@@ -51,7 +51,7 @@ const CreateNewTopic = () => {
         );
 
         console.warn(res);
-        window.location = "/";
+        // window.location = "/";
 
     } catch (err) {
         console.error(err.message);
@@ -59,87 +59,88 @@ const CreateNewTopic = () => {
   };
 
     return (
-        <div className={`flex justify-center bg-cover bg-center items-center min-w-fit`}>
+      <div
+        className={`flex justify-center bg-cover bg-center items-center min-w-fit`}
+      >
         <div>
-            <div className="max-w-md relative flex flex-col p-4  rounded-md text-black bg-white border-solid border-2 border-sky-200 hover:border-[#7747ff] ">
+          <div className="max-w-md relative flex flex-col p-4  rounded-md text-black bg-white border-solid border-2 border-sky-200 hover:border-[#7747ff] ">
             <div className="text-2xl  font-bold mb-1 text-[#1e0e4b]  text-center">
-                Create New Learning <span className="text-[#7747ff]">Topic</span>
+              Create New Learning <span className="text-[#7747ff]">Topic</span>
             </div>
 
             <form className="flex flex-col mt-3 gap-3">
-                <div className="block relative">
+              <div className="block relative">
                 <div>
-                    <label className="block text-gray-900 font-bold cursor-text text-md leading-[140%] mb-1">
+                  <label className="block text-gray-900 font-bold cursor-text text-md leading-[140%] mb-1">
                     Modules
-                    </label>
-                    <select
+                  </label>
+                  <select
                     required
                     className="block text-black p-2 w-52 cursor-text text-sm leading-[140%] font-normal mb-1"
                     onChange={(e) => setSelectedModuleId(e.target.value)}
-                    >
-                    <option value="" disabled selected>
-                        Choose module...
+                  >
+                    <option>
+                      Choose module...
                     </option>
                     {modules.map((module) => (
-                        <option key={module.id} value={module.id}>
+                      <option key={module.id} value={module.id}>
                         {module.name}
-                        </option>
+                      </option>
                     ))}
-                    </select>
+                  </select>
                 </div>
 
                 <label className="block text-gray-600 cursor-text text-md leading-[140%] font-bold mb-1">
-                    Topic Name
+                  Topic Name
                 </label>
                 <input
-                    type="text"
-                    placeholder={"Enter Topic Name"}
-                    value={topic_name}
-                    onChange={(e) => setTopicName(e.target.value)}
-                    required
-                    className="rounded border border-gray-200 text-sm w-full font-normal leading-[18px] text-black tracking-[0px] appearance-none block h-8 m-0 p-[11px] focus:ring-2 ring-offset-2  ring-sky-500 outline-0 mb-1"
+                  type="text"
+                  placeholder={"Enter Topic Name"}
+                  value={topic_name}
+                  onChange={(e) => setTopicName(e.target.value)}
+                  required
+                  className="rounded border border-gray-200 text-sm w-full font-normal leading-[18px] text-black tracking-[0px] appearance-none block h-8 m-0 p-[11px] focus:ring-2 ring-offset-2  ring-sky-500 outline-0 mb-1"
                 />
 
                 <label className="block text-gray-600 cursor-text text-md leading-[140%] font-bold mb-2">
-                    Description
+                  Description
                 </label>
                 <input
-                    type="text"
-                    placeholder={"Enter Description"}
-                    value={description}
-                    required
-                    onChange={(e) => setDescription(e.target.value)}
-                    className="rounded border border-gray-200 text-sm w-full font-normal leading-[18px] text-black tracking-[0px] appearance-none block h-8 m-0 p-[11px] focus:ring-2 ring-offset-2  ring-sky-500  outline-0"
+                  type="text"
+                  placeholder={"Enter Description"}
+                  value={description}
+                  required
+                  onChange={(e) => setDescription(e.target.value)}
+                  className="rounded border border-gray-200 text-sm w-full font-normal leading-[18px] text-black tracking-[0px] appearance-none block h-8 m-0 p-[11px] focus:ring-2 ring-offset-2  ring-sky-500  outline-0"
                 />
-                </div>
+              </div>
 
-                <div className="block relative">
+              <div className="block relative">
                 <label className="block text-gray-600 cursor-text text-md leading-[140%] font-bold mb-2">
-                    Ref Link
+                  Ref Link
                 </label>
                 <input
-                    type="url"
-                    placeholder={"Enter Reference Link"}
-                    value={reference_link}
-                    required
-                    onChange={(e) => setReferenceLink(e.target.value)}
-                    className="rounded border border-gray-200 text-sm w-full font-normal leading-[18px] text-black tracking-[0px] appearance-none block h-8 m-0 p-[11px] focus:ring-2 ring-offset-2 ring-sky-500 outline-0"
+                  type="url"
+                  placeholder={"Enter Reference Link"}
+                  value={reference_link}
+                  required
+                  onChange={(e) => setReferenceLink(e.target.value)}
+                  className="rounded border border-gray-200 text-sm w-full font-normal leading-[18px] text-black tracking-[0px] appearance-none block h-8 m-0 p-[11px] focus:ring-2 ring-offset-2 ring-sky-500 outline-0"
                 />
-                </div>
+              </div>
 
-                <button
+              <button
                 type="submit"
                 className="bg-sky-500 w-max m-auto px-6 py-2 rounded text-white text-sm font-bold hover:bg-[#7747ff]"
                 onClick={handelSubmit}
-                >
+              >
                 Submit
-                </button>
-                
+              </button>
             </form>
-            </div>
+          </div>
         </div>
-    </div>
-  );
+      </div>
+    );
 };
 
 export default CreateNewTopic;
