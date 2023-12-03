@@ -30,7 +30,7 @@ const CreateNewTopic = () => {
       return;
     }
 
-    const is_user_generated = "TRUE";
+    const is_user_generated = true;
 
     try {
         const body = {
