@@ -9,6 +9,7 @@ const { user } = useAuth0();
 const [userTopics, setUserTopics] = useState({ modules: [] });
 const { sub } = user
 
+
 useEffect(() => {
   fetch(`https://deja-review-backend.onrender.com/dataForTable?sub=${sub}`)
     .then((response) => response.json())
