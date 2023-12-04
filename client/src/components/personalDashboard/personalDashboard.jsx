@@ -1,31 +1,32 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import ModuleDropdown from "../dashboard/ModuleDropdown";
 import { useAuth0 } from "@auth0/auth0-react";
-
+import UpComingTopic from "../dashboard/UpComingTopic";
 
 const PersonalDashboard = () => {
+  const { user } = useAuth0();
+  const [userTopics, setUserTopics] = useState({ modules: [] });
+  const { sub } = user;
 
-const { user } = useAuth0();
-const [userTopics, setUserTopics] = useState({ modules: [] });
-const { sub } = user
+  useEffect(() => {
+    fetch(`https://deja-review-backend.onrender.com/dataForTable?sub=${sub}`)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Data received:", data);
+        setUserTopics(data);
+      })
+      .catch((error) => console.error("Error fetching data:", error));
+  }, []);
 
-useEffect(() => {
-  fetch(`https://deja-review-backend.onrender.com/dataForTable?sub=${sub}`)
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("Data received:", data);
-      setUserTopics(data);
-    })
-    .catch((error) => console.error("Error fetching data:", error));
-}, []);
-
-
-let rowNumber = 0;
+  let rowNumber = 0;
 
   return (
     <div className="p-4 bg-dark-purple">
       <div className="flex justify-center mb-4 text-white">
         <ModuleDropdown />
+      </div>
+      <div className="flex justify-center mb-4 text-white">
+        <UpComingTopic userTopics={userTopics} />
       </div>
       <table className="w-full border border-collapse border-gray-300 bg-sky-900 text-white">
         <thead className="bg-amber-300 text-black">
@@ -43,17 +44,18 @@ let rowNumber = 0;
               <td className="border-b p-3 text-center">{++rowNumber}</td>
               <td className="border-b p-3 text-center">{topic.topic_name}</td>
               <td className="border-b p-3 text-center">{topic.module_name}</td>
-              <td className="border-b p-3 text-center">{topic.reference_link}</td>
-              <td className="border-b p-3 text-center">{new Date(topic.due_date).toDateString()}</td>
+              <td className="border-b p-3 text-center">
+                {topic.reference_link}
+              </td>
+              <td className="border-b p-3 text-center">
+                {new Date(topic.due_date).toDateString()}
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
     </div>
   );
-}
-
+};
 
 export default PersonalDashboard;
-
-

@@ -1,0 +1,21 @@
+.up-coming-topic-container {
+  display: flex;
+  flex-direction: column;
+  border-radius: 25px;
+  padding: 20px;
+  text-align: center;
+  width: 400px;
+  gap: 15px;
+  background-color: rgba(201, 235, 235, 0.101);
+}
+
+.up-coming-topic-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  gap: 15px;
+  color: black;
+  border: none;
+  border-radius: 25px;
+  background-color: rgb(201, 235, 235);
+}
