@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./AllModulesPage.css";
 import CardForTopic from "./Card_For_Topic/Card_for_topic";
+import { useAuth0 } from "@auth0/auth0-react";
+import Loading from "../loading/Loading";
 
 export default function AllModulesPage({ refreshmodalData }) {
   const [modalData, setModalData] = useState([]);
+  const { isLoading } = useAuth0();
 
   const fetchData = async () => {
     try {
@@ -37,6 +40,10 @@ export default function AllModulesPage({ refreshmodalData }) {
     newTopicStates[flatIndex] = !newTopicStates[flatIndex];
     setTopicStates(newTopicStates);
   };
+
+  if (isLoading) {
+    return <div>{<Loading />}</div>;
+  }
 
   return (
     <div className="modules-container">
