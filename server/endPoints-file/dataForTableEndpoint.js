@@ -11,6 +11,7 @@ const getDataForTable = async (req, res) => {
         modules.name AS module_name,
         topics.topic_name,
         topics.reference_link,
+        topics.description,
         ltt.due_date
       FROM
         learning_topics_tracker ltt

@@ -2,18 +2,22 @@ import React from "react";
 import { FaUserGraduate } from "react-icons/fa";
 import { TbLogout } from "react-icons/tb";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import Loading from "../loading/Loading";
 
 
 
 const Profile = ({ open }) => {
-  const { logout, user, isAuthenticated } = useAuth0();
-  const navigate = useNavigate();
+  const { logout, user, isAuthenticated, isLoading } = useAuth0();
 
   const handelLogout = () => {
     logout();
-    navigate("/login");
   };
+
+
+  if (isLoading) {
+    return <div>{<Loading />}</div>;
+  }
   
   return (
     isAuthenticated && (
@@ -69,7 +73,7 @@ const Profile = ({ open }) => {
                 } hover:text-fuchsia-400`}
                 onClick={handelLogout}
               >
-                Sing Out
+                Sign Out
               </h1>
             </li>
           </div>
