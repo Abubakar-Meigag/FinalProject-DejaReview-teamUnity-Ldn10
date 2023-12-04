@@ -33,7 +33,7 @@ const CreateNewTopic = () => {
       return;
     }
 
-    const personalTopicData = {
+    const personalNewTopicData = {
       module_id: selectedModuleId,
       topic_name,
       description,
@@ -46,10 +46,10 @@ const CreateNewTopic = () => {
       const res = await fetch("http://localhost:5005/createNewTopic", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(personalTopicData),
+        body: JSON.stringify(personalNewTopicData),
       });
 
-      console.warn(res);
+      console.warn('here is', res);
       // window.location = "/";
     } catch (err) {
       console.error(err.message);
