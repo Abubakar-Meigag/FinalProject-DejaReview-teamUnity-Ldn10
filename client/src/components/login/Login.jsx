@@ -1,11 +1,15 @@
 import React from "react";
 import { FcGoogle } from "react-icons/fc";
 import { useAuth0 } from "@auth0/auth0-react";
+import Loading from "../loading/Loading";
 
 
 const Login = () => {
-  const { loginWithRedirect } = useAuth0();  
+  const { loginWithRedirect, isLoading } = useAuth0();  
 
+  if (isLoading) {
+    return <div>{<Loading /> }</div>
+  }
 
   return (
     <div
