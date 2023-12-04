@@ -69,7 +69,7 @@ const Profile = ({ open }) => {
                 } hover:text-fuchsia-400`}
                 onClick={handelLogout}
               >
-                Sing Out
+                Sign Out
               </h1>
             </li>
           </div>
