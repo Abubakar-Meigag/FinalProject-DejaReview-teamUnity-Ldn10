@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import ModuleDropdown from "../dashboard/ModuleDropdown";
 import { useAuth0 } from "@auth0/auth0-react";
+import UpComingTopic from "../dashboard/UpComingTopic";
 import IndividualTopicModalComponent from "../IndividualTopicModalComponent/IndividualTopicModalComponent";
-
 
 const PersonalDashboard = () => {
 
@@ -24,6 +24,7 @@ useEffect(() => {
 
 let rowNumber = 0;
 
+
 const openModal = (topic) => {
     setSelectedTopic(topic);
   };
@@ -36,6 +37,9 @@ const openModal = (topic) => {
     <div className="p-4 bg-dark-purple w-full">
       <div className="flex justify-center mb-4 text-white">
         <ModuleDropdown />
+      </div>
+      <div className="flex justify-center mb-4 text-white">
+        <UpComingTopic userTopics={userTopics} />
       </div>
       <table className="w-full border border-collapse border-gray-300 bg-sky-900 text-white">
         <thead className="bg-amber-300 text-black" >
@@ -57,6 +61,7 @@ const openModal = (topic) => {
                 {topic.topic_name}</td>
               <td className="border-b p-3 text-center">{topic.module_name}</td>
               <td className="border-b p-3 text-center">
+
                 <a href={topic.reference_link}>
                   Review Link
                 </a>
@@ -77,9 +82,6 @@ const openModal = (topic) => {
       />
     </div>
   );
-}
-
+};
 
 export default PersonalDashboard;
-
-

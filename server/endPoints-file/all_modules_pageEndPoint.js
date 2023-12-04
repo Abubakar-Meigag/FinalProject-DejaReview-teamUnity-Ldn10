@@ -1,7 +1,6 @@
 const db = require("../database/db");
 
 const getAllDataForAllModulesPage = async (req, res) => {
-  // +DISTINCT ON (modules.name)
   const query = `SELECT 
   modules.id AS module_id,
   modules.name AS module_name,
@@ -17,30 +16,9 @@ const getAllDataForAllModulesPage = async (req, res) => {
   ON modules.id = topics.module_id
   WHERE topics.is_user_generated = false
   `;
-  // const query = `
-  //   SELECT json_arrayagg(
-  //     json_object(
-  //         'module_id', modules.id,
-  //         'module_name', modules.name,
-  //         'module_description', modules.description,
-  //         'topics', (
-  //             SELECT json_arrayagg(
-  //                 json_object(
-  //                     'topic_id', topics.id,
-  //                     'topic_name', topics.topic_name,
-  //                     'topic_description', topics.description
-  //                 )
-  //             )
-  //             FROM topics
-  //             WHERE modules.id = topics.module_id
-  //          )
-  //     )
-  // ) res
-  // FROM modules`;
-
   try {
     const data = await db.query(query);
-    const unSortedData = data.rows; // Assuming data.rows is an array of objects
+    const unSortedData = data.rows;
     const modulesData = {};
 
     // Iterate through the provided data and organize it
