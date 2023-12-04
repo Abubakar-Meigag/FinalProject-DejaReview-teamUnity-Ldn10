@@ -1,4 +1,3 @@
-import "@fortawesome/fontawesome-free/css/all.css";
 import "./UpComingTopic.css";
 
 const UpComingTopic = ({ userTopics }) => {
