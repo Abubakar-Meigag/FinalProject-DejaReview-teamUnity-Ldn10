@@ -43,11 +43,14 @@ const CreateNewTopic = () => {
     };
 
     try {
-      const res = await fetch("http://localhost:5005/createNewTopic", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(personalNewTopicData),
-      });
+      const res = await fetch(
+        "https://deja-review-backend.onrender.com/createNewTopic",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(personalNewTopicData),
+        }
+      );
 
       console.warn('here is', res);
       // window.location = "/";
