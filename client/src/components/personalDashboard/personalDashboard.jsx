@@ -45,7 +45,8 @@ let rowNumber = 0;
               <td className="border-b p-3 text-center">{topic.topic_name}</td>
               <td className="border-b p-3 text-center">{topic.module_name}</td>
               <td className="border-b p-3 text-center">{topic.reference_link}</td>
-              <td className="border-b p-3 text-center">{new Date(topic.due_date).toDateString()}</td>
+              <td className="border-b p-3 text-center">{new Date(topic.due_date).toDateString()}
+              </td>
             </tr>
           ))}
         </tbody>
