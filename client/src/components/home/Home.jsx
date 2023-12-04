@@ -9,11 +9,15 @@ import Footer from "../footer/Footer";
 import "../home/home.css";
 import { useAuth0 } from "@auth0/auth0-react";
 import ProfilePage from "../login/ProfilePage";
+import Loading from "../loading/Loading";
 
 const Home = () => {
   const [refreshModalData, setRefreshModalData] = useState(false);
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated, isLoading } = useAuth0();
 
+  if (isLoading) {
+    return <div>{<Loading />}</div>;
+  }
 
   return (
     <BrowserRouter>
