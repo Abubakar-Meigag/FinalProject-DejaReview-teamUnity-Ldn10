@@ -24,21 +24,22 @@ export default function AllModulesPage({ refreshmodalData }) {
     fetchData();
   }, [refreshmodalData]);
 
-  const [openListIndex, setOpenListIndex] = useState(null);
+  const [openListIndex, setOpenListIndex] = useState(null); //module
 
   const handleListHeaderClick = (index) => {
-    setOpenListIndex((prevIndex) => (prevIndex === index ? null : index));
+    setOpenListIndex((prevIndex) => (prevIndex === index ? null : index)); //module
   };
 
-  const [topicStates, setTopicStates] = useState(
-    modalData.flatMap((element) => element.topics.map(() => false))
-  );
+  const [selectedTopic, setSelectedTopic] = useState(null);
 
-  const toggleTopic = (moduleIndex, topicIndex) => {
-    const flatIndex = moduleIndex * modalData[0].topics.length + topicIndex;
-    const newTopicStates = [...topicStates];
-    newTopicStates[flatIndex] = !newTopicStates[flatIndex];
-    setTopicStates(newTopicStates);
+  const openTopic = (topic) => {
+    setSelectedTopic(topic);
+    console.log("openTopic");
+  };
+
+  const closeTopic = () => {
+    setSelectedTopic(null);
+    console.log("closeTopic");
   };
 
   if (isLoading) {
@@ -63,23 +64,13 @@ export default function AllModulesPage({ refreshmodalData }) {
             </div>
             <div className="topics-container">
               <ul className="topics-list">
-                {element.topics.map((element, subIndex) => (
+                {element.topics.map((topic, subIndex) => (
                   <li
                     key={subIndex}
-                    onClick={() => toggleTopic(index, subIndex)}
+                    onClick={() => openTopic(topic)}
                     className="topics-container-inner"
                   >
-                    <h2>{element.topic_name}</h2>
-                    <CardForTopic
-                      key={element.id}
-                      showTopic={
-                        topicStates[
-                          index * modalData[0].topics.length + subIndex
-                        ]
-                      }
-                      toggleTopic={() => toggleTopic(index, subIndex)}
-                      topic={element}
-                    />
+                    <h2>{topic.topic_name}</h2>
                   </li>
                 ))}
               </ul>
@@ -87,6 +78,15 @@ export default function AllModulesPage({ refreshmodalData }) {
           </li>
         ))}
       </ul>
+      <CardForTopic
+        isOpen={!!selectedTopic}
+        onClose={closeTopic}
+        topic={selectedTopic || {}}
+        onReview={(topic) => {
+          console.log("Topic reviewed:", topic);
+          closeTopic();
+        }}
+      />
     </div>
   );
 }
