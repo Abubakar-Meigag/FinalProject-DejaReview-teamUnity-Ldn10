@@ -44,7 +44,7 @@ const CreateNewTopic = () => {
 
     try {
       const res = await fetch(
-        "https://deja-review-backend.onrender.com/createNewTopic",
+        "http://localhost:5005/createNewTopic",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
