@@ -8,6 +8,7 @@ const getDataForTable = async (req, res) => {
       const query = `
       SELECT
         ltt.id AS entry_id,
+        ltt.task_status,
         modules.name AS module_name,
         topics.topic_name,
         topics.reference_link,
@@ -21,6 +22,8 @@ const getDataForTable = async (req, res) => {
         modules ON topics.module_id = modules.id
       WHERE 
         ltt.user_id = $1
+      AND
+       ltt.task_status = 1
     `;
 
       const { rows } = await pool.query(query, [userId]);
