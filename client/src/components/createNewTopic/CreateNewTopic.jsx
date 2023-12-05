@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
+import { addTopicToDashboard } from "./utils";
 
 const CreateNewTopic = () => {
   const [modules, setModules] = useState([]);
@@ -10,6 +11,7 @@ const CreateNewTopic = () => {
   const [selectedModuleId, setSelectedModuleId] = useState("");
   const { user } = useAuth0();
   const is_user_generated = true;
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,7 +27,8 @@ const CreateNewTopic = () => {
     fetchData();
   }, []);
 
-  const handelSubmit = async (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault(e);
 
     if (!selectedModuleId || !topic_name || !description || !reference_link) {
@@ -52,12 +55,16 @@ const CreateNewTopic = () => {
         }
       );
 
-      console.warn('here is', res);
-      // window.location = "/";
+      const response = await res.json();
+      await addTopicToDashboard({ userId: user.sub, topicId: response.id });
+      
+      window.location = "/";
     } catch (err) {
       console.error(err.message);
     }
   };
+
+
 
   return (
     <div
@@ -131,7 +138,7 @@ const CreateNewTopic = () => {
             <button
               type="submit"
               className="bg-sky-500 w-max m-auto px-6 py-2 rounded text-white text-sm font-bold hover:bg-[#7747ff]"
-              onClick={handelSubmit}
+              onClick={(e) => handleSubmit(e)}
             >
               Submit
             </button>

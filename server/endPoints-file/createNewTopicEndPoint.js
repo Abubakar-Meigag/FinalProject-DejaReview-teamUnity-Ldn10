@@ -26,7 +26,6 @@ const createNewTopic = async (req, res) => {
     ]);
 
     res.status(201).json(result.rows[0]);
-    console.log(result.rows[0], 'data inserted successfully')
     
   } catch (error) {
     console.log(error.detail);
