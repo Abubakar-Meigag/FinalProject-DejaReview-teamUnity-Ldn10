@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import ModuleDropdown from "../dashboard/ModuleDropdown";
+import CreateNewTopic from "../createNewTopic/CreateNewTopic";
 import { useAuth0 } from "@auth0/auth0-react";
 import UpComingTopic from "../dashboard/UpComingTopic";
 import IndividualTopicModalComponent from "../IndividualTopicModalComponent/IndividualTopicModalComponent";
@@ -10,6 +10,7 @@ const { user } = useAuth0();
 const [userTopics, setUserTopics] = useState({ modules: [] });
 const [selectedTopic, setSelectedTopic] = useState(null);
 const { sub } = user
+
 
 useEffect(() => {
   fetch(`https://deja-review-backend.onrender.com/dataForTable?sub=${sub}`)
@@ -36,12 +37,12 @@ const openModal = (topic) => {
   return (
     <div className="p-4 bg-dark-purple w-full">
       <div className="flex justify-center mb-4 text-white">
-        <ModuleDropdown />
+        <CreateNewTopic />
       </div>
       <div className="flex justify-center mb-4 text-white">
         <UpComingTopic userTopics={userTopics} />
       </div>
-      <table className="w-full border border-collapse border-gray-300 bg-sky-900 text-white">
+      <table className="border border-collapse border-gray-300 bg-sky-900 text-white">
         <thead className="bg-amber-300 text-black" >
           <tr>
             <th className="border-b p-3 font-bold text-center">#</th>
@@ -66,7 +67,8 @@ const openModal = (topic) => {
                   Review Link
                 </a>
               </td>
-              <td className="border-b p-3 text-center">{new Date(topic.due_date).toDateString()}</td>
+              <td className="border-b p-3 text-center">{new Date(topic.due_date).toDateString()}
+              </td>
             </tr>
           ))}
         </tbody>
