@@ -7,6 +7,7 @@ const getDataForTable = async (req, res) => {
       const query = `
       SELECT
         ltt.id AS entry_id,
+        ltt.task_status,
         modules.name AS module_name,
         topics.topic_name,
         topics.reference_link,
