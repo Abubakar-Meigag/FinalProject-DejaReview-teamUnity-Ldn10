@@ -88,11 +88,9 @@ const openModal = (topic) => {
         </thead>
         <tbody>
           {userTopics.modules.map((topic) => {
-            const shouldDisplay = topic.reviews_remaining > 0;
             const dueDate = new Date(topic.due_date).toDateString();
 
             return (
-              shouldDisplay && (
                 <tr
                   key={topic.entry_id}
                   className="hover:bg-amber-300 hover:text-black"
@@ -111,7 +109,6 @@ const openModal = (topic) => {
                   <td className="border-b p-3 text-center">{dueDate}</td>
                 </tr>
               )
-            );
           })}
         </tbody>
       </table>
