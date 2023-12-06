@@ -55,7 +55,7 @@ export default function CardForTopic({ isOpen, onClose, topic, onReview }) {
           <a href={topic.reference_link}>More info</a>
         </p>
         <div className="flex flex-wrap gap-4">
-          <div class="flex-1">
+          <div className="flex-1">
             <button
               className="bg-blue-500 whitespace-nowrap border-blue-500 block w-full rounded-lg border p-3 text-center text-base font-medium text-white transition hover:bg-opacity-90"
               onClick={() => handleReview(topic)}
@@ -63,7 +63,7 @@ export default function CardForTopic({ isOpen, onClose, topic, onReview }) {
               Add topic
             </button>
           </div>
-          <div class="flex-1">
+          <div className="flex-1">
             <button
               className="text-gray-900 block w-full rounded-lg border border-gray-200 p-3 text-center text-base font-medium transition hover:border-red-600 hover:bg-red-600 hover:text-white"
               onClick={onClose}

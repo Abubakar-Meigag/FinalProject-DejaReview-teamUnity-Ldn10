@@ -21,23 +21,17 @@ app.get("/", (req, res) => {
 });
 
 const getDataModules = require("./endPoints-file/testEndPoint");
-const getDataUsers = require("./endPoints-file/usersEndPoint");
 const getTopics = require("./endPoints-file/topicsEndpoint");
 const getDataForAllModulesPage = require("./endPoints-file/all_modules_pageEndPoint");
 const getDataForTable = require("./endPoints-file/dataForTableEndpoint");
 const postTopicToPB = require("./endPoints-file/postTopicToPersonalBoardEndPoint");
-const getLearningTopicsTracker = require("./endPoints-file/getLearningTopicsTrackerEndPoint ");
 const createNewTopic = require("./endPoints-file/createNewTopicEndPoint");
-const dataForUpComingTopic = require("./endPoints-file/upComingTopicEndPoint");
-const getDataForUpdateDueDate = require("./endPoints-file/updateDueDateEndPoint")
+const updateDueDate = require("./endPoints-file/updateDueDateEndPoint");
 
 app.get("/modules", getDataModules);
-app.get("/users", getDataUsers);
 app.get("/topics", getTopics);
 app.get("/allModulesPage", getDataForAllModulesPage);
 app.get("/dataForTable", getDataForTable);
-app.get("/board", getLearningTopicsTracker);
 app.post("/allModulesPage", postTopicToPB);
 app.post("/createNewTopic", createNewTopic);
-app.get("/upComingTopic", dataForUpComingTopic);
-app.post("/updateDueDate", getDataForUpdateDueDate);
+app.patch("/updateDueDate", updateDueDate);
