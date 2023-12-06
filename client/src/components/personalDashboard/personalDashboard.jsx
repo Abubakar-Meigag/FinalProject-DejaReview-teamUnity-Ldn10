@@ -9,7 +9,7 @@ const PersonalDashboard = () => {
   const [selectedTopic, setSelectedTopic] = useState(null);
   const { sub } = user;
   const refreshData = () => {
-    fetch(`http://deja-review-backend.onrender.com/dataForTable?sub=${sub}`)
+    fetch(`https://deja-review-backend.onrender.com/dataForTable?sub=${sub}`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
