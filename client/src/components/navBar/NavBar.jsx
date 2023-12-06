@@ -31,7 +31,7 @@ const NavBar = ({ open }) => {
 
         <div>
           <li className="inline-flex mt-3">
-            <Link to="/">
+            <Link to="/AllModulesPage">
               <LuClipboardEdit
                 className={`bg-base-200 p-2 rounded cursor-pointer block float-left mr-4 duration-500 ${
                   open ? "text-4xl" : "text-4xl"
