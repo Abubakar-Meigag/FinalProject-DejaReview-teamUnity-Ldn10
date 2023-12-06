@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import ModuleDropdown from "../dashboard/ModuleDropdown";
+import CreateNewTopic from "../createNewTopic/CreateNewTopic";
 import { useAuth0 } from "@auth0/auth0-react";
 import UpComingTopic from "../dashboard/UpComingTopic";
 import IndividualTopicModalComponent from "../IndividualTopicModalComponent/IndividualTopicModalComponent";
@@ -13,7 +13,7 @@ const { sub } = user
 
 
 const refreshData = () => {
-    fetch(`http://localhost:5005/dataForTable?sub=${sub}`)
+    fetch(`http://deja-review-backend.onrender.com/dataForTable?sub=${sub}`)
       .then((response) => response.json())
       .then((data) => {
         setUserTopics(data);
@@ -29,7 +29,7 @@ const handleReview = (topic) => {
     return;
   }
 
-  fetch ('http://localhost:5005/updateDueDate', {
+  fetch ('http://deja-review-backend.onrender.com/updateDueDate', {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -45,6 +45,7 @@ const handleReview = (topic) => {
       }
       return response.json();
     })
+
     .then((data) => {
       console.log("Due date updated successfully:", data);
       refreshData();
@@ -73,11 +74,14 @@ const openModal = (topic) => {
     return (
     <div className="p-4 bg-dark-purple w-full">
       <div className="flex justify-center mb-4 text-white">
-        <ModuleDropdown />
+
+        <CreateNewTopic />
+      </div>
+      <div className="flex justify-center mb-4 text-white">
         <UpComingTopic userTopics={userTopics} />
       </div>
       <table className="w-full border border-collapse border-gray-300 bg-sky-900 text-white">
-        <thead className="bg-amber-300 text-black">
+        <thead className="bg-amber-300 text-black" >
           <tr>
             <th className="border-b p-3 font-bold text-center">#</th>
             <th className="border-b p-3 font-bold text-center">Topic Name</th>
@@ -89,7 +93,6 @@ const openModal = (topic) => {
         <tbody>
           {userTopics.modules.map((topic) => {
             const dueDate = new Date(topic.due_date).toDateString();
-
             return (
                 <tr
                   key={topic.entry_id}
