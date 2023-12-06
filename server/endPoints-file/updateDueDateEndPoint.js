@@ -5,7 +5,7 @@ const updateDueDate = async (req, res) => {
     const { topicId } = req.body;
 
     const getDueDateQuery =
-      "SELECT due_date FROM learning_topics_tracker WHERE id = $1";
+      "SELECT due_date, reviews_remaining FROM learning_topics_tracker WHERE id = $1";
     const { rows } = await pool.query(getDueDateQuery, [topicId]);
 
     if (rows.length === 0) {
@@ -16,14 +16,23 @@ const updateDueDate = async (req, res) => {
     const currentDate = new Date();
     let updatedDueDate = new Date(currentDueDate);
 
+    const updatedReviewsRemaining = rows[0].reviews_remaining - 1;
+
     updatedDueDate.setDate(currentDate.getDate() + 30);
 
     const updateDueDateQuery =
-      "UPDATE learning_topics_tracker SET due_date = $1 WHERE id = $2";
+      "UPDATE learning_topics_tracker SET due_date = $1, reviews_remaining = $2 WHERE id = $3";
 
-    await pool.query(updateDueDateQuery, [updatedDueDate, topicId]);
+    await pool.query(updateDueDateQuery, [
+      updatedDueDate,
+      updatedReviewsRemaining,
+      topicId,
+    ]);
 
-    res.json({ success: true, message: "Due date updated successfully" });
+    res.json({
+      success: true,
+      message: "Due date and reviews_remaining updated successfully",
+    });
   } catch (error) {
     console.error("Error updating due date:", error);
     res.status(500).json({ success: false, error: "Internal Server Error" });
