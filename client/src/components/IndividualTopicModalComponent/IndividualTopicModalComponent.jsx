@@ -4,8 +4,6 @@ const IndividualTopicModalComponent = ({ isOpen, onClose, topic, onReview }) => 
 
     if (!isOpen) return null;
 
-    console.log('Topic Description:', topic);
-
     const handleReview = () => {
     onReview(topic);
     onClose(); 
