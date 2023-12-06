@@ -17,10 +17,7 @@ export default function CardForTopic({ isOpen, onClose, topic, onReview }) {
   }, [topic, user.sub]);
 
   async function handleAddingTopic() {
-    console.log(topicData);
     try {
-      console.log(topicData);
-
       const request = await fetch(
         `https://deja-review-backend.onrender.com/allModulesPage`,
         {
@@ -31,7 +28,6 @@ export default function CardForTopic({ isOpen, onClose, topic, onReview }) {
           body: JSON.stringify(topicData),
         }
       );
-      console.log("handleSubmit response:", request);
       const json = await request.json();
       console.log("handleAddingTopic json:", json);
     } catch (error) {

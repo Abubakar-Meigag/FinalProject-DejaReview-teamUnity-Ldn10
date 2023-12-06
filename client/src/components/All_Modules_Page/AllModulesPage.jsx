@@ -34,12 +34,10 @@ export default function AllModulesPage({ refreshmodalData }) {
 
   const openTopic = (topic) => {
     setSelectedTopic(topic);
-    console.log("openTopic");
   };
 
   const closeTopic = () => {
     setSelectedTopic(null);
-    console.log("closeTopic");
   };
 
   if (isLoading) {

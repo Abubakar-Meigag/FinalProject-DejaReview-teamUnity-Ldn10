@@ -8,8 +8,6 @@ const IndividualTopicModalComponent = ({
 }) => {
   if (!isOpen) return null;
 
-  console.log("Topic Description:", topic);
-
   const handleReview = () => {
     onReview(topic);
     onClose();
