@@ -35,51 +35,60 @@ const openModal = (topic) => {
   };
 
   return (
-    <div className="p-4 bg-dark-purple w-full">
-      <div className="flex justify-center mb-4 text-white">
-        <CreateNewTopic />
+    <div className="bg-dark-purple flex flex-col justify-start bg-cover bg-center items-center">
+      <div className="flex flex-row gap-5 pb-3 pt-6">
+        <div className="lg:flex justify-center mb-4 text-white">
+          <CreateNewTopic />
+        </div>
+        <div className="flex justify-center mb-4 text-black bg-white border-solid border-2 border-sky-200 hover:border-[#7747ff] rounded-md">
+          <UpComingTopic userTopics={userTopics} />
+        </div>
       </div>
-      <div className="flex justify-center mb-4 text-white">
-        <UpComingTopic userTopics={userTopics} />
-      </div>
-      <table className="border border-collapse border-gray-300 bg-sky-900 text-white">
-        <thead className="bg-amber-300 text-black" >
-          <tr>
-            <th className="border-b p-3 font-bold text-center">#</th>
-            <th className="border-b p-3 font-bold text-center">Topic Name</th>
-            <th className="border-b p-3 font-bold text-center">Module</th>
-            <th className="border-b p-3 font-bold text-center">Link</th>
-            <th className="border-b p-3 font-bold text-center">Due Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          {userTopics.modules.map((topic) => (
-            <tr key={topic.entry_id} 
-                className="hover:bg-amber-300 hover:text-black">
-              <td className="border-b p-3 text-center">{++rowNumber}</td>
-              <td className="border-b p-3 text-center cursor-pointer"
-              onClick={() => openModal(topic)}>
-                {topic.topic_name}</td>
-              <td className="border-b p-3 text-center">{topic.module_name}</td>
-              <td className="border-b p-3 text-center">
-
-                <a href={topic.reference_link}>
-                  Review Link
-                </a>
-              </td>
-              <td className="border-b p-3 text-center">{new Date(topic.due_date).toDateString()}
-              </td>
+      <div>
+        <table className="border border-collapse border-gray-300 bg-sky-900 text-white">
+          <thead className="bg-amber-300 text-black">
+            <tr>
+              <th className="border-b p-3 font-bold text-center">#</th>
+              <th className="border-b p-3 font-bold text-center">Topic Name</th>
+              <th className="border-b p-3 font-bold text-center">Module</th>
+              <th className="border-b p-3 font-bold text-center">Link</th>
+              <th className="border-b p-3 font-bold text-center">Due Date</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {userTopics.modules.map((topic) => (
+              <tr
+                key={topic.entry_id}
+                className="hover:bg-amber-300 hover:text-black"
+              >
+                <td className="border-b p-3 text-center">{++rowNumber}</td>
+                <td
+                  className="border-b p-3 text-center cursor-pointer"
+                  onClick={() => openModal(topic)}
+                >
+                  {topic.topic_name}
+                </td>
+                <td className="border-b p-3 text-center">
+                  {topic.module_name}
+                </td>
+                <td className="border-b p-3 text-center">
+                  <a href={topic.reference_link}>Review Link</a>
+                </td>
+                <td className="border-b p-3 text-center">
+                  {new Date(topic.due_date).toDateString()}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       <IndividualTopicModalComponent
         isOpen={!!selectedTopic}
         onClose={closeModal}
         topic={selectedTopic || {}}
         onReview={(topic) => {
           console.log("Topic reviewed:", topic);
-          closeModal(); 
+          closeModal();
         }}
       />
     </div>

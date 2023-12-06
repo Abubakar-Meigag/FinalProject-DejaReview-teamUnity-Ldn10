@@ -9,7 +9,7 @@ const SidePanel = () => {
   const [open, setOpen] = useState(true);
 
   return (
-    <div className="flex">
+    <div className="flex h-full">
       <aside className="h-screen sticky top-0">
         <div
           className={`bg-dark-purple h-screen p-5 pt-8 

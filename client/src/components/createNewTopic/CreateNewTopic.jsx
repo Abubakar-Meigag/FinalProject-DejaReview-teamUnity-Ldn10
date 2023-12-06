@@ -71,8 +71,8 @@ const CreateNewTopic = () => {
       className={`flex justify-center bg-cover bg-center items-center min-w-fit`}
     >
       <div>
-        <div className="max-w-md relative flex flex-col p-4  rounded-md text-black bg-white border-solid border-2 border-sky-200 hover:border-[#7747ff] ">
-          <div className="text-2xl  font-bold mb-1 text-[#1e0e4b]  text-center">
+        <div className="max-w-md relative flex flex-col p-5 w-96  rounded-md text-black bg-white border-solid border-2 border-sky-200 hover:border-[#7747ff] ">
+          <div className=" text-2xl  font-bold mb-1 text-[#1e0e4b]  text-center">
             Create New Learning <span className="text-[#7747ff]">Topic</span>
           </div>
 
