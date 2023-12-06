@@ -1,5 +1,4 @@
 import React from "react";
-import { FaUserGraduate } from "react-icons/fa";
 import { TbLogout } from "react-icons/tb";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
@@ -21,56 +20,38 @@ const Profile = ({ open }) => {
   
   return (
     isAuthenticated && (
-      <div className={`flex mt-[7rem] `}>
+      <div className={`flex mt-[20rem]`}>
         <ul>
           <div>
             <li className="inline-flex mb-2">
               <img
                 src={user.picture}
                 alt="user-img"
-                className={`h-[45px] mr-2 cursor-pointer rounded-full border-2 border-sky-400`}
+                className={`h-[35px] mr-2 cursor-pointer rounded-md border-2 border-sky-400 `}
               />
               <Link
                 to="/profilePage"
                 className={`text-white origin-left font-semibold pt-3 cursor-pointer text-[15px] ${
                   !open && "scale-0"
-                } hover:text-fuchsia-400	`}
+                } hover:text-pink-200 	`}
               >
-                Profile
+                {user.name}
               </Link>
             </li>
           </div>
 
           <div>
             <li className="inline-flex">
-              <FaUserGraduate
-                className={`bg-amber-300 p-2 rounded cursor-pointer block float-left text-4xl mr-4 duration-500 ${
-                  !open && "ml-2"
-                }
-                `}
-              />
-              <h1
-                className={`text-white origin-left font-semibold pt-1 cursor-pointer text-[15px] ${
-                  !open && "scale-0"
-                } hover:text-fuchsia-400`}
-              >
-                {user.name}
-              </h1>
-            </li>
-          </div>
-
-          <div>
-            <li className="inline-flex">
               <TbLogout
-                className={`bg-amber-300 p-2 rounded cursor-pointer block float-left text-4xl mr-4 duration-500 ${
-                  !open && "ml-2"
+                className={`bg-base-200 p-2 rounded cursor-pointer  float-left text-4xl mr-4 duration-500 ${
+                  !open && "text-4xl"
                 }`}
                 onClick={handelLogout}
               />
               <h1
                 className={`text-white origin-left font-semibold pt-3 cursor-pointer text-[15px] ${
                   !open && "scale-0"
-                } hover:text-fuchsia-400`}
+                } hover:text-pink-200 `}
                 onClick={handelLogout}
               >
                 Sign Out
