@@ -23,7 +23,7 @@ const getDataForTable = async (req, res) => {
       WHERE 
         ltt.user_id = $1
       AND
-       ltt.task_status = 1
+       ltt.task_status = 0
     `;
 
       const { rows } = await pool.query(query, [userId]);
