@@ -3,84 +3,62 @@ import CreateNewTopic from "../createNewTopic/CreateNewTopic";
 import { useAuth0 } from "@auth0/auth0-react";
 import UpComingTopic from "../dashboard/UpComingTopic";
 import IndividualTopicModalComponent from "../IndividualTopicModalComponent/IndividualTopicModalComponent";
-
 const PersonalDashboard = () => {
   const { user } = useAuth0();
-  const [userTopics, setUserTopics] = useState({ modules: [] });
+  const [userTopics, setUserTopics] = useState([]);
   const [selectedTopic, setSelectedTopic] = useState(null);
   const { sub } = user;
-
-  useEffect(() => {
-    fetch(`https://deja-review-backend.onrender.com/dataForTable?sub=${sub}`)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Data received:", data);
-        setUserTopics(data);
-      })
-      .catch((error) => console.error("Error fetching data:", error));
-  }, []);
-  
-  let rowNumber = 0;
-
-const refreshData = () => {
+  const refreshData = () => {
     fetch(`http://deja-review-backend.onrender.com/dataForTable?sub=${sub}`)
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         setUserTopics(data);
       })
       .catch((error) => console.error("Error fetching data:", error));
   };
-
-const handleReview = (topic) => {
-  const topicId = topic.entry_id;
- 
-  if (topicId === undefined) {
-    console.error("Error: topicId is undefined");
-    return;
-  }
-
-  fetch ('http://deja-review-backend.onrender.com/updateDueDate', {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      topicId: topicId,
-      
-    }),
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      return response.json();
+  const handleReview = (topic) => {
+    const topicId = topic.entry_id;
+    if (topicId === undefined) {
+      console.error("Error: topicId is undefined");
+      return;
+    }
+    fetch("https://deja-review-backend.onrender.com/updateDueDate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        topicId: topicId,
+      }),
     })
-
-    .then((data) => {
-      console.log("Due date updated successfully:", data);
-      refreshData();
-    })
-    .catch((error) => {
-      console.error("Error updating due date:", error);
-    });
-};
-    
-useEffect(() => {
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Due date updated successfully:", data);
+        refreshData();
+      })
+      .catch((error) => {
+        console.error("Error updating due date:", error);
+      });
+  };
+  useEffect(() => {
     refreshData();
   }, []);
-
+  let rowNumber = 0;
   const openModal = (topic) => {
     setSelectedTopic(topic);
   };
-
   const closeModal = () => {
     setSelectedTopic(null);
   };
-
-    return (
+  return (
     <div className="p-4 bg-dark-purple w-full">
       <div className="flex justify-center mb-4 text-white">
-
         <CreateNewTopic />
       </div>
       <div className="flex justify-center mb-4 text-white">
@@ -97,27 +75,29 @@ useEffect(() => {
           </tr>
         </thead>
         <tbody>
-          {userTopics.modules.map((topic) => {
+          {userTopics.map((topic) => {
             const dueDate = new Date(topic.due_date).toDateString();
             return (
-                <tr
-                  key={topic.entry_id}
-                  className="hover:bg-amber-300 hover:text-black"
+              <tr
+                key={topic.entry_id}
+                className="hover:bg-amber-300 hover:text-black"
+              >
+                <td className="border-b p-3 text-center">{++rowNumber}</td>
+                <td
+                  className="border-b p-3 text-center cursor-pointer"
+                  onClick={() => openModal(topic)}
                 >
-                  <td className="border-b p-3 text-center">{++rowNumber}</td>
-                  <td
-                    className="border-b p-3 text-center cursor-pointer"
-                    onClick={() => openModal(topic)}
-                  >
-                    {topic.topic_name}
-                  </td>
-                  <td className="border-b p-3 text-center">{topic.module_name}</td>
-                  <td className="border-b p-3 text-center">
-                    <a href={topic.reference_link}>Review Link</a>
-                  </td>
-                  <td className="border-b p-3 text-center">{dueDate}</td>
-                </tr>
-              )
+                  {topic.topic_name}
+                </td>
+                <td className="border-b p-3 text-center">
+                  {topic.module_name}
+                </td>
+                <td className="border-b p-3 text-center">
+                  <a href={topic.reference_link}>Review Link</a>
+                </td>
+                <td className="border-b p-3 text-center">{dueDate}</td>
+              </tr>
+            );
           })}
         </tbody>
       </table>
@@ -125,14 +105,9 @@ useEffect(() => {
         isOpen={!!selectedTopic}
         onClose={closeModal}
         topic={selectedTopic || {}}
-
-        onReview={(topic) => {
-          console.log("Topic reviewed:", topic);
-          closeModal();
-        }}
+        onReview={handleReview}
       />
     </div>
   );
 };
-
 export default PersonalDashboard;
