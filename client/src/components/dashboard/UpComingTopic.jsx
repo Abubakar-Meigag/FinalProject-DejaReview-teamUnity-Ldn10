@@ -1,7 +1,7 @@
 import "./UpComingTopic.css";
 
 const UpComingTopic = ({ userTopics }) => {
-  const firstThreeTopics = userTopics.modules.slice(0, 3);
+  const firstThreeTopics = userTopics.slice(0, 3);
   return (
     <div className="up-coming-topic-container">
       <h2>UP COMING TOPICS</h2>
