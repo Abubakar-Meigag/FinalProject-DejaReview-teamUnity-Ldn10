@@ -5,7 +5,7 @@ const UpComingTopic = ({ userTopics }) => {
   return (
     <div className="up-coming-topic-container">
       <h2 className="text-2xl font-bold">
-        UP COMING <span className="text-[#7747ff]">TOPICS</span>
+        Up Coming <span className="text-[#7747ff]">Topics</span>
       </h2>
 
       {firstThreeTopics.map((topic) => (
