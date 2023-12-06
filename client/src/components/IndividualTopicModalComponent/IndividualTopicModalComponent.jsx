@@ -9,6 +9,7 @@ const IndividualTopicModalComponent = ({
   if (!isOpen) return null;
 
   const handleReview = () => {
+
     onReview(topic);
     onClose();
   };
