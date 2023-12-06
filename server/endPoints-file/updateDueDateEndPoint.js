@@ -18,7 +18,13 @@ const updateDueDate = async (req, res) => {
 
     const updatedReviewsRemaining = rows[0].reviews_remaining - 1;
 
-    updatedDueDate.setDate(currentDate.getDate() + 30);
+    if (updatedReviewsRemaining === 0) {
+      updatedDueDate.setDate(currentDate.getDate() + 180); 
+    } else if (updatedReviewsRemaining === 1) {
+      updatedDueDate.setDate(currentDate.getDate() + 90); 
+    } else {
+      updatedDueDate.setDate(currentDate.getDate() + 30); 
+    }
 
     const updateDueDateQuery =
       "UPDATE learning_topics_tracker SET due_date = $1, reviews_remaining = $2 WHERE id = $3";
