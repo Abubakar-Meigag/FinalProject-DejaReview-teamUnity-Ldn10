@@ -3,11 +3,15 @@ import CreateNewTopic from "../createNewTopic/CreateNewTopic";
 import { useAuth0 } from "@auth0/auth0-react";
 import UpComingTopic from "../dashboard/UpComingTopic";
 import IndividualTopicModalComponent from "../IndividualTopicModalComponent/IndividualTopicModalComponent";
+
+
 const PersonalDashboard = () => {
   const { user } = useAuth0();
   const [userTopics, setUserTopics] = useState([]);
   const [selectedTopic, setSelectedTopic] = useState(null);
   const { sub } = user;
+
+
   const refreshData = () => {
     fetch(`https://deja-review-backend.onrender.com/dataForTable?sub=${sub}`)
       .then((response) => response.json())
@@ -16,6 +20,8 @@ const PersonalDashboard = () => {
       })
       .catch((error) => console.error("Error fetching data:", error));
   };
+
+
   const handleReview = (topic) => {
     const topicId = topic.entry_id;
     if (topicId === undefined) {
@@ -45,19 +51,28 @@ const PersonalDashboard = () => {
         console.error("Error updating due date:", error);
       });
   };
+
+
   useEffect(() => {
     refreshData();
   }, []);
+
   let rowNumber = 0;
+
   const openModal = (topic) => {
     setSelectedTopic(topic);
   };
+
   const closeModal = () => {
     setSelectedTopic(null);
   };
+
+
   return (
     <div className="bg-light flex flex-col justify-start bg-cover bg-center items-center min-h-screen">
+
       <div className="inline-block">
+
         <div className="flex flex-row gap-28 pb-3 pt-6">
           <div className="lg:flex justify-center mb-4 text-white">
             <CreateNewTopic />
@@ -66,6 +81,7 @@ const PersonalDashboard = () => {
             <UpComingTopic userTopics={userTopics} />
           </div>
         </div>
+
         <div>
           <table className="table table-zebra border border-collapse border-gray-300 text-dark-purple">
             <thead className="bg-dark-purple text-base-200 text-[1rem]">
@@ -79,47 +95,47 @@ const PersonalDashboard = () => {
                 <th className="border-b p-3 font-bold text-center">Due Date</th>
               </tr>
             </thead>
+
             <tbody>
-              {userTopics.map((topic) => (
-                <tr
-                  key={topic.entry_id}
-                  className="font-semibold hover:bg-gray-50 hover:text-black"
-                >
-                  <td className="border-b p-3 text-center">{++rowNumber}</td>
-                  <td
-                    className="border-b p-3 text-center cursor-pointer hover:text-blue-600"
-                    
-                    onClick={() => openModal(topic)}
+              {userTopics.map((topic) => {
+                const dueDate = new Date(topic.due_date).toDateString()
+                return (
+                  <tr
+                    key={topic.entry_id}
+                    className="font-semibold hover:bg-gray-50 hover:text-black"
                   >
-                    {topic.topic_name}
-                  </td>
-                  <td className="border-b p-3 text-center">
-                    {topic.module_name}
-                  </td>
-                  <td className="border-b p-3 text-center">
-                    <a
-                      href={topic.reference_link}
-                      className="hover:text-blue-600"
+                    <td className="border-b p-3 text-center">{++rowNumber}</td>
+                    <td
+                      className="border-b p-3 text-center cursor-pointer hover:text-blue-600"
+                      onClick={() => openModal(topic)}
                     >
-                      Review Link
-                    </a>
-                  </td>
-                  <td className="border-b p-3 text-center">
-                    {new Date(topic.due_date).toDateString()}
-                  </td>
-                </tr>
-              ))}
+                      {topic.topic_name}
+                    </td>
+                    <td className="border-b p-3 text-center">
+                      {topic.module_name}
+                    </td>
+                    <td className="border-b p-3 text-center">
+                      <a
+                        href={topic.reference_link}
+                        className="hover:text-blue-600"
+                      >
+                        Review Link
+                      </a>
+                    </td>
+                    <td className="border-b p-3 text-center">{dueDate}</td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
+
+
         </div>
         <IndividualTopicModalComponent
           isOpen={!!selectedTopic}
           onClose={closeModal}
           topic={selectedTopic || {}}
-          onReview={(topic) => {
-            console.log("Topic reviewed:", topic);
-            closeModal();
-          }}
+          onReview={handleReview}
         />
       </div>
     </div>
