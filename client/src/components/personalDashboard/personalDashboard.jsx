@@ -80,7 +80,7 @@ const PersonalDashboard = () => {
               </tr>
             </thead>
             <tbody>
-              {userTopics.modules.map((topic) => (
+              {userTopics.map((topic) => (
                 <tr
                   key={topic.entry_id}
                   className="font-semibold hover:bg-gray-50 hover:text-black"
