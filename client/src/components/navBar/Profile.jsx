@@ -4,8 +4,6 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 import Loading from "../loading/Loading";
 
-
-
 const Profile = ({ open }) => {
   const { logout, user, isAuthenticated, isLoading } = useAuth0();
 
@@ -13,11 +11,10 @@ const Profile = ({ open }) => {
     logout();
   };
 
-
   if (isLoading) {
     return <div>{<Loading />}</div>;
   }
-  
+
   return (
     isAuthenticated && (
       <div className={`flex mt-[20rem]`}>
@@ -43,6 +40,7 @@ const Profile = ({ open }) => {
           <div>
             <li className="inline-flex">
               <TbLogout
+                style={{ color: "#f7f4d2" }}
                 className={`bg-base-200 p-2 rounded cursor-pointer  float-left text-4xl mr-4 duration-500 ${
                   !open && "text-4xl"
                 }`}

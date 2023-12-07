@@ -4,13 +4,11 @@ import { useAuth0 } from "@auth0/auth0-react";
 import UpComingTopic from "../dashboard/UpComingTopic";
 import IndividualTopicModalComponent from "../IndividualTopicModalComponent/IndividualTopicModalComponent";
 
-
 const PersonalDashboard = () => {
   const { user } = useAuth0();
   const [userTopics, setUserTopics] = useState([]);
   const [selectedTopic, setSelectedTopic] = useState(null);
   const { sub } = user;
-
 
   const refreshData = () => {
     fetch(`https://deja-review-backend.onrender.com/dataForTable?sub=${sub}`)
@@ -20,7 +18,6 @@ const PersonalDashboard = () => {
       })
       .catch((error) => console.error("Error fetching data:", error));
   };
-
 
   const handleReview = (topic) => {
     const topicId = topic.entry_id;
@@ -52,7 +49,6 @@ const PersonalDashboard = () => {
       });
   };
 
-
   useEffect(() => {
     refreshData();
   }, []);
@@ -67,24 +63,21 @@ const PersonalDashboard = () => {
     setSelectedTopic(null);
   };
 
-
   return (
     <div className="bg-light flex flex-col justify-start bg-cover bg-center items-center min-h-screen">
-
       <div className="inline-block">
-
         <div className="flex flex-row gap-28 pb-3 pt-6">
           <div className="lg:flex justify-center mb-4 text-white">
             <CreateNewTopic />
           </div>
-          <div className="flex justify-center mb-4 text-black bg-white border-solid border-2 border-sky-200 hover:border-[#7747ff] rounded-md">
+          <div className="flex justify-center mb-4 ">
             <UpComingTopic userTopics={userTopics} />
           </div>
         </div>
 
         <div>
-          <table className="table table-zebra border border-collapse border-gray-300 text-dark-purple">
-            <thead className="bg-dark-purple text-base-200 text-[1rem]">
+          <table className="table table-zebra border border-collapse border-gray-300 text-dark-text">
+            <thead className="bg-base-100 text-secondary text-[1rem]">
               <tr>
                 <th className="border-b p-3 font-bold text-center">#</th>
                 <th className="border-b p-3 font-bold text-center">
@@ -97,16 +90,16 @@ const PersonalDashboard = () => {
             </thead>
 
             <tbody>
-              {userTopics.map((topic) => {
-                const dueDate = new Date(topic.due_date).toDateString()
+              {userTopics.map((topic, index) => {
+                const dueDate = new Date(topic.due_date).toDateString();
                 return (
                   <tr
                     key={topic.entry_id}
-                    className="font-semibold hover:bg-gray-50 hover:text-black"
+                    className={`font-semibold hover:bg-base-100 hover:text-black bg-light`}
                   >
                     <td className="border-b p-3 text-center">{++rowNumber}</td>
                     <td
-                      className="border-b p-3 text-center cursor-pointer hover:text-blue-600"
+                      className="border-b p-3 text-center cursor-pointer  hover:text-white"
                       onClick={() => openModal(topic)}
                     >
                       {topic.topic_name}
@@ -117,7 +110,7 @@ const PersonalDashboard = () => {
                     <td className="border-b p-3 text-center">
                       <a
                         href={topic.reference_link}
-                        className="hover:text-blue-600"
+                        className="hover:text-white"
                       >
                         Review Link
                       </a>
@@ -128,8 +121,6 @@ const PersonalDashboard = () => {
               })}
             </tbody>
           </table>
-
-
         </div>
         <IndividualTopicModalComponent
           isOpen={!!selectedTopic}

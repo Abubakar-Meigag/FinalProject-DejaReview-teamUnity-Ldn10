@@ -4,18 +4,19 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "dark-purple": "#272f44",
-        primary: "#003049",
-        dark: "#000000",
-        secondary: "#fcbf49",
-        accent: "#eae2b7",
-        light: "#e7e6ea",
-        "base-100": "#f3f5f7",
-        "base-200": "#e5e5e5",
-        info: "#8d99ae",
-        success: "#f77f00",
-        warning: "#fca311",
-        error: "#d62828",
+        "dark-purple": "#CC6781", //main panels
+        primary: "#43C0A2",
+        dark: "#43C0A2",
+        secondary: "#ffffff", //h
+        accent: "#43C0A2",
+        light: "#f5ffd4", //background
+        "base-100": "#ACCF6E", //green
+        "base-200": "#77D5C8", //icons
+        info: "#43C0A2",
+        success: "#43C0A2",
+        warning: "#43C0A2",
+        error: "#43C0A2",
+        "dark-text": "#060606",
       },
     },
   },
@@ -25,3 +26,29 @@ module.exports = {
   },
 };
 
+// mytheme: {
+
+//   "primary": "#d1747c",
+
+//   "secondary": "#23c9ff",
+
+//   "accent": "#F35B04",
+
+//   "neutral": "#29223A",
+
+//   "base-100": "#362C5E",
+
+//   "info": "#960099",
+
+//   "success": "#9ef01a",
+
+//   "warning": "#fcea10",
+
+//   "error": "#d80032",
+//             },
+// 77D5C8
+// ACCF6E
+// C76573
+// 805DC0
+
+//5a8bed
