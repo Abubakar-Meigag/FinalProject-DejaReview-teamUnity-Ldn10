@@ -34,4 +34,4 @@ app.get("/allModulesPage", getDataForAllModulesPage);
 app.get("/dataForTable", getDataForTable);
 app.post("/allModulesPage", postTopicToPB);
 app.post("/createNewTopic", createNewTopic);
-app.patch("/updateDueDate", updateDueDate);
+app.post("/updateDueDate", updateDueDate);
