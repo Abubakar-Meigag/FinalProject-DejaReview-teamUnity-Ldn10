@@ -24,11 +24,13 @@ const Profile = ({ open }) => {
         <ul>
           <div>
             <li className="inline-flex mb-2">
-              <img
-                src={user.picture}
-                alt="user-img"
-                className={`h-[35px] mr-2 cursor-pointer rounded-md border-2 border-sky-400 `}
-              />
+              <Link to="/profilePage">
+                <img
+                  src={user.picture}
+                  alt="user-img"
+                  className={`h-[40px] w-[40px]  mr-2 cursor-pointer rounded-md border-2 border-sky-400 `}
+                />
+              </Link>
               <Link
                 to="/profilePage"
                 className={`text-white origin-left font-semibold pt-3 cursor-pointer text-[15px] ${

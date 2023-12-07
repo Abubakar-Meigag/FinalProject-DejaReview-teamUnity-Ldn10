@@ -14,7 +14,7 @@ const SidePanel = () => {
       <aside className="h-screen sticky top-0">
         <div
           className={`bg-dark-purple h-screen p-5 pt-8 side-container
-            ${open ? "w-[16rem]" : "w-24"} duration-300 relative`}
+            ${open ? "w-[16rem]" : "w-20"} duration-300 relative`}
         >
           <BsArrowLeftShort
             className={`bg-white text-dark-purple text-3xl rounded-full absolute -right-3 top-9 border-solid border-dark-purple cursor-pointer
@@ -24,7 +24,7 @@ const SidePanel = () => {
 
           <div className="inline-flex">
             <IoDiamondSharp
-              className={`bg-base-200 p-2 text-5xl rounded cursor-pointer block float-left mr-4 duration-500 ${
+              className={`bg-base-200 p-2 text-5xl rounded cursor-pointer block float-left mr-2 duration-500 ${
                 open && "rotate-[360deg]"
               }`}
             />
@@ -33,7 +33,7 @@ const SidePanel = () => {
                 !open && "scale-0"
               }`}
             >
-              <span className="text-[#e63946] text-2xl font-bold shadow-2xl shadow-white">
+              <span className="text-[#e63946] text-3xl font-extrabold text-shadow-[0_5px_9px_#f3f5f7] ">
                 CYF
               </span>
               <br /> Spaced Repetition
