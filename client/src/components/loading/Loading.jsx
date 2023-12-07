@@ -1,6 +1,5 @@
-import React from 'react';
+import React from "react";
 import "../loading/loading.css";
-
 
 const Loading = () => {
   return (
@@ -13,6 +12,6 @@ const Loading = () => {
       </div>
     </div>
   );
-}
+};
 
-export default Loading
+export default Loading;

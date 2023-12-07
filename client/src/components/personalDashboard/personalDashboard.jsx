@@ -3,37 +3,58 @@ import CreateNewTopic from "../createNewTopic/CreateNewTopic";
 import { useAuth0 } from "@auth0/auth0-react";
 import UpComingTopic from "../dashboard/UpComingTopic";
 import IndividualTopicModalComponent from "../IndividualTopicModalComponent/IndividualTopicModalComponent";
-
 const PersonalDashboard = () => {
-
-const { user } = useAuth0();
-const [userTopics, setUserTopics] = useState({ modules: [] });
-const [selectedTopic, setSelectedTopic] = useState(null);
-const { sub } = user
-
-
-useEffect(() => {
-  fetch(`https://deja-review-backend.onrender.com/dataForTable?sub=${sub}`)
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("Data received:", data);
-      setUserTopics(data);
+  const { user } = useAuth0();
+  const [userTopics, setUserTopics] = useState([]);
+  const [selectedTopic, setSelectedTopic] = useState(null);
+  const { sub } = user;
+  const refreshData = () => {
+    fetch(`https://deja-review-backend.onrender.com/dataForTable?sub=${sub}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setUserTopics(data);
+      })
+      .catch((error) => console.error("Error fetching data:", error));
+  };
+  const handleReview = (topic) => {
+    const topicId = topic.entry_id;
+    if (topicId === undefined) {
+      console.error("Error: topicId is undefined");
+      return;
+    }
+    fetch("https://deja-review-backend.onrender.com/updateDueDate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        topicId: topicId,
+      }),
     })
-    .catch((error) => console.error("Error fetching data:", error));
-}, []);
-
-
-let rowNumber = 0;
-
-
-const openModal = (topic) => {
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Due date updated successfully:", data);
+        refreshData();
+      })
+      .catch((error) => {
+        console.error("Error updating due date:", error);
+      });
+  };
+  useEffect(() => {
+    refreshData();
+  }, []);
+  let rowNumber = 0;
+  const openModal = (topic) => {
     setSelectedTopic(topic);
   };
-
   const closeModal = () => {
     setSelectedTopic(null);
   };
-
   return (
     <div className="bg-light flex flex-col justify-start bg-cover bg-center items-center min-h-screen">
       <div className="inline-block">
@@ -104,5 +125,4 @@ const openModal = (topic) => {
     </div>
   );
 };
-
 export default PersonalDashboard;
