@@ -18,9 +18,7 @@ const updateDueDate = async (req, res) => {
 
     const updatedReviewsRemaining = rows[0].reviews_remaining - 1;
 
-    if (rows[0].task_status === 1) {
-      return null;
-    } else if (updatedReviewsRemaining < 0 && rows[0].task_status === 0) {
+    if (updatedReviewsRemaining < 0 && rows[0].task_status === 0) {
       const updateTaskStatusQuery =
         "UPDATE learning_topics_tracker SET task_status = 1 WHERE id = $1";
       await pool.query(updateTaskStatusQuery, [topicId]);
