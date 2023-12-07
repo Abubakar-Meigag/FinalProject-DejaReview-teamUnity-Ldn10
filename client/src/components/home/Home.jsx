@@ -22,44 +22,48 @@ const Home = () => {
   return (
     <BrowserRouter>
       {isAuthenticated ? (
-        <div className="flex flex-col">
-          <div className="flex flex-row">
+        <div className="flex flex-row h-full w-full">
+          <div>
             <SidePanel />
-
-            <Routes>
-              <Route
-                path="/"
-                element={
-                  <PersonalDashboard
-                    refreshModalData={refreshModalData}
-                    setRefreshModalData={setRefreshModalData}
-                  />
-                }
-              />
-
-              <Route
-                path="/AllModulesPage"
-                element={
-                  <AllModulesPage
-                    refreshModalData={refreshModalData}
-                    setRefreshModalData={setRefreshModalData}
-                  />
-                }
-              />
-
-              <Route path="/management" element={<Management />} />
-              <Route path="/profilePage" element={<ProfilePage />} />
-              <Route path="/login" element={<Login />} />
-            </Routes>
-
           </div>
-          <Footer />
-        </div>
 
+          <div className="flex flex-col w-full h-full">
+            <div>
+              <Routes>
+                <Route
+                  path="/"
+                  element={
+                    <PersonalDashboard
+                      refreshModalData={refreshModalData}
+                      setRefreshModalData={setRefreshModalData}
+                    />
+                  }
+                />
+
+                <Route
+                  path="/AllModulesPage"
+                  element={
+                    <AllModulesPage
+                      refreshModalData={refreshModalData}
+                      setRefreshModalData={setRefreshModalData}
+                    />
+                  }
+                />
+
+                <Route path="/management" element={<Management />} />
+                <Route path="/profilePage" element={<ProfilePage />} />
+                <Route path="/login" element={<Login />} />
+              </Routes>
+
+              <div>
+                <Footer />
+              </div>
+            </div>
+          </div>
+        </div>
       ) : (
         <Login />
       )}
-
     </BrowserRouter>
   );
 };

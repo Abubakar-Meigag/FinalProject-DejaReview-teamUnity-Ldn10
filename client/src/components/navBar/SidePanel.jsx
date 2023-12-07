@@ -1,19 +1,20 @@
 import { useState } from "react";
 import { BsArrowLeftShort } from "react-icons/bs";
-import { AiFillBell } from "react-icons/ai";
+import { IoDiamondSharp } from "react-icons/io5";
 import { BsSearch } from "react-icons/bs";
 import NavBar from "./NavBar";
 import Profile from "./Profile";
+import '../navBar/navBar.css'
 
 const SidePanel = () => {
   const [open, setOpen] = useState(true);
 
   return (
-    <div className="flex">
+    <div className="flex h-full">
       <aside className="h-screen sticky top-0">
         <div
-          className={`bg-dark-purple h-screen p-5 pt-8 
-            ${open ? "w-[19rem]" : "w-24"} duration-300 relative`}
+          className={`bg-dark-purple h-screen p-5 pt-8 side-container
+            ${open ? "w-[16rem]" : "w-24"} duration-300 relative`}
         >
           <BsArrowLeftShort
             className={`bg-white text-dark-purple text-3xl rounded-full absolute -right-3 top-9 border-solid border-dark-purple cursor-pointer
@@ -22,17 +23,20 @@ const SidePanel = () => {
           />
 
           <div className="inline-flex">
-            <AiFillBell
-              className={`bg-amber-300 p-2 text-7xl rounded cursor-pointer block float-left mr-4 duration-500 ${
+            <IoDiamondSharp
+              className={`bg-base-200 p-2 text-5xl rounded cursor-pointer block float-left mr-4 duration-500 ${
                 open && "rotate-[360deg]"
               }`}
             />
             <h1
-              className={`text-white origin-left font-semibold pt-6 text-[15px] duration-300 ${
+              className={`text-white origin-left font-semibold  text-[15px] duration-300 ${
                 !open && "scale-0"
               }`}
             >
-              CYF Spaced Repetition
+              <span className="text-[#e63946] text-2xl font-bold shadow-2xl shadow-white">
+                CYF
+              </span>
+              <br /> Spaced Repetition
             </h1>
           </div>
 
@@ -54,12 +58,14 @@ const SidePanel = () => {
             />
           </div>
 
-          <div className="nav-items">
-            <NavBar open={open} setOpen={setOpen} />
-          </div>
-
           <div>
-            <Profile open={open} setOpen={setOpen} />
+            <div className="nav-items">
+              <NavBar open={open} setOpen={setOpen} />
+            </div>
+
+            <div>
+              <Profile open={open} setOpen={setOpen} />
+            </div>
           </div>
         </div>
       </aside>
