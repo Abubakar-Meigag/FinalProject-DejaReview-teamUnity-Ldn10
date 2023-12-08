@@ -41,15 +41,15 @@ const Profile = ({ open }) => {
             <li className="inline-flex">
               <TbLogout
                 style={{ color: "#f7f4d2" }}
-                className={`bg-base-200 p-2 rounded cursor-pointer  float-left text-4xl mr-4 duration-500 ${
+                className={`bg-purple-600 p-2 rounded cursor-pointer  float-left text-4xl mr-2 duration-500 ${
                   !open && "text-4xl"
                 }`}
                 onClick={handelLogout}
               />
               <h1
-                className={`text-white origin-left font-semibold pt-3 cursor-pointer text-[15px] ${
+                className={`text-white origin-left font-semibold pt-2 cursor-pointer text-[15px] ${
                   !open && "scale-0"
-                } hover:text-pink-200 `}
+                } hover:text-pink-200`}
                 onClick={handelLogout}
               >
                 Sign Out

@@ -30,6 +30,7 @@ export default function CardForTopic({ isOpen, onClose, topic, onReview }) {
       );
       const json = await request.json();
       console.log("handleAddingTopic json:", json);
+      alert('Topic added on Dashboard successfully');
     } catch (error) {
       console.log(console.log("handleAddingTopic error:", error));
     }
@@ -42,9 +43,9 @@ export default function CardForTopic({ isOpen, onClose, topic, onReview }) {
   };
 
   return (
-    <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+    <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer">
       <div className="w-full max-w-[570px] rounded-[20px] bg-mypurple py-12 px-8 text-center md:py-[60px] md:px-[70px]">
-        <h3 className="text-white pb-2 text-xl font-bold sm:text-2xl">
+        <h3 className="text-white pb-2 text-xl font-bold sm:text-2xl cursor-pointer">
           {topic.topic_name}
         </h3>
         <span className="bg-base-100 mx-auto mb-6 inline-block h-1 w-[90px] rounded"></span>
@@ -60,10 +61,10 @@ export default function CardForTopic({ isOpen, onClose, topic, onReview }) {
             More info
           </a>
         </p>
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-wrap gap-4 sm:text-center">
           <div className="flex-1">
             <button
-              className="bg-myturquoise whitespace-nowrap  block w-full rounded-lg border p-3 text-center text-base font-medium text-white transition hover:bg-opacity-90"
+              className="bg-myturquoise whitespace-nowrap  block w-full rounded-lg border p-3 text-center text-base font-medium text-white transition hover:bg-blue-400"
               onClick={() => handleReview(topic)}
             >
               Add topic

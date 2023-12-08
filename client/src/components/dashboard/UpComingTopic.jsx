@@ -1,17 +1,18 @@
 const UpComingTopic = ({ userTopics }) => {
   const firstThreeTopics = userTopics.slice(0, 3);
+  
   return (
-    <div className="w-full flex flex-col px-12 py-8 rounded-2xl bg-mycream">
-      <div className=" text-2xl mb-3 text-center ">
+    <div className="w-[32rem] flex flex-col px-6 py-6 rounded-2xl bg-gray-100 border-1 border-solid border-teal-500 hover:border-purple-400">
+      <div className=" text-2xl mb-1 text-center ">
         UPCOMING
-        <span className="font-bold text-mypurple"> TOPIC</span>
+        <span className="font-bold text-mypurple"> TOPICS</span>
         <br></br>
-        <span className="bg-base-100 mx-auto mb-6 inline-block h-1 w-[100px] rounded"></span>
+        <span className="mb-6 inline-block h-1 w-[100px] rounded bg-mypurple"></span>
       </div>
-      <div className="flex flex-col  gap-3">
+      <div className="flex flex-col  gap-6">
         {firstThreeTopics.map((topic) => (
           <div
-            className="flex justify-between p-1 border-2 border-solid rounded-md border-myturquoise bg-white"
+            className="flex justify-between p-3 border-2 border-solid rounded-md border-myturquoise bg-white"
             key={topic.entry_id}
           >
             <div>
@@ -20,10 +21,8 @@ const UpComingTopic = ({ userTopics }) => {
               </p>
               <h3 className="border-4 text-1xl">{topic.topic_name}</h3>
             </div>
-            <h2 className="flex items-center justify-center w-10 h-10 bg-mypurple text-white border-2 rounded-md">
-              {new Date(topic.due_date).toLocaleDateString("en-US", {
-                weekday: "short",
-              })}
+            <h2 className="flex items-center justify-center text-mypurple font-semibold rounded-md">
+              { new Date(topic.due_date).toDateString()}
             </h2>
           </div>
         ))}

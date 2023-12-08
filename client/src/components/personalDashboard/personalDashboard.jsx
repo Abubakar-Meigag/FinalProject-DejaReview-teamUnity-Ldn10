@@ -14,7 +14,7 @@ const PersonalDashboard = () => {
     fetch(`https://deja-review-backend.onrender.com/dataForTable?sub=${sub}`)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setUserTopics(data);
       })
       .catch((error) => console.error("Error fetching data:", error));
@@ -66,24 +66,16 @@ const PersonalDashboard = () => {
 
   return (
     <div className="min-h-screen p-6 flex flex-col items-center bg-base-100">
-      {/* flexbox column with: */}
-      {/* [ [create upcoming] ] */}
-      {/* [      table        ] */}
-      <div className="flex flex-col gap-12">
-        {/* flex box row with: */}
-        {/* [create] [upcoming] */}
-        <div className="flex justify-between flex-wrap sm:flex-nowrap gap-12">
-          {/* justify-between ^ to automatically space them apart */}
-          {/* set a min width on each of these: */}
-          {/* maybe min-w-[200] */}
+      
+      <div className="flex flex-col gap-6">
+        <div className="flex justify-between flex-wrap md:flex-nowrap md:w-full gap-6">
           <CreateNewTopic />
           <UpComingTopic userTopics={userTopics} />
         </div>
 
-        {/* [ table ] */}
         <div className="overflow-hidden rounded-lg">
-          <table className="table table-zebra bg-mycream">
-            <thead className="bg-mypurple">
+          <table className="table table-zebra">
+            <thead className="bg-[#53988f]">
               <tr className="text-base text-white">
                 <th className="font-semibold text-center">#</th>
                 <th className="font-semibold text-center">Topic Name</th>
@@ -99,11 +91,11 @@ const PersonalDashboard = () => {
                 return (
                   <tr
                     key={topic.entry_id}
-                    className={`font-semibold hover:bg-base-100 hover:text-black bg-light`}
+                    className={`font-semibold hover:bg-base-100 hover:text-black`}
                   >
                     <td className="border-b p-3 text-center">{++rowNumber}</td>
                     <td
-                      className="border-b p-3 text-center cursor-pointer  hover:text-white"
+                      className="border-b p-3 text-center cursor-pointer  hover:text-blue-500"
                       onClick={() => openModal(topic)}
                     >
                       {topic.topic_name}
@@ -114,7 +106,7 @@ const PersonalDashboard = () => {
                     <td className="border-b p-3 text-center">
                       <a
                         href={topic.reference_link}
-                        className="hover:text-white"
+                        className="hover:text-blue-500"
                       >
                         Review Link
                       </a>

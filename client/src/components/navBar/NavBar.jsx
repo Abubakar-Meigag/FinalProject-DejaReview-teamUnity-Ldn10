@@ -12,7 +12,7 @@ const NavBar = ({ open }) => {
             <Link to="/">
               <MdDashboardCustomize
                 style={{ color: "#f7f4d2" }}
-                className={`bg-base-200 p-1 rounded cursor-pointer block float-left mr-4 duration-500 ${
+                className={`bg-mypurple p-1 rounded cursor-pointer block float-left mr-4 duration-500 ${
                   open ? "text-4xl" : "text-4xl"
                 }
               `}
@@ -34,7 +34,7 @@ const NavBar = ({ open }) => {
             <Link to="/AllModulesPage">
               <LuClipboardEdit
                 style={{ color: "#f7f4d2" }}
-                className={`bg-base-200 p-1 rounded cursor-pointer block float-left mr-4 duration-500 ${
+                className={`bg-mypurple  p-1 rounded cursor-pointer block float-left mr-4 duration-500 ${
                   open ? "text-4xl" : "text-4xl"
                 }
                 `}

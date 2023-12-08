@@ -35,7 +35,7 @@ const IndividualTopicModalComponent = ({
         <div className="flex flex-wrap gap-4">
           <div className="flex-1">
             <button
-              className="bg-myturquoise whitespace-nowrap block w-full rounded-lg border p-3 text-center text-base font-medium text-white transition hover:bg-opacity-90"
+              className="bg-myturquoise whitespace-nowrap block w-full rounded-lg border p-3 text-center text-base font-medium text-white transition hover:bg-blue-400"
               onClick={() => handleReview(topic)}
             >
               Reviewed

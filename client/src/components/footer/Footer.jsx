@@ -17,24 +17,24 @@ function Footer() {
 
   return (
     <div className="">
-      <footer className="footer footer-center p-4 font-bold bg-coral text-base-200 static bottom-0">
+      <footer className="footer footer-center p-4 font-bold bg-coral text-[#d7f7f3] static bottom-0">
         <aside className="">
           <nav className="grid grid-flow-col gap-10">
             <ul className="flex gap-10">
-              <li className="hover:text-pink-200  duration-500">
+              <li className="hover:text-pink-300  duration-500">
                 <Link to="/">Dashboard</Link>
               </li>
-              <li className="hover:text-pink-200  duration-500">
+              <li className="hover:text-pink-300  duration-500">
                 <Link to="/AllModulesPage">Topics</Link>
               </li>
+              <li className="hover:text-pink-300  duration-500">
+                <Link to="/profilePage">Profile</Link>
+              </li>
               <li
-                className="hover:text-pink-200  duration-500 cursor-pointer"
+                className="hover:text-pink-300  duration-500 cursor-pointer"
                 onClick={handelLogout}
               >
                 <h1>Sign Out</h1>
-              </li>
-              <li className="hover:text-pink-200  duration-500">
-                <Link to="/profilePage">Profile</Link>
               </li>
             </ul>
           </nav>

@@ -11,7 +11,7 @@ const ProfilePage = () => {
     >
       <div className="flex justify-center items-center  text-black">
         {isAuthenticated && (
-          <div className="card card-side bg-base-100 shadow-2xl border-solid border-gray-300 p-10">
+          <div className="card card-side bg-gray-50 shadow-2xl border-solid border-gray-400 p-10">
             <figure>
               <img src={user.picture} alt={user.name} className="h-48" />
             </figure>

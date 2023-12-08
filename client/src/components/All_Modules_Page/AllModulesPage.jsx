@@ -45,8 +45,8 @@ export default function AllModulesPage({ refreshmodalData }) {
   }
 
   return (
-    <div className="modules-container">
-      <h1 className="all-modules-header">CYF Modules</h1>
+    <div className="modules-container min-h-screen min-w-screen">
+      <h1 className="all-modules-header text-zinc-600">CYF Modules & Topics</h1>
       <ul className="modules-list">
         {modalData.map((element, index) => (
           <li
@@ -68,7 +68,7 @@ export default function AllModulesPage({ refreshmodalData }) {
                     onClick={() => openTopic(topic)}
                     className="topics-container-inner"
                   >
-                    <h2>{topic.topic_name}</h2>
+                    <h2 className="cursor-pointer">{topic.topic_name}</h2>
                   </li>
                 ))}
               </ul>

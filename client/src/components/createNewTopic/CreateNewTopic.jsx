@@ -63,10 +63,11 @@ const CreateNewTopic = () => {
   };
 
   return (
-    <div className="w-full flex flex-col px-12 py-8 rounded-2xl bg-mycream">
-      <div className=" text-2xl mb-1 text-center">
+    <div className="w-[28rem]  flex flex-col px-6 py-2 rounded-2xl bg-gray-100 border-1 border-solid border-teal-500 hover:border-purple-400">
+      <div className=" text-2xl mb-1 mt-5 text-center">
         CREATE NEW <span className="font-bold text-mypurple">TOPIC</span>
-        <span className="bg-base-100 mx-auto mb-6 inline-block h-1 w-[100px] rounded"></span>
+        <br></br>
+        <span className=" mb-6 inline-block h-1 w-[100px] rounded bg-mypurple"></span>
       </div>
 
       <form className="flex flex-col gap-3">
@@ -130,7 +131,7 @@ const CreateNewTopic = () => {
 
         <button
           type="submit"
-          className="bg-myturquoise w-max m-auto px-8 py-2 rounded text-white text-m font-semibold hover:bg-mypurple"
+          className="bg-myturquoise m-auto w-max px-8 py-2 rounded text-white text-m font-semibold hover:bg-mypurple"
           onClick={(e) => handleSubmit(e)}
         >
           Submit
