@@ -13,25 +13,27 @@ const SidePanel = () => {
     <div className="flex h-full">
       <aside className="h-screen sticky top-0">
         <div
-          className={`bg-dark-purple h-screen p-5 pt-8 side-container
+          className={`bg-coral h-screen p-5 pt-8 side-container
             ${open ? "w-[16rem]" : "w-24"} duration-300 relative`}
         >
           <BsArrowLeftShort
-            className={`bg-white text-dark-purple text-3xl rounded-full absolute -right-3 top-9 border-solid border-dark-purple cursor-pointer
+            className={`bg-white text-coral text-3xl rounded-full absolute -right-3 top-9 border-solid border-coral cursor-pointer
           ${!open && "rotate-180"}`}
             onClick={() => setOpen(!open)}
           />
 
-          <div className="inline-flex">
+          <div className="flex flex-col">
+            <div
+              className={` text-white rounded cursor-pointer block float-left mr-4 text-[#fffff] text-2xl font-bold duration-500 ${open}`}
+            >
+              DEJA
+            </div>
             <h1
-              className={`text-white origin-left font-semibold  text-[15px] duration-300 ${
+              className={`text-white origin-left font-semibold  text-[15px] duration-500 ${
                 !open && "scale-0"
               }`}
             >
-              <span className="text-[#fffff] text-2xl font-bold shadow-2xl shadow-white">
-                DEJA
-              </span>
-              <br /> Spaced Repetition
+              Spaced Repetition
             </h1>
           </div>
 
@@ -47,7 +49,7 @@ const SidePanel = () => {
             <input
               type={"search"}
               placeholder="Search..."
-              className={`text-dark-text bg-light w-full text-dark-text focus:outline-none ${
+              className={`bg-light w-full text-dark-text focus:outline-none ${
                 !open && "hidden"
               }`}
             />

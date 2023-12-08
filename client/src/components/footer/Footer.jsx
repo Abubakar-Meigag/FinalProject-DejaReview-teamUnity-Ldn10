@@ -17,7 +17,7 @@ function Footer() {
 
   return (
     <div className="">
-      <footer className="footer footer-center p-4 font-bold bg-dark-purple text-base-200 static bottom-0">
+      <footer className="footer footer-center p-4 font-bold bg-coral text-base-200 static bottom-0">
         <aside className="">
           <nav className="grid grid-flow-col gap-10">
             <ul className="flex gap-10">

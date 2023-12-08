@@ -14,6 +14,7 @@ const PersonalDashboard = () => {
     fetch(`https://deja-review-backend.onrender.com/dataForTable?sub=${sub}`)
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         setUserTopics(data);
       })
       .catch((error) => console.error("Error fetching data:", error));
@@ -64,28 +65,31 @@ const PersonalDashboard = () => {
   };
 
   return (
-    <div className="bg-light flex flex-col justify-start bg-cover bg-center items-center min-h-screen">
-      <div className="inline-block">
-        <div className="flex flex-row gap-28 pb-3 pt-6">
-          <div className="lg:flex justify-center mb-4 text-white">
-            <CreateNewTopic />
-          </div>
-          <div className="flex justify-center mb-4 ">
-            <UpComingTopic userTopics={userTopics} />
-          </div>
+    <div className="min-h-screen p-6 flex flex-col items-center bg-base-100">
+      {/* flexbox column with: */}
+      {/* [ [create upcoming] ] */}
+      {/* [      table        ] */}
+      <div className="flex flex-col gap-12">
+        {/* flex box row with: */}
+        {/* [create] [upcoming] */}
+        <div className="flex justify-between flex-wrap sm:flex-nowrap gap-12">
+          {/* justify-between ^ to automatically space them apart */}
+          {/* set a min width on each of these: */}
+          {/* maybe min-w-[200] */}
+          <CreateNewTopic />
+          <UpComingTopic userTopics={userTopics} />
         </div>
 
-        <div>
-          <table className="table table-zebra border border-collapse border-gray-300 text-dark-text">
-            <thead className="bg-base-100 text-secondary text-[1rem]">
-              <tr>
-                <th className="border-b p-3 font-bold text-center">#</th>
-                <th className="border-b p-3 font-bold text-center">
-                  Topic Name
-                </th>
-                <th className="border-b p-3 font-bold text-center">Module</th>
-                <th className="border-b p-3 font-bold text-center">Link</th>
-                <th className="border-b p-3 font-bold text-center">Due Date</th>
+        {/* [ table ] */}
+        <div className="overflow-hidden rounded-lg">
+          <table className="table table-zebra bg-mycream">
+            <thead className="bg-mypurple">
+              <tr className="text-base text-white">
+                <th className="font-semibold text-center">#</th>
+                <th className="font-semibold text-center">Topic Name</th>
+                <th className="font-semibold text-center">Module</th>
+                <th className="font-semibold text-center">Link</th>
+                <th className="font-semibold text-center">Due Date</th>
               </tr>
             </thead>
 
@@ -122,14 +126,17 @@ const PersonalDashboard = () => {
             </tbody>
           </table>
         </div>
-        <IndividualTopicModalComponent
-          isOpen={!!selectedTopic}
-          onClose={closeModal}
-          topic={selectedTopic || {}}
-          onReview={handleReview}
-        />
       </div>
+
+      {/* modal */}
+      <IndividualTopicModalComponent
+        isOpen={!!selectedTopic}
+        onClose={closeModal}
+        topic={selectedTopic || {}}
+        onReview={handleReview}
+      />
     </div>
   );
 };
+
 export default PersonalDashboard;

@@ -46,7 +46,7 @@ export default function AllModulesPage({ refreshmodalData }) {
 
   return (
     <div className="modules-container">
-      <h1 className="all-modules-header">All Modules</h1>
+      <h1 className="all-modules-header">CYF Modules</h1>
       <ul className="modules-list">
         {modalData.map((element, index) => (
           <li
@@ -57,8 +57,8 @@ export default function AllModulesPage({ refreshmodalData }) {
               className="module-info"
               onClick={() => handleListHeaderClick(index)}
             >
-              <h2>{element.module_name}</h2>
-              <p>{element.module_description}</p>
+              <h2 className="module-name">{element.module_name}</h2>
+              <p className="module-description">{element.module_description}</p>
             </div>
             <div className="topics-container">
               <ul className="topics-list">

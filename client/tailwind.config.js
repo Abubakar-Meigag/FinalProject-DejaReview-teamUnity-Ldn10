@@ -4,8 +4,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "dark-purple": "#CC6781", //main panels
-        primary: "#43C0A2",
+        coral: "#CC6781", //main panels
+        mypurple: "#805DC0", // kristina purple
+        myturquoise: "#77D5C8", // kristina turquoise
+        mycream: "#f5ffd4", // kristina light cream/green
         dark: "#43C0A2",
         secondary: "#ffffff", //h
         accent: "#43C0A2",
@@ -46,7 +48,7 @@ module.exports = {
 
 //   "error": "#d80032",
 //             },
-// 77D5C8
+// 77D5C8<-----
 // ACCF6E
 // C76573
 // 805DC0
