@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { MdDashboardCustomize } from "react-icons/md";
 import { LuClipboardEdit } from "react-icons/lu";
+import { BsFillClipboardCheckFill } from "react-icons/bs";
+
 
 const NavBar = ({ open }) => {
   return (
@@ -11,9 +13,9 @@ const NavBar = ({ open }) => {
       <div>
           <li className="inline-flex">
             <Link to="/about">
-              <MdDashboardCustomize
+              <BsFillClipboardCheckFill
                 style={{ color: "#f7f4d2" }}
-                className={`bg-mypurple p-1 rounded cursor-pointer block float-left mr-4 duration-500 ${
+                className={`bg-mypurple p-2 rounded cursor-pointer block float-left mr-4 duration-500 ${
                   open ? "text-4xl" : "text-4xl"
                 }
               `}

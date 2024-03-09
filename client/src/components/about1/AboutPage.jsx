@@ -1,24 +1,44 @@
 import React from "react";
+import Content from "./Content";
+import { Link } from "react-scroll";
 
 function AboutPage() {
   return (
-    <div className="min-h-screen">
-      <div className="hero-overlay"></div>
-      <div className="hero-content text-center text-neutral-content ">
-        <div className="max-w-md text-black">
-          <h1 className="mb-5 text-5xl font-bold">Welcome at DEJA project</h1>
+    <div>
+      <div
+        className="hero min-h-screen"
+        style={{
+          backgroundImage:
+            "url(https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg)",
+        }}
+      >
+        <div className="hero-overlay bg-opacity-80"></div>
+        <div className="hero-content text-center text-neutral-content ">
+          <div className="max-w-lx">
+            <h1 className="text-[45px] font-medium  text-sky-50">
+              Welcome at <span className="underline font-bold">DEJA</span> Review Project
+            </h1>
+            <h1 className="mb-2 text-[38px] font-medium underline  text-sky-50">
+              Spaced Repetition technique
+            </h1>
 
-          <h3 className="text-left text-2xl font-semibold underline mb-2">
-            About DEJA:
-          </h3>
-          <p className="mb-5">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
-          </p>
-          <span> </span>
-          <button className="btn btn-primary">Get Started</button>
+            <div className="text-2xl text-sky-50 font-semibold">
+              <p>Where you always be reminded</p>
+              <p>Where you always can you plan</p>
+              <p>Where you always be successful</p>
+            </div>
+            <span> </span>
+            <Link to="content" smooth={true} duration={800}>
+              <button className="btn btn-primary mt-5 scroll-smooth">
+                Get Started
+              </button>
+            </Link>
+          </div>
         </div>
+      </div>
+
+      <div name="content">
+        <Content />
       </div>
     </div>
   );
