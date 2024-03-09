@@ -7,6 +7,29 @@ const NavBar = ({ open }) => {
   return (
     <div className="flex mt-16">
       <ul>
+        
+      <div>
+          <li className="inline-flex">
+            <Link to="/about">
+              <MdDashboardCustomize
+                style={{ color: "#f7f4d2" }}
+                className={`bg-mypurple p-1 rounded cursor-pointer block float-left mr-4 duration-500 ${
+                  open ? "text-4xl" : "text-4xl"
+                }
+              `}
+              />
+            </Link>
+            <Link
+              to="/about"
+              className={`text-white origin-left font-semibold text-[20px] cursor-pointer hover:underline hover:text-pink-200  ${
+                !open && "scale-0"
+              }`}
+            >
+              About
+            </Link>
+          </li>
+        </div>
+
         <div>
           <li className="inline-flex">
             <Link to="/">
@@ -30,14 +53,14 @@ const NavBar = ({ open }) => {
         </div>
 
         <div>
-          <li className="inline-flex mt-3">
+          <li className="inline-flex">
             <Link to="/AllModulesPage">
               <LuClipboardEdit
                 style={{ color: "#f7f4d2" }}
-                className={`bg-mypurple  p-1 rounded cursor-pointer block float-left mr-4 duration-500 ${
+                className={`bg-mypurple p-1 rounded cursor-pointer block float-left mr-4 duration-500 ${
                   open ? "text-4xl" : "text-4xl"
                 }
-                `}
+              `}
               />
             </Link>
             <Link
@@ -50,6 +73,7 @@ const NavBar = ({ open }) => {
             </Link>
           </li>
         </div>
+
       </ul>
     </div>
   );
