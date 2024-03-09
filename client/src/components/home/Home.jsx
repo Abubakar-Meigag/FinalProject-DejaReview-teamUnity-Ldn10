@@ -9,6 +9,7 @@ import "../home/home.css";
 import { useAuth0 } from "@auth0/auth0-react";
 import ProfilePage from "../login/ProfilePage";
 import Loading from "../loading/Loading";
+import AboutPage from "../about1/AboutPage";
 
 const Home = () => {
   const [refreshModalData, setRefreshModalData] = useState(false);
@@ -49,7 +50,7 @@ const Home = () => {
                   }
                 />
 
-                {/* <Route path="/about" element={<About />} /> */}
+                <Route path="/about" element={<AboutPage />} />
                 <Route path="/profilePage" element={<ProfilePage />} />
                 <Route path="/login" element={<Login />} />
               </Routes>
