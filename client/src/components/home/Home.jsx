@@ -4,7 +4,6 @@ import Login from "../login/Login";
 import SidePanel from "../navBar/SidePanel";
 import PersonalDashboard from "../personalDashboard/personalDashboard";
 import AllModulesPage from "../All_Modules_Page/AllModulesPage";
-import About from "../about/About";
 import Footer from "../footer/Footer";
 import "../home/home.css";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -50,7 +49,7 @@ const Home = () => {
                   }
                 />
 
-                <Route path="/about" element={<About />} />
+                {/* <Route path="/about" element={<About />} /> */}
                 <Route path="/profilePage" element={<ProfilePage />} />
                 <Route path="/login" element={<Login />} />
               </Routes>
