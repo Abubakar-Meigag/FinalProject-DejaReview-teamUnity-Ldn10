@@ -36,13 +36,12 @@ function Demo() {
 
           <div className="">
             <h1 className="mb-2 text-3xl text-left font-bold underline">
-              Watch this:
+              Watch the Video:
             </h1>
 
             <div className="flex justify-center items-center embed-responsive-item">
               <ReactPlayer url="https://www.youtube.com/watch?v=efXxTET5J40" />
             </div>
-
           </div>
         </div>
       </div>
