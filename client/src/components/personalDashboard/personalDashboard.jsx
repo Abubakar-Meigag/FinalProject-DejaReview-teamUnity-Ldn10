@@ -107,6 +107,7 @@ const PersonalDashboard = () => {
                       <a
                         href={topic.reference_link}
                         className="hover:text-blue-500"
+                        target="_blank" rel="noopener noreferrer"
                       >
                         Review Link
                       </a>

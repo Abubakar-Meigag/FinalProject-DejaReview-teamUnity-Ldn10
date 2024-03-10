@@ -17,20 +17,23 @@ const Profile = ({ open }) => {
 
   return (
     isAuthenticated && (
-      <div className={`flex mt-[20rem]`}>
+      <div className={`flex mt-[16rem]`}>
         <ul>
           <div>
             <li className="inline-flex mb-2">
+            <Link
+                to="/profilePage">
               <img
                 src={user.picture}
                 alt="user-img"
                 className={`h-[35px] mr-2 cursor-pointer rounded-md border-2 border-sky-400 `}
               />
+              </Link>
               <Link
                 to="/profilePage"
                 className={`text-white origin-left font-semibold pt-3 cursor-pointer text-[15px] ${
-                  !open && "scale-0"
-                } hover:text-pink-200 	`}
+                  !open && "hidden"
+                } hover:text-pink-200`}
               >
                 {user.name}
               </Link>
@@ -48,7 +51,7 @@ const Profile = ({ open }) => {
               />
               <h1
                 className={`text-white origin-left font-semibold pt-2 cursor-pointer text-[15px] ${
-                  !open && "scale-0"
+                  !open && "hidden"
                 } hover:text-pink-200`}
                 onClick={handelLogout}
               >
