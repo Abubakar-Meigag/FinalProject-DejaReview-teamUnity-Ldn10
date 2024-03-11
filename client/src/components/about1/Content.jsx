@@ -51,7 +51,7 @@ function Content() {
               </div>
 
               <Link to="demo" smooth={true} duration={700}>
-              <button className="btn btn-primary mt-10 p-5 scroll-smooth">
+              <button className="btn btn-primary mt-10 scroll-smooth">
                 Learn more
               </button>
             </Link>
