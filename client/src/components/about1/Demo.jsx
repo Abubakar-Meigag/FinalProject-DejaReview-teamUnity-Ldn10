@@ -12,11 +12,11 @@ function Demo() {
           <ul>
             <li>
               - How to add CYF topic to your dashboard? How to discover the
-              topic description? & How to review the topic?
+              topic description? How to review the topic?
             </li>
             <li>
               - How to create a new topic from CYF modules? How to add it into
-              your dashboard? & How to review the topic?
+              your dashboard? How to review the topic?
             </li>
           </ul>
         </div>

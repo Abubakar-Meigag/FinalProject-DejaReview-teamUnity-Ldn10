@@ -18,7 +18,7 @@ function Content() {
               you've previously covered multiple times for review. The app
               addresses the common issue of forgetting information shortly after
               learning it, especially when not actively using or reviewing it.
-              With DEJA, you can ensure that knowledge retention is optimized
+              With DEJA, you can ensure that knowledge retention is optimised
               over time. For more information on spaced repetition,{" "}
               <a
                 href="https://en.wikipedia.org/wiki/Spaced_repetition"

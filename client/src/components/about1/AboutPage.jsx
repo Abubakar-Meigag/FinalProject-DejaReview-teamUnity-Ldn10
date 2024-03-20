@@ -14,10 +14,10 @@ function AboutPage() {
         <div className="hero-content text-center text-neutral-content ">
           <div className="max-w-lx">
             <h1 className="text-[55px] font-medium  text-zinc-800">
-              Welcome to <span className="underline font-bold">DEJA</span>{" "}
+              Welcome to <span className="underline font-bold text-main">DEJA</span>{" "}
               Review
             </h1>
-            <h1 className="mb-6 text-[32px] font-medium underline  text-zinc-800">
+            <h1 className="mb-6 text-[32px] font-medium text-zinc-800">
               Spaced Repetition technique
             </h1>
 
