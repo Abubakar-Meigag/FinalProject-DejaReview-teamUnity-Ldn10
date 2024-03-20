@@ -49,14 +49,14 @@ const Profile = ({ open }) => {
                 }`}
                 onClick={handelLogout}
               />
-              <h1
+              <h2
                 className={`text-white origin-left font-semibold pt-2 cursor-pointer text-[15px] ${
                   !open && "hidden"
                 } hover:text-pink-200`}
                 onClick={handelLogout}
               >
                 Sign Out
-              </h1>
+              </h2>
             </li>
           </div>
         </ul>
