@@ -29,7 +29,7 @@ const Login = () => {
                 className="bg-sky-900 text-white border-0 rounded-md p-4 mb-4 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150 font-semibold text-[1.1rem] "
               >
                 <p>Where you always be reminded</p>
-                <p>Where you always can plan</p>
+                <p>Where you always can you plan</p>
                 <p>Where you always be successful</p>
               </span>
 

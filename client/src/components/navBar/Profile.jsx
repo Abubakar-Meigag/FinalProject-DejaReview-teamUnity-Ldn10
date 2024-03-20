@@ -17,20 +17,23 @@ const Profile = ({ open }) => {
 
   return (
     isAuthenticated && (
-      <div className={`flex mt-[20rem]`}>
+      <div className={`flex mt-[16rem]`}>
         <ul>
           <div>
             <li className="inline-flex mb-2">
+            <Link
+                to="/profilePage">
               <img
                 src={user.picture}
                 alt="user-img"
                 className={`h-[35px] mr-2 cursor-pointer rounded-md border-2 border-sky-400 `}
               />
+              </Link>
               <Link
                 to="/profilePage"
-                className={`text-white origin-left font-semibold pt-3 cursor-pointer text-[15px] ${
-                  !open && "scale-0"
-                } hover:text-pink-200 	`}
+                className={`text-secondary origin-left font-semibold pt-3 cursor-pointer text-[15px] ${
+                  !open && "hidden"
+                } hover:text-lightBlue`}
               >
                 {user.name}
               </Link>
@@ -40,20 +43,20 @@ const Profile = ({ open }) => {
           <div>
             <li className="inline-flex">
               <TbLogout
-                style={{ color: "#f7f4d2" }}
-                className={`bg-purple-600 p-2 rounded cursor-pointer  float-left text-4xl mr-2 duration-500 ${
+                style={{ color: "#ffffff" }}
+                className={`bg-modules p-2 rounded cursor-pointer  float-left text-4xl mr-2 duration-500 ${
                   !open && "text-4xl"
                 }`}
                 onClick={handelLogout}
               />
-              <h1
-                className={`text-white origin-left font-semibold pt-2 cursor-pointer text-[15px] ${
-                  !open && "scale-0"
-                } hover:text-pink-200`}
+              <h2
+                className={`text-secondary origin-left font-semibold pt-2 cursor-pointer text-[15px] ${
+                  !open && "hidden"
+                } hover:text-lightBlue`}
                 onClick={handelLogout}
               >
                 Sign Out
-              </h1>
+              </h2>
             </li>
           </div>
         </ul>

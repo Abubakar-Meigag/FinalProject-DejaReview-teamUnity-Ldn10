@@ -4,21 +4,19 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        coral: "#53988f", //main panels
-        mypurple: "#805DC0", 
-        myturquoise: "#77D5C8", //turquoise
-        mycream: "#f5ffd4", // light cream/green
-        dark: "#43C0A2",
-        secondary: "#ffffff",
-        accent: "#43C0A2",
-        light: "#f5ffd4", //background
-        "base-100": "#fff5d7", //green
-        "base-200": "#77D5C8", //icons
-        info: "#43C0A2",
-        success: "#43C0A2",
-        warning: "#43C0A2",
-        error: "#43C0A2",
-        "dark-text": "#060606",
+        "base-100": "#ffffff", 
+
+        main: "#2d42c6", // blue
+        secondary: "#ffffff", // white
+        greenIcons: "#a8c544", 
+        babyBlue: "#70cdff", // blue for borders
+        lightBlue: "#c6ebff", // blue for text hover
+        modules: "#0fb76c", // green for icons
+        warning: "#eaaa05", // orange 
+        oilGreen: "#a0c61a", // oil green
+        green: "#3bbd4e", // green for UI/UX
+        addIcons: "#524ab1",
+        individual: "#096b23",// for the modules / individual
       },
     },
   },
