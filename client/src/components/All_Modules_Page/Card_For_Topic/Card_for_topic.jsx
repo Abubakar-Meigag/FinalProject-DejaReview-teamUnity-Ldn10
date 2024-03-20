@@ -44,15 +44,15 @@ export default function CardForTopic({ isOpen, onClose, topic, onReview }) {
 
   return (
     <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer">
-      <div className="w-full max-w-[570px] rounded-[20px] bg-mypurple py-12 px-8 text-center md:py-[60px] md:px-[70px]">
-        <h3 className="text-white pb-2 text-xl font-bold sm:text-2xl cursor-pointer">
+      <div className="w-full max-w-[570px] rounded-[20px] bg-[#096b23] py-12 px-8 text-center md:py-[60px] md:px-[70px]">
+        <h3 className="text-secondary pb-2 text-xl font-bold sm:text-2xl cursor-pointer">
           {topic.topic_name}
         </h3>
         <span className="bg-base-100 mx-auto mb-6 inline-block h-1 w-[90px] rounded"></span>
-        <p className="text-mycream mb-10 text-base leading-relaxed">
+        <p className="text-secondary mb-10 text-base leading-relaxed">
           {topic.topic_description}
         </p>
-        <p className="text-base-100 mb-10 text-base leading-relaxed">
+        <p className="text-base-100 hover:text-lightBlue mb-10 text-base leading-relaxed">
           <a
             href={topic.reference_link}
             target="_blank"
@@ -64,7 +64,7 @@ export default function CardForTopic({ isOpen, onClose, topic, onReview }) {
         <div className="flex flex-wrap gap-4 sm:text-center">
           <div className="flex-1">
             <button
-              className="bg-myturquoise whitespace-nowrap  block w-full rounded-lg border p-3 text-center text-base font-medium text-white transition hover:bg-blue-400"
+              className="bg-greenIcons whitespace-nowrap  block w-full rounded-lg border p-3 text-center text-base font-medium text-secondary transition hover:bg-green"
               onClick={() => handleReview(topic)}
             >
               Add topic
@@ -72,7 +72,7 @@ export default function CardForTopic({ isOpen, onClose, topic, onReview }) {
           </div>
           <div className="flex-1">
             <button
-              className="text-gray-900 block w-full rounded-lg border border-gray-200 p-3 text-center text-base font-medium transition hover:bg-coral hover:text-white"
+              className="text-gray-900 block w-full rounded-lg border border-gray-200 p-3 text-center text-base font-medium transition hover:bg-main hover:text-secondary"
               onClick={onClose}
             >
               Cancel

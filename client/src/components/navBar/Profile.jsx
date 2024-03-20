@@ -31,9 +31,9 @@ const Profile = ({ open }) => {
               </Link>
               <Link
                 to="/profilePage"
-                className={`text-white origin-left font-semibold pt-3 cursor-pointer text-[15px] ${
+                className={`text-secondary origin-left font-semibold pt-3 cursor-pointer text-[15px] ${
                   !open && "hidden"
-                } hover:text-pink-200`}
+                } hover:text-lightBlue`}
               >
                 {user.name}
               </Link>
@@ -43,16 +43,16 @@ const Profile = ({ open }) => {
           <div>
             <li className="inline-flex">
               <TbLogout
-                style={{ color: "#f7f4d2" }}
-                className={`bg-purple-600 p-2 rounded cursor-pointer  float-left text-4xl mr-2 duration-500 ${
+                style={{ color: "#ffffff" }}
+                className={`bg-modules p-2 rounded cursor-pointer  float-left text-4xl mr-2 duration-500 ${
                   !open && "text-4xl"
                 }`}
                 onClick={handelLogout}
               />
               <h2
-                className={`text-white origin-left font-semibold pt-2 cursor-pointer text-[15px] ${
+                className={`text-secondary origin-left font-semibold pt-2 cursor-pointer text-[15px] ${
                   !open && "hidden"
-                } hover:text-pink-200`}
+                } hover:text-lightBlue`}
                 onClick={handelLogout}
               >
                 Sign Out

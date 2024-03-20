@@ -6,23 +6,20 @@ import Demo from "./Demo";
 function Content() {
   return (
     <div>
-      <div className="flex items-center justify-center bg-pink-950 min-h-screen">
+      <div className="flex items-center justify-center bg-secondary min-h-screen">
         <div className="max-w-lg px-4 py-8 text-neutral-content">
-          <h1 className="mb-6 text-3xl font-bold text-left">
-            What is Spaced Repetition?
+          <h1 className="mb-3 text-3xl text-zinc-800 font-bold text-left">
+            What is DEJA Review app?
           </h1>
-          <div className="text-md mb-6 text-justify">
+          <div className="text-md mb-2 text-justify text-zinc-800">
             <p>
-              Spaced repetition is a learning technique that involves reviewing
-              information at increasing intervals over time. Instead of cramming
-              information all at once, spaced repetition spreads out review
-              sessions, allowing for more effective retention of knowledge. This
-              method is based on the psychological principle that spaced
-              intervals of repetition lead to better long-term memory retention
-              compared to massed practice or cramming. By revisiting material at
-              spaced intervals, learners reinforce their memory and retention of
-              the information, ensuring better recall over the long term. For
-              more information{" "}
+              DEJA Review is an app utilising spaced repetition, a powerful
+              learning technique. It serves as a reminder to revisit topics
+              you've previously covered multiple times for review. The app
+              addresses the common issue of forgetting information shortly after
+              learning it, especially when not actively using or reviewing it.
+              With DEJA, you can ensure that knowledge retention is optimized
+              over time. For more information on spaced repetition,{" "}
               <a
                 href="https://en.wikipedia.org/wiki/Spaced_repetition"
                 target="_blank"
@@ -31,12 +28,14 @@ function Content() {
               >
                 click here
               </a>
-              .
+              {" "}or watch the video below.
             </p>
           </div>
 
           <div className="mb-6">
-            <h2 className="text-xl font-bold underline pb-5">Watch the Video:</h2>
+            <h2 className="text-xl font-bold underline pb-5 text-zinc-800">
+              Watch the Video:
+            </h2>
             <div className="flex justify-center">
               <ReactPlayer
                 controls={true}
@@ -48,7 +47,9 @@ function Content() {
           </div>
           <div className="mt-6 flex justify-center">
             <Link to="demo" smooth={true} duration={700}>
-              <button className="btn btn-primary">Learn more</button>
+              <button className="btn bg-green hover:bg-main text-secondary">
+                Learn more
+              </button>
             </Link>
           </div>
         </div>

@@ -4,7 +4,7 @@ import "../loading/loading.css";
 const Loading = () => {
   return (
     <div
-      className={`flex justify-center bg-cover bg-center items-center min-h-screen min-w-screen`}
+      className={`flex justify-center bg-secondary bg-cover bg-center items-center min-h-screen min-w-screen`}
     >
       <div className="loader-container">
         <div className="loader"></div>

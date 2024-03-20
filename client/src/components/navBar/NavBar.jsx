@@ -14,8 +14,8 @@ const NavBar = ({ open }) => {
           <li className="inline-flex">
             <Link to="/about">
               <BsFillClipboardCheckFill
-                style={{ color: "#f7f4d2" }}
-                className={`bg-mypurple p-2 rounded cursor-pointer block float-left mr-4 duration-500 ${
+                style={{ color: "#ffffff" }}
+                className={`bg-modules p-2 rounded cursor-pointer block float-left mr-4 duration-500 ${
                   open ? "text-4xl" : "text-4xl"
                 }
               `}
@@ -23,7 +23,7 @@ const NavBar = ({ open }) => {
             </Link>
             <Link
               to="/about"
-              className={`text-white origin-left font-semibold text-[20px] cursor-pointer hover:underline hover:text-pink-200  ${
+              className={`text-secondary origin-left font-semibold text-[20px] cursor-pointer hover:underline hover:text-lightBlue  ${
                 !open && "scale-0"
               }`}
             >
@@ -36,8 +36,8 @@ const NavBar = ({ open }) => {
           <li className="inline-flex">
             <Link to="/">
               <MdDashboardCustomize
-                style={{ color: "#f7f4d2" }}
-                className={`bg-mypurple p-1 rounded cursor-pointer block float-left mr-4 duration-500 ${
+                style={{ color: "#ffffff" }}
+                className={`bg-modules p-1 rounded cursor-pointer block float-left mr-4 duration-500 ${
                   open ? "text-4xl" : "text-4xl"
                 }
               `}
@@ -45,7 +45,7 @@ const NavBar = ({ open }) => {
             </Link>
             <Link
               to="/"
-              className={`text-white origin-left font-semibold text-[20px] cursor-pointer hover:underline hover:text-pink-200  ${
+              className={`text-secondary origin-left font-semibold text-[20px] cursor-pointer hover:underline hover:text-lightBlue  ${
                 !open && "scale-0"
               }`}
             >
@@ -58,8 +58,8 @@ const NavBar = ({ open }) => {
           <li className="inline-flex">
             <Link to="/AllModulesPage">
               <LuClipboardEdit
-                style={{ color: "#f7f4d2" }}
-                className={`bg-mypurple p-1 rounded cursor-pointer block float-left mr-4 duration-500 ${
+                style={{ color: "#ffffff" }}
+                className={`bg-modules p-1 rounded cursor-pointer block float-left mr-4 duration-500 ${
                   open ? "text-4xl" : "text-4xl"
                 }
               `}
@@ -67,7 +67,7 @@ const NavBar = ({ open }) => {
             </Link>
             <Link
               to="/AllModulesPage"
-              className={`text-white origin-left font-semibold text-[20px] cursor-pointer hover:underline hover:text-pink-200  ${
+              className={`text-secondary origin-left font-semibold text-[20px] cursor-pointer hover:underline hover:text-lightBlue  ${
                 !open && "scale-0"
               }`}
             >
