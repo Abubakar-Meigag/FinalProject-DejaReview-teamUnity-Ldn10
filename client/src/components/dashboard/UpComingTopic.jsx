@@ -1,6 +1,6 @@
 const UpComingTopic = ({ userTopics }) => {
   const firstThreeTopics = userTopics.slice(0, 3);
-  
+
   return (
     <div className="w-[32rem] flex flex-col px-6 py-6 rounded-2xl bg-gray-100 border-1 border-solid border-teal-500 hover:border-purple-400">
       <div className=" text-2xl mb-1 text-center ">
@@ -22,7 +22,7 @@ const UpComingTopic = ({ userTopics }) => {
               <h3 className="border-4 text-1xl">{topic.topic_name}</h3>
             </div>
             <h2 className="flex items-center justify-center text-mypurple font-semibold rounded-md">
-              { new Date(topic.due_date).toDateString()}
+              {new Date(topic.due_date).toDateString()}
             </h2>
           </div>
         ))}

@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import { addTopicToDashboard } from "./utils";
+// import { useSession } from "@supabase/auth-helpers-react";
 
-const CreateNewTopic = () => {
+const CreateNewTopic = ({ session, getUsersTopics }) => {
   const [modules, setModules] = useState([]);
-  const [topic_name, setTopicName] = useState("");
-  const [description, setDescription] = useState("");
-  const [reference_link, setReferenceLink] = useState("");
-  const [selectedModuleId, setSelectedModuleId] = useState("");
-  const { user } = useAuth0();
-  const is_user_generated = true;
+  const [formData, setFormData] = useState({
+    topic_name: "",
+    description: "",
+    reference_link: "",
+    selectedModuleId: "",
+  });
+
+  const userID = session.user.id;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,21 +28,34 @@ const CreateNewTopic = () => {
     fetchData();
   }, []);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault(e);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
 
-    if (!selectedModuleId || !topic_name || !description || !reference_link) {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (
+      !formData.selectedModuleId ||
+      !formData.topic_name ||
+      !formData.description ||
+      !formData.reference_link
+    ) {
       alert("You must fill all the required fields");
       return;
     }
 
     const personalNewTopicData = {
-      module_id: selectedModuleId,
-      topic_name,
-      description,
-      reference_link,
-      is_user_generated,
-      userId: user.sub,
+      module_id: formData.selectedModuleId,
+      topic_name: formData.topic_name,
+      description: formData.description,
+      reference_link: formData.reference_link,
+      is_user_generated: true,
+      userId: userID,
     };
 
     try {
@@ -54,13 +69,64 @@ const CreateNewTopic = () => {
       );
 
       const response = await res.json();
-      await addTopicToDashboard({ userId: user.sub, topicId: response.id });
+      await addTopicToDashboard({ userId: userID, topicId: response.id });
 
-      window.location = "/";
+      getUsersTopics();
+
+      setFormData({
+        topic_name: "",
+        description: "",
+        reference_link: "",
+        selectedModuleId: "",
+      });
+      createCalendarEvent();
     } catch (err) {
       console.error(err.message);
     }
   };
+
+  async function createCalendarEvent() {
+    try {
+      console.log("Creating calendar event");
+
+      const currentDate = new Date();
+      const startDateTime = new Date(
+        currentDate.getTime() + 7 * 24 * 60 * 60 * 1000
+      );
+      const endDateTime = new Date(
+        startDateTime.getTime() + 3 * 60 * 60 * 1000
+      );
+
+      const event = {
+        summary: formData.topic_name,
+        description: formData.description,
+        start: {
+          dateTime: startDateTime.toISOString(),
+          timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        },
+        end: {
+          dateTime: endDateTime.toISOString(),
+          timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        },
+      };
+      const request = await fetch(
+        "https://www.googleapis.com/calendar/v3/calendars/primary/events",
+        {
+          method: "POST",
+          headers: {
+            Authorization: "Bearer " + session.provider_token, // Access token for google
+          },
+          body: JSON.stringify(event),
+        }
+      );
+      const response = await request.json();
+
+      console.log(response);
+      alert("Event created, check your Google Calendar!");
+    } catch (error) {
+      console.error("Error updating due date:", error);
+    }
+  }
 
   return (
     <div className="w-[28rem]  flex flex-col px-6 py-2 rounded-2xl bg-gray-100 border-1 border-solid border-teal-500 hover:border-purple-400">
@@ -70,7 +136,7 @@ const CreateNewTopic = () => {
         <span className=" mb-6 inline-block h-1 w-[100px] rounded bg-mypurple"></span>
       </div>
 
-      <form className="flex flex-col gap-3">
+      <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
         <div className="block relative">
           <div>
             <label className="block cursor-text text-md leading-[140%] mb-1">
@@ -78,10 +144,12 @@ const CreateNewTopic = () => {
             </label>
             <select
               required
+              name="selectedModuleId"
+              value={formData.selectedModuleId}
+              onChange={handleChange}
               className="block p-2 w-full cursor-text text-sm leading-[140%] font-normal mb-1 bg-white bg-opacity-80 border-2 border-solid border-myturquoise rounded-md"
-              onChange={(e) => setSelectedModuleId(e.target.value)}
             >
-              <option>Choose module...</option>
+              <option value="">Choose module...</option>
               {modules.map((module) => (
                 <option key={module.id} value={module.id}>
                   {module.name}
@@ -95,9 +163,10 @@ const CreateNewTopic = () => {
           </label>
           <input
             type="text"
+            name="topic_name"
             placeholder={"Enter Topic"}
-            value={topic_name}
-            onChange={(e) => setTopicName(e.target.value)}
+            value={formData.topic_name}
+            onChange={handleChange}
             required
             className="block p-2 text-sm w-full font-normal leading-[18px] tracking-[0px] appearance-none focus:ring-2 ring-offset-2 ring-sky-500 outline-0 mb-1 bg-white bg-opacity-80 border-2 border-solid border-myturquoise rounded-md"
           />
@@ -107,10 +176,11 @@ const CreateNewTopic = () => {
           </label>
           <input
             type="text"
+            name="description"
             placeholder={"Enter Description"}
-            value={description}
+            value={formData.description}
             required
-            onChange={(e) => setDescription(e.target.value)}
+            onChange={handleChange}
             className="block p-2 text-sm w-full font-normal leading-[18px] tracking-[0px] appearance-none focus:ring-2 ring-offset-2 ring-sky-500 outline-0 mb-1 bg-white bg-opacity-80 border-2 border-solid border-myturquoise rounded-md"
           />
         </div>
@@ -120,11 +190,12 @@ const CreateNewTopic = () => {
             Reference Link
           </label>
           <input
-            type="url"
+            type="text"
+            name="reference_link"
             placeholder={"Enter Reference Link"}
-            value={reference_link}
+            value={formData.reference_link}
             required
-            onChange={(e) => setReferenceLink(e.target.value)}
+            onChange={handleChange}
             className="block p-2 text-sm w-full font-normal leading-[18px] tracking-[0px] appearance-none focus:ring-2 ring-offset-2 ring-sky-500 outline-0 mb-1 bg-white bg-opacity-80 border-2 border-solid border-myturquoise rounded-md"
           />
         </div>
@@ -132,7 +203,6 @@ const CreateNewTopic = () => {
         <button
           type="submit"
           className="bg-myturquoise m-auto w-max px-8 py-2 rounded text-white text-m font-semibold hover:bg-mypurple"
-          onClick={(e) => handleSubmit(e)}
         >
           Submit
         </button>
