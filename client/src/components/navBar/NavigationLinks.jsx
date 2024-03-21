@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { MdDashboardCustomize } from "react-icons/md";
 import { LuClipboardEdit } from "react-icons/lu";
 
-const NavBar = ({ open }) => {
+const NavigationLinks = ({ open }) => {
   return (
     <div className="flex mt-16">
       <ul>
@@ -55,4 +55,4 @@ const NavBar = ({ open }) => {
   );
 };
 
-export default NavBar;
+export default NavigationLinks;

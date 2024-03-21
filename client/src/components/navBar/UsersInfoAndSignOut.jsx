@@ -6,8 +6,6 @@ import { Link } from "react-router-dom";
 const UsersInfoAndSignOut = ({ open, session }) => {
   const supabase = useSupabaseClient();
 
-  // const session = useSession();
-
   const userMetadata = session.user.user_metadata;
 
   async function signOut() {
@@ -15,7 +13,7 @@ const UsersInfoAndSignOut = ({ open, session }) => {
   }
 
   return (
-    <div className={`flex  ]`}>
+    <div className={`flex`}>
       <ul>
         <div>
           <li className="inline-flex mb-2">

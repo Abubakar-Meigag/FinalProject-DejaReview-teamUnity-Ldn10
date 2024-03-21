@@ -1,18 +1,18 @@
 import { useState } from "react";
 import { BsArrowLeftShort } from "react-icons/bs";
 import { BsSearch } from "react-icons/bs";
-import NavBar from "./NavBar";
-import Profile from "./Profile";
+import NavigationLinks from "./NavigationLinks";
+import UsersInfoAndSignOut from "./UsersInfoAndSignOut";
 import "../navBar/navBar.css";
 
-const SidePanel = () => {
+const SideBar = ({ session }) => {
   const [open, setOpen] = useState(true);
 
   return (
-    <div className="flex h-full">
-      <aside className="h-screen sticky top-0">
+    <div className="flex h-full ">
+      <aside className="h-screen  sticky top-0 ">
         <div
-          className={`bg-coral h-screen p-5 pt-8 side-container
+          className={` bg-coral h-screen p-5 pt-8 side-container 
             ${open ? "w-[15rem]" : "w-24"} duration-300 relative`}
         >
           <BsArrowLeftShort
@@ -54,13 +54,17 @@ const SidePanel = () => {
             />
           </div>
 
-          <div>
-            <div className="nav-items">
-              <NavBar open={open} setOpen={setOpen} />
+          <div className="">
+            <div>
+              <NavigationLinks open={open} setOpen={setOpen} />
             </div>
 
             <div>
-              <Profile open={open} setOpen={setOpen} />
+              <UsersInfoAndSignOut
+                open={open}
+                setOpen={setOpen}
+                session={session}
+              />
             </div>
           </div>
         </div>
@@ -69,4 +73,4 @@ const SidePanel = () => {
   );
 };
 
-export default SidePanel;
+export default SideBar;
