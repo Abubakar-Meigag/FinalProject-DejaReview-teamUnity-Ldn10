@@ -1,58 +1,124 @@
 import React, { useState, useEffect } from "react";
 import CreateNewTopic from "../createNewTopic/CreateNewTopic";
-import { useAuth0 } from "@auth0/auth0-react";
 import UpComingTopic from "../dashboard/UpComingTopic";
 import IndividualTopicModalComponent from "../IndividualTopicModalComponent/IndividualTopicModalComponent";
 
-const PersonalDashboard = () => {
-  const { user } = useAuth0();
+const PersonalDashboard = ({ session, refreshModalData }) => {
   const [userTopics, setUserTopics] = useState([]);
   const [selectedTopic, setSelectedTopic] = useState(null);
-  const { sub } = user;
+  // console.log(userTopics);
+  const userID = session.user.id;
+  // console.log(userID);
 
-  const refreshData = () => {
-    fetch(`https://deja-review-backend.onrender.com/dataForTable?sub=${sub}`)
-      .then((response) => response.json())
-      .then((data) => {
-        // console.log(data);
-        setUserTopics(data);
-      })
-      .catch((error) => console.error("Error fetching data:", error));
-  };
+  const getUsersTopics = async () => {
+    try {
+      const response = await fetch(
+        `https://deja-review-backend.onrender.com/dataForTable?sub=${userID}`
+      );
+      const data = await response.json();
 
-  const handleReview = (topic) => {
-    const topicId = topic.entry_id;
-    if (topicId === undefined) {
-      console.error("Error: topicId is undefined");
-      return;
+      setUserTopics(data);
+    } catch (error) {
+      console.log(
+        "The ERROR occured in getUsersTopics in PersonalDashboard:",
+        error
+      );
     }
-    fetch("https://deja-review-backend.onrender.com/updateDueDate", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        topicId: topicId,
-      }),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log("Due date updated successfully:", data);
-        refreshData();
-      })
-      .catch((error) => {
-        console.error("Error updating due date:", error);
-      });
   };
 
   useEffect(() => {
-    refreshData();
+    getUsersTopics();
   }, []);
+
+  const handleReview = async (topic) => {
+    // console.log("topic", topic);
+
+    if (topic.entry_id === undefined) {
+      console.error("Error: topicId is undefined");
+      return;
+    }
+
+    try {
+      const response = await fetch(
+        "https://deja-review-backend.onrender.com/updateDueDate",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            topicId: topic.entry_id,
+          }),
+        }
+      );
+      if (!response.ok) {
+        console.log(`HTTP error! Status: ${response.status}`);
+        return response.json();
+      }
+      const data = await response.json();
+
+      await createCalendarEvent(topic);
+
+      // console.log("Due date updated successfully:", data);
+
+      getUsersTopics();
+    } catch (error) {
+      console.log("The ERROR occured in fetchData in DisplaymodalData:", error);
+    }
+  };
+
+  async function createCalendarEvent(topic) {
+    try {
+      console.log("Creating calendar event");
+
+      const currentDate = new Date();
+      const currentDueDate = new Date(topic.due_date);
+      let updatedDueDate = new Date(currentDueDate);
+
+      if (topic.reviews_remaining === 0) {
+        updatedDueDate.setDate(currentDate.getDate() + 180);
+      } else if (topic.reviews_remaining === 1) {
+        updatedDueDate.setDate(currentDate.getDate() + 90);
+      } else {
+        updatedDueDate.setDate(currentDate.getDate() + 30);
+      }
+
+      const startDateTime = new Date(updatedDueDate.getTime());
+      const endDateTime = new Date(
+        startDateTime.getTime() + 3 * 60 * 60 * 1000
+      );
+
+      const event = {
+        summary: topic.topic_name,
+        description: topic.description,
+        start: {
+          dateTime: startDateTime.toISOString(),
+          timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        },
+        end: {
+          dateTime: endDateTime.toISOString(),
+          timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        },
+      };
+      const request = await fetch(
+        "https://www.googleapis.com/calendar/v3/calendars/primary/events",
+        {
+          method: "POST",
+          headers: {
+            Authorization: "Bearer " + session.provider_token, // Access token for google
+          },
+          body: JSON.stringify(event),
+        }
+      );
+
+      const response = await request.json();
+
+      console.log(response);
+      alert("Event created, check your Google Calendar!");
+    } catch (error) {
+      console.error("Error updating due date:", error);
+    }
+  }
 
   let rowNumber = 0;
 
@@ -63,13 +129,13 @@ const PersonalDashboard = () => {
   const closeModal = () => {
     setSelectedTopic(null);
   };
+  // console.log(userTopics);
 
   return (
     <div className="min-h-screen p-6 flex flex-col items-center bg-secondary">
-      
       <div className="flex flex-col gap-6">
         <div className="flex justify-between flex-wrap md:flex-nowrap md:w-full gap-6">
-          <CreateNewTopic />
+          <CreateNewTopic session={session} getUsersTopics={getUsersTopics} />
           <UpComingTopic userTopics={userTopics} />
         </div>
 
@@ -93,7 +159,9 @@ const PersonalDashboard = () => {
                     key={topic.entry_id}
                     className={`font-semibold hover:text-black`}
                   >
-                    <td className="border-2 border-babyBlue p-3 text-center">{++rowNumber}</td>
+                    <td className="border-2 border-babyBlue p-3 text-center">
+                      {++rowNumber}
+                    </td>
                     <td
                       className="border-2 border-babyBlue p-3 text-center cursor-pointer  hover:text-blue-500"
                       onClick={() => openModal(topic)}
@@ -106,13 +174,18 @@ const PersonalDashboard = () => {
                     <td className="border-2 border-babyBlue p-3 text-center">
                       <a
                         href={topic.reference_link}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="hover:text-blue-500"
-                        target="_blank" rel="noopener noreferrer"
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
                         Review Link
                       </a>
                     </td>
-                    <td className="border-2 border-babyBlue p-3 text-center">{dueDate}</td>
+                    <td className="border-2 border-babyBlue p-3 text-center">
+                      {dueDate}
+                    </td>
                   </tr>
                 );
               })}
@@ -120,8 +193,6 @@ const PersonalDashboard = () => {
           </table>
         </div>
       </div>
-
-      {/* modal */}
       <IndividualTopicModalComponent
         isOpen={!!selectedTopic}
         onClose={closeModal}

@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { BsArrowLeftShort } from "react-icons/bs";
 import { BsSearch } from "react-icons/bs";
-import NavBar from "./NavBar";
-import Profile from "./Profile";
+import NavigationLinks from "./NavigationLinks";
+import UsersInfoAndSignOut from "./UsersInfoAndSignOut";
 import "../navBar/navBar.css";
 
-const SidePanel = () => {
+const SideBar = ({ session }) => {
   const [open, setOpen] = useState(true);
 
   return (
@@ -27,13 +27,13 @@ const SidePanel = () => {
             >
               DEJA
             </div>
-            <h1
-              className={`text-secondary origin-left font-semibold  text-[15px] duration-500 ${
+            <div
+              className={`text-secondary origin-left font-semibold text-[15px] duration-500 ${
                 !open && "scale-0"
               }`}
             >
               Spaced Repetition
-            </h1>
+            </div>
           </div>
 
           <div
@@ -54,13 +54,17 @@ const SidePanel = () => {
             />
           </div>
 
-          <div>
-            <div className="nav-items">
-              <NavBar open={open} setOpen={setOpen} />
+          <div className="">
+            <div>
+              <NavigationLinks open={open} setOpen={setOpen} />
             </div>
 
             <div>
-              <Profile open={open} setOpen={setOpen} />
+              <UsersInfoAndSignOut
+                open={open}
+                setOpen={setOpen}
+                session={session}
+              />
             </div>
           </div>
         </div>
@@ -69,4 +73,4 @@ const SidePanel = () => {
   );
 };
 
-export default SidePanel;
+export default SideBar;

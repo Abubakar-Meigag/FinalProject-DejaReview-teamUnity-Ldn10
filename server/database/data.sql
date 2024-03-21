@@ -14,7 +14,6 @@ CREATE TABLE modules (
 -- 	last_name VARCHAR(255) NOT NULL,
 -- 	email VARCHAR(255) NOT NULL UNIQUE
 -- );
-
 -- INSERT INTO
 -- 	users (first_name, last_name, email)
 -- VALUES
@@ -22,7 +21,6 @@ CREATE TABLE modules (
 -- 	('Abubakar', 'Meigag', 'beko@gmail.com'),
 -- 	('Kristina', 'Dudnyk', 'kristina@gmail.com'),
 -- 	('Joseph', 'Mwanza' 'joseph@gmail.com');
-
 -- topics table 
 CREATE TABLE topics (
 	id SERIAL PRIMARY KEY,
@@ -44,11 +42,11 @@ CREATE TABLE learning_topics_tracker (
 );
 
 -- NEW users table
-CREATE TABLE users (
-	id SERIAL PRIMARY KEY,
-	name VARCHAR(300) NOT NULL,
-	email VARCHAR(300) NOT NULL UNIQUE,
-	picture VARCHAR,
-	sub VARCHAR(700),
-	created_at timestamp DEFAULT now()
-);
+-- CREATE TABLE users (
+-- 	id SERIAL PRIMARY KEY,
+-- 	name VARCHAR(300) NOT NULL,
+-- 	email VARCHAR(300) NOT NULL UNIQUE,
+-- 	picture VARCHAR,
+-- 	sub VARCHAR(700),
+-- 	created_at timestamp DEFAULT now()
+-- );

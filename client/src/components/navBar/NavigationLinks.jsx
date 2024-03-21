@@ -5,7 +5,7 @@ import { LuClipboardEdit } from "react-icons/lu";
 import { BsFillClipboardCheckFill } from "react-icons/bs";
 
 
-const NavBar = ({ open }) => {
+const NavigationLinks = ({ open }) => {
   return (
     <div className="flex mt-16">
       <ul>
@@ -81,4 +81,4 @@ const NavBar = ({ open }) => {
   );
 };
 
-export default NavBar;
+export default NavigationLinks;
