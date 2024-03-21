@@ -132,7 +132,7 @@ const PersonalDashboard = ({ session, refreshModalData }) => {
   // console.log(userTopics);
 
   return (
-    <div className="min-h-screen p-6 flex flex-col items-center bg-base-100">
+    <div className="min-h-screen p-6 flex flex-col items-center bg-secondary">
       <div className="flex flex-col gap-6">
         <div className="flex justify-between flex-wrap md:flex-nowrap md:w-full gap-6">
           <CreateNewTopic session={session} getUsersTopics={getUsersTopics} />
@@ -140,8 +140,8 @@ const PersonalDashboard = ({ session, refreshModalData }) => {
         </div>
 
         <div className="overflow-hidden rounded-lg">
-          <table className="table table-zebra">
-            <thead className="bg-[#53988f]">
+          <table className="table table-zebra border-collapse border-2 border-babyBlue">
+            <thead className="bg-main">
               <tr className="text-base text-white">
                 <th className="font-semibold text-center">#</th>
                 <th className="font-semibold text-center">Topic Name</th>
@@ -151,35 +151,41 @@ const PersonalDashboard = ({ session, refreshModalData }) => {
               </tr>
             </thead>
 
-            <tbody>
+            <tbody className="border-2 border-babyBlue">
               {userTopics.map((topic, index) => {
                 const dueDate = new Date(topic.due_date).toDateString();
                 return (
                   <tr
                     key={topic.entry_id}
-                    className={`font-semibold hover:bg-base-100 hover:text-black`}
+                    className={`font-semibold hover:text-black`}
                   >
-                    <td className="border-b p-3 text-center">{++rowNumber}</td>
+                    <td className="border-2 border-babyBlue p-3 text-center">
+                      {++rowNumber}
+                    </td>
                     <td
-                      className="border-b p-3 text-center cursor-pointer  hover:text-blue-500"
+                      className="border-2 border-babyBlue p-3 text-center cursor-pointer  hover:text-blue-500"
                       onClick={() => openModal(topic)}
                     >
                       {topic.topic_name}
                     </td>
-                    <td className="border-b p-3 text-center">
+                    <td className="border-2 border-babyBlue p-3 text-center">
                       {topic.module_name}
                     </td>
-                    <td className="border-b p-3 text-center">
+                    <td className="border-2 border-babyBlue p-3 text-center">
                       <a
                         href={topic.reference_link}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="hover:text-blue-500"
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
                         Review Link
                       </a>
                     </td>
-                    <td className="border-b p-3 text-center">{dueDate}</td>
+                    <td className="border-2 border-babyBlue p-3 text-center">
+                      {dueDate}
+                    </td>
                   </tr>
                 );
               })}

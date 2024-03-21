@@ -129,11 +129,11 @@ const CreateNewTopic = ({ session, getUsersTopics }) => {
   }
 
   return (
-    <div className="w-[28rem]  flex flex-col px-6 py-2 rounded-2xl bg-gray-100 border-1 border-solid border-teal-500 hover:border-purple-400">
+    <div className="w-[28rem]  flex flex-col px-6 py-2 rounded-2xl bg-gray-100 border-1 border-solid border-main hover:border-green">
       <div className=" text-2xl mb-1 mt-5 text-center">
-        CREATE NEW <span className="font-bold text-mypurple">TOPIC</span>
+        CREATE NEW <span className="font-bold text-main">TOPIC</span>
         <br></br>
-        <span className=" mb-6 inline-block h-1 w-[100px] rounded bg-mypurple"></span>
+        <span className=" mb-6 inline-block h-1 w-[100px] rounded bg-main"></span>
       </div>
 
       <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
@@ -147,7 +147,7 @@ const CreateNewTopic = ({ session, getUsersTopics }) => {
               name="selectedModuleId"
               value={formData.selectedModuleId}
               onChange={handleChange}
-              className="block p-2 w-full cursor-text text-sm leading-[140%] font-normal mb-1 bg-white bg-opacity-80 border-2 border-solid border-myturquoise rounded-md"
+              className="block p-2 w-full cursor-text text-sm leading-[140%] font-normal mb-1 bg-white bg-opacity-80 border-2 border-solid border-babyBlue rounded-md"
             >
               <option value="">Choose module...</option>
               {modules.map((module) => (
@@ -168,7 +168,7 @@ const CreateNewTopic = ({ session, getUsersTopics }) => {
             value={formData.topic_name}
             onChange={handleChange}
             required
-            className="block p-2 text-sm w-full font-normal leading-[18px] tracking-[0px] appearance-none focus:ring-2 ring-offset-2 ring-sky-500 outline-0 mb-1 bg-white bg-opacity-80 border-2 border-solid border-myturquoise rounded-md"
+            className="block p-2 text-sm w-full font-normal leading-[18px] tracking-[0px] appearance-none focus:ring-2 ring-offset-2 ring-sky-500 outline-0 mb-1 bg-white bg-opacity-80 border-2 border-solid border-babyBlue rounded-md"
           />
 
           <label className="block cursor-text text-md leading-[140%] mb-2">
@@ -196,13 +196,13 @@ const CreateNewTopic = ({ session, getUsersTopics }) => {
             value={formData.reference_link}
             required
             onChange={handleChange}
-            className="block p-2 text-sm w-full font-normal leading-[18px] tracking-[0px] appearance-none focus:ring-2 ring-offset-2 ring-sky-500 outline-0 mb-1 bg-white bg-opacity-80 border-2 border-solid border-myturquoise rounded-md"
+            className="block p-2 text-sm w-full font-normal leading-[18px] tracking-[0px] appearance-none focus:ring-2 ring-offset-2 ring-sky-500 outline-0 mb-1 bg-secondary bg-opacity-80 border-2 border-solid border-babyBlue rounded-md"
           />
         </div>
 
         <button
           type="submit"
-          className="bg-myturquoise m-auto w-max px-8 py-2 rounded text-white text-m font-semibold hover:bg-mypurple"
+          className="bg-green m-auto w-max px-8 py-2 rounded text-secondary text-m font-semibold hover:bg-main"
         >
           Submit
         </button>

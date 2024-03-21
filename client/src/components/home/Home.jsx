@@ -7,6 +7,8 @@ import AllModulesPage from "../All_Modules_Page/AllModulesPage";
 import Footer from "../footer/Footer";
 import "../home/home.css";
 import ProfilePage from "../login/ProfilePage";
+import Loading from "../loading/Loading";
+import AboutPage from "../about1/AboutPage";
 
 const Home = ({ session }) => {
   const [refreshModalData, setRefreshModalData] = useState(false);
@@ -42,6 +44,7 @@ const Home = ({ session }) => {
                 }
               />
 
+              <Route path="/about" element={<AboutPage />} />
               <Route
                 path="/profilePage"
                 element={<ProfilePage session={session} />}
