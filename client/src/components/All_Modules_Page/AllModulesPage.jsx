@@ -6,6 +6,7 @@ import supabase from "../../config/supadaseClient";
 export default function AllModulesPage({ refreshmodalData }) {
   const [fetchError, setFetchError] = useState(null);
   const [modalData, setModalData] = useState([]);
+  const { isLoading } = useAuth0();
 
   useEffect(() => {
     const fetchAllModal = async () => {
@@ -34,26 +35,29 @@ export default function AllModulesPage({ refreshmodalData }) {
   }, [refreshmodalData]);
   console.log(modalData);
 
-  const [openListIndex, setOpenListIndex] = useState(null);
+  const [openListIndex, setOpenListIndex] = useState(null); //module
 
   const handleListHeaderClick = (index) => {
-    setOpenListIndex((prevIndex) => (prevIndex === index ? null : index));
+    setOpenListIndex((prevIndex) => (prevIndex === index ? null : index)); //module
   };
 
-  const [topicStates, setTopicStates] = useState(
-    modalData.flatMap((element) => element.topics.map(() => false))
-  );
+  const [selectedTopic, setSelectedTopic] = useState(null);
 
-  const toggleTopic = (moduleIndex, topicIndex) => {
-    const flatIndex = moduleIndex * modalData[0].topics.length + topicIndex;
-    const newTopicStates = [...topicStates];
-    newTopicStates[flatIndex] = !newTopicStates[flatIndex];
-    setTopicStates(newTopicStates);
+  const openTopic = (topic) => {
+    setSelectedTopic(topic);
   };
+
+  const closeTopic = () => {
+    setSelectedTopic(null);
+  };
+
+  if (isLoading) {
+    return <div>{<Loading />}</div>;
+  }
 
   return (
-    <div className="modules-container">
-      <h1 className="all-modules-header">All Modules</h1>
+    <div className="modules-container min-h-screen min-w-screen">
+      <h1 className="all-modules-header underline text-zinc-600">CYF Modules & Topics</h1>
       <ul className="modules-list">
         {modalData.map((element, index) => (
           <li
@@ -64,28 +68,19 @@ export default function AllModulesPage({ refreshmodalData }) {
               className="module-info"
               onClick={() => handleListHeaderClick(index)}
             >
-              <h2>{element.name}</h2>
-              <p>{element.description}</p>
+              <h2 className="module-name">{element.name}</h2>
+              <p className="module-description">{element.description}</p>
+
             </div>
             <div className="topics-container">
               <ul className="topics-list">
-                {element.topics.map((element, subIndex) => (
+                {element.topics.map((topic, subIndex) => (
                   <li
                     key={subIndex}
-                    onClick={() => toggleTopic(index, subIndex)}
+                    onClick={() => openTopic(topic)}
                     className="topics-container-inner"
                   >
-                    <h2>{element.topic_name}</h2>
-                    <CardForTopic
-                      key={element.id}
-                      showTopic={
-                        topicStates[
-                          index * modalData[0].topics.length + subIndex
-                        ]
-                      }
-                      toggleTopic={() => toggleTopic(index, subIndex)}
-                      topic={element}
-                    />
+                    <h2 className="cursor-pointer">{topic.topic_name}</h2>
                   </li>
                 ))}
               </ul>
@@ -93,6 +88,15 @@ export default function AllModulesPage({ refreshmodalData }) {
           </li>
         ))}
       </ul>
+      <CardForTopic
+        isOpen={!!selectedTopic}
+        onClose={closeTopic}
+        topic={selectedTopic || {}}
+        onReview={(topic) => {
+          console.log("Topic reviewed:", topic);
+          closeTopic();
+        }}
+      />
     </div>
   );
 }

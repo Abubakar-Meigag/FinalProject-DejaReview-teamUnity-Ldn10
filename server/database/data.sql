@@ -8,20 +8,20 @@ CREATE TABLE modules (
 );
 
 -- Add users table
-CREATE TABLE users (
-	id SERIAL PRIMARY KEY,
-	first_name VARCHAR(255) NOT NULL,
-	last_name VARCHAR(255) NOT NULL,
-	email VARCHAR(255) NOT NULL UNIQUE
-);
+-- CREATE TABLE users (
+-- 	id SERIAL PRIMARY KEY,
+-- 	first_name VARCHAR(255) NOT NULL,
+-- 	last_name VARCHAR(255) NOT NULL,
+-- 	email VARCHAR(255) NOT NULL UNIQUE
+-- );
 
-INSERT INTO
-	users (first_name, last_name, email)
-VALUES
-	('Elena', 'Barker', 'elena@gmail.com'),
-	('Abubakar', 'Meigag', 'beko@gmail.com'),
-	('Kristina', 'Dudnyk', 'kristina@gmail.com'),
-	('Joseph', 'Mwanza' 'joseph@gmail.com');
+-- INSERT INTO
+-- 	users (first_name, last_name, email)
+-- VALUES
+-- 	('Elena', 'Barker', 'elena@gmail.com'),
+-- 	('Abubakar', 'Meigag', 'beko@gmail.com'),
+-- 	('Kristina', 'Dudnyk', 'kristina@gmail.com'),
+-- 	('Joseph', 'Mwanza' 'joseph@gmail.com');
 
 -- topics table 
 CREATE TABLE topics (
@@ -41,4 +41,14 @@ CREATE TABLE learning_topics_tracker (
 	task_status INT DEFAULT 0,
 	due_date timestamp,
 	reviews_remaining INT DEFAULT 4
+);
+
+-- NEW users table
+CREATE TABLE users (
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(300) NOT NULL,
+	email VARCHAR(300) NOT NULL UNIQUE,
+	picture VARCHAR,
+	sub VARCHAR(700),
+	created_at timestamp DEFAULT now()
 );
