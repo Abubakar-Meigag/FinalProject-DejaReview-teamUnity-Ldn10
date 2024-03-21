@@ -1,7 +1,6 @@
 import React from "react";
 import { FcGoogle } from "react-icons/fc";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
-// import Loading from "../loading/Loading";
 
 const Login = () => {
   const supabase = useSupabaseClient();
@@ -14,10 +13,6 @@ const Login = () => {
       },
     });
   }
-
-  // if (isLoading) {
-  //   return <div>{<Loading />}</div>;
-  // }
 
   return (
     <div
