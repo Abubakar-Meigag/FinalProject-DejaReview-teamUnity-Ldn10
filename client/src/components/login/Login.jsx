@@ -27,9 +27,7 @@ const Login = () => {
       <div className="flex justify-center items-center h-24  text-white">
         <div className="flex flex-col items-center justify-center h-screen -left-24 -bottom-16 sticky lg:pr-[11rem] lg:pt-32 light">
           <div className="max-w-md bg-sky-700 text-white rounded-lg w-[26rem] text-center shadow-md p-6 border-solid border-sky-400">
-            <h2 className="text-[1.8rem] font-bold mb-4">
-                DEJA Review app
-            </h2>
+            <h2 className="text-[1.8rem] font-bold mb-4">DEJA Review app</h2>
 
             <div className="flex flex-col">
               <span
@@ -46,7 +44,7 @@ const Login = () => {
                 onClick={signIn}
               >
                 <FcGoogle className="text-3xl bg-gray-100 text-center" />
-                SignUp - Login with Google
+                SignUp/Login with Google
               </button>
             </div>
           </div>
