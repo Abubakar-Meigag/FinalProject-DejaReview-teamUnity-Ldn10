@@ -1,18 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
-import Loading from "../loading/Loading";
+import { useSupabaseClient } from "@supabase/auth-helpers-react";
+// import Loading from "../loading/Loading";
 import "../footer/footer.css";
 
 function Footer() {
-  const { logout, isLoading } = useAuth0();
+  const supabase = useSupabaseClient();
 
-  const handelLogout = () => {
-    logout();
-  };
-
-  if (isLoading) {
-    return <div>{<Loading />}</div>;
+  async function signOut() {
+    await supabase.auth.signOut();
   }
 
   return (
@@ -32,7 +28,7 @@ function Footer() {
               </li>
               <li
                 className="hover:text-pink-300  duration-500 cursor-pointer"
-                onClick={handelLogout}
+                onClick={signOut}
               >
                 <h1>Sign Out</h1>
               </li>

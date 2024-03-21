@@ -1,15 +1,23 @@
 import React from "react";
 import { FcGoogle } from "react-icons/fc";
-import { useAuth0 } from "@auth0/auth0-react";
-import Loading from "../loading/Loading";
-
+import { useSupabaseClient } from "@supabase/auth-helpers-react";
+// import Loading from "../loading/Loading";
 
 const Login = () => {
-  const { loginWithRedirect, isLoading } = useAuth0();  
+  const supabase = useSupabaseClient();
 
-  if (isLoading) {
-    return <div>{<Loading /> }</div>
+  async function signIn() {
+    await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        scopes: "https://www.googleapis.com/auth/calendar",
+      },
+    });
   }
+
+  // if (isLoading) {
+  //   return <div>{<Loading />}</div>;
+  // }
 
   return (
     <div
@@ -35,7 +43,7 @@ const Login = () => {
 
               <button
                 className="bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-bold py-3 px-4 rounded-md mt-2 hover:bg-indigo-600 hover:to-blue-600 transition ease-in-out duration-150 inline-flex gap-5 text-center pl-8"
-                onClick={loginWithRedirect}
+                onClick={signIn}
               >
                 <FcGoogle className="text-3xl bg-gray-100 text-center" />
                 SignUp - Login with Google
