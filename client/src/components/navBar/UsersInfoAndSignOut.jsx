@@ -13,7 +13,7 @@ const UsersInfoAndSignOut = ({ open, session }) => {
   }
 
   return (
-    <div className={`flex`}>
+    <div className={`flex mt-[16rem]`}>
       <ul>
         <div>
           <li className="inline-flex mb-2">
@@ -24,9 +24,9 @@ const UsersInfoAndSignOut = ({ open, session }) => {
             />
             <Link
               to="/profilePage"
-              className={`text-white origin-left font-semibold pt-3 cursor-pointer text-[15px] ${
-                !open && "scale-0"
-              } hover:text-pink-200 	`}
+              className={`text-secondary origin-left font-semibold pt-3 cursor-pointer text-[15px] ${
+                !open && "hidden"
+              } hover:text-lightBlue`}
             >
               {userMetadata.full_name}
             </Link>
@@ -36,20 +36,20 @@ const UsersInfoAndSignOut = ({ open, session }) => {
         <div>
           <li className="inline-flex">
             <TbLogout
-              style={{ color: "#f7f4d2" }}
-              className={`bg-purple-600 p-2 rounded cursor-pointer  float-left text-4xl mr-2 duration-500 ${
+              style={{ color: "#ffffff" }}
+              className={`bg-modules p-2 rounded cursor-pointer  float-left text-4xl mr-2 duration-500 ${
                 !open && "text-4xl"
               }`}
               onClick={signOut}
             />
-            <h1
-              className={`text-white origin-left font-semibold pt-2 cursor-pointer text-[15px] ${
-                !open && "scale-0"
-              } hover:text-pink-200`}
+            <div
+              className={`text-secondary origin-left font-semibold pt-2 cursor-pointer text-[15px] ${
+                !open && "hidden"
+              } hover:text-lightBlue`}
               onClick={signOut}
             >
               Sign Out
-            </h1>
+            </div>
           </li>
         </div>
       </ul>
