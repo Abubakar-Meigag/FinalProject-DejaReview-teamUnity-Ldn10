@@ -1,69 +1,60 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import React,  { useState } from "react";
+import React, { useState } from "react";
 import Login from "../login/Login";
-import SidePanel from "../navBar/SidePanel";
+import SideBar from "../navBar/SideBar";
 import PersonalDashboard from "../personalDashboard/personalDashboard";
 import AllModulesPage from "../All_Modules_Page/AllModulesPage";
-import Management from "../management/Management"
 import Footer from "../footer/Footer";
 import "../home/home.css";
-import { useAuth0 } from "@auth0/auth0-react";
 import ProfilePage from "../login/ProfilePage";
-import Loading from "../loading/Loading";
 
-const Home = () => {
+const Home = ({ session }) => {
   const [refreshModalData, setRefreshModalData] = useState(false);
-  const { isAuthenticated, isLoading } = useAuth0();
-
-  if (isLoading) {
-    return <div>{<Loading />}</div>;
-  }
 
   return (
     <BrowserRouter>
-      {isAuthenticated ? (
-        <div className="flex flex-row h-full w-full">
+      <div className="flex flex-row h-full w-full">
+        <div>
+          <SideBar session={session} />
+        </div>
+
+        <div className="flex flex-col w-full h-full">
           <div>
-            <SidePanel />
-          </div>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <PersonalDashboard
+                    session={session}
+                    refreshModalData={refreshModalData}
+                    setRefreshModalData={setRefreshModalData}
+                  />
+                }
+              />
 
-          <div className="flex flex-col w-full h-full">
+              <Route
+                path="/AllModulesPage"
+                element={
+                  <AllModulesPage
+                    refreshModalData={refreshModalData}
+                    setRefreshModalData={setRefreshModalData}
+                  />
+                }
+              />
+
+              <Route
+                path="/profilePage"
+                element={<ProfilePage session={session} />}
+              />
+              <Route path="/login" element={<Login session={session} />} />
+            </Routes>
+
             <div>
-              <Routes>
-                <Route
-                  path="/"
-                  element={
-                    <PersonalDashboard
-                      refreshModalData={refreshModalData}
-                      setRefreshModalData={setRefreshModalData}
-                    />
-                  }
-                />
-
-                <Route
-                  path="/AllModulesPage"
-                  element={
-                    <AllModulesPage
-                      refreshModalData={refreshModalData}
-                      setRefreshModalData={setRefreshModalData}
-                    />
-                  }
-                />
-
-                <Route path="/management" element={<Management />} />
-                <Route path="/profilePage" element={<ProfilePage />} />
-                <Route path="/login" element={<Login />} />
-              </Routes>
-
-              <div>
-                <Footer />
-              </div>
+              <Footer />
             </div>
           </div>
         </div>
-      ) : (
-        <Login />
-      )}
+      </div>
     </BrowserRouter>
   );
 };
