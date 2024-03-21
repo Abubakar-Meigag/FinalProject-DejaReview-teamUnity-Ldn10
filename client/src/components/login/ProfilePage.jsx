@@ -1,23 +1,25 @@
 import React from "react";
-import { useAuth0 } from "@auth0/auth0-react";
 
-
-const ProfilePage = () => {
-  const { user, isAuthenticated } = useAuth0();
+const ProfilePage = ({ session }) => {
+  const userMetadata = session.user.user_metadata;
 
   return (
     <div
       className={`flex justify-start p-20 bg-cover bg-center items-start  h-screen w-full`}
     >
       <div className="flex justify-center items-center  text-black">
-        {isAuthenticated && (
+        {session && (
           <div className="card card-side bg-gray-50 shadow-2xl border-solid border-gray-400 p-10">
             <figure>
-              <img src={user.picture} alt={user.name} className="h-48" />
+              <img
+                src={userMetadata.avatar_url}
+                alt={userMetadata.name}
+                className="h-48"
+              />
             </figure>
             <div className="card-body">
-              <p className="card-title"> Name -  {user.name}</p>
-              <p className="card-title">Email -  {user.email}</p>
+              <p className="card-title"> Name - {userMetadata.full_name}</p>
+              <p className="card-title">Email - {userMetadata.full_name}</p>
             </div>
           </div>
         )}

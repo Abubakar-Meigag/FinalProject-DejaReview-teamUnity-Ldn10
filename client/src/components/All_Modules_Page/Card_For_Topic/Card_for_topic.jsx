@@ -1,20 +1,22 @@
+import { useSession } from "@supabase/auth-helpers-react";
 import React, { useState, useEffect } from "react";
-import { useAuth0 } from "@auth0/auth0-react";
 import "./Card_for_topic.css";
 
 export default function CardForTopic({ isOpen, onClose, topic, onReview }) {
-  const { user } = useAuth0();
+  const session = useSession();
+  const userID = session.user.id;
 
   const [topicData, setTopicData] = useState({
     topicId: topic.topic_id,
-    userId: user.sub,
+    userId: userID,
   });
+
   useEffect(() => {
     setTopicData({
       topicId: topic.topic_id,
-      userId: user.sub,
+      userId: userID,
     });
-  }, [topic, user.sub]);
+  }, [topic, userID]);
 
   async function handleAddingTopic() {
     try {
@@ -30,7 +32,7 @@ export default function CardForTopic({ isOpen, onClose, topic, onReview }) {
       );
       const json = await request.json();
       console.log("handleAddingTopic json:", json);
-      alert('Topic added on Dashboard successfully');
+      alert("Topic added on Dashboard successfully");
     } catch (error) {
       console.log(console.log("handleAddingTopic error:", error));
     }
@@ -83,3 +85,35 @@ export default function CardForTopic({ isOpen, onClose, topic, onReview }) {
     </div>
   );
 }
+// async function createCalendarEvent() {
+//   console.log("Creating calendar event");
+//   const event = {
+//     summary: eventName,
+//     description: eventDescription,
+//     start: {
+//       dateTime: start.toISOString(), // Date.toISOString() ->
+//       timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone, // America/Los_Angeles
+//     },
+//     end: {
+//       dateTime: end.toISOString(), // Date.toISOString() ->
+//       timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone, // America/Los_Angeles
+//     },
+//   };
+//   await fetch(
+//     "https://www.googleapis.com/calendar/v3/calendars/primary/events",
+//     {
+//       method: "POST",
+//       headers: {
+//         Authorization: "Bearer " + session.provider_token, // Access token for google
+//       },
+//       body: JSON.stringify(event),
+//     }
+//   )
+//     .then((data) => {
+//       return data.json();
+//     })
+//     .then((data) => {
+//       console.log(data);
+//       alert("Event created, check your Google Calendar!");
+//     });
+// }
