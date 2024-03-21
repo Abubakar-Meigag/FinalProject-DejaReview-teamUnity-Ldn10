@@ -17,16 +17,16 @@ const Login = () => {
       style={{ backgroundImage: `url('lnd-10-cyf.jpeg')` }}
     >
       <div className="flex justify-center items-center h-24  text-white">
-        <div className="flex flex-col items-center justify-center h-screen -left-24  -bottom-16 sticky pr-[11rem] pt-32 light">
+        <div className="flex flex-col items-center justify-center h-screen -left-24 -bottom-16 sticky lg:pr-[11rem] lg:pt-32 light">
           <div className="max-w-md bg-sky-700 text-white rounded-lg w-[26rem] text-center shadow-md p-6 border-solid border-sky-400">
             <h2 className="text-[1.8rem] font-bold mb-4">
-              CYF Spaced Repetition
+                DEJA Review app
             </h2>
 
             <div className="flex flex-col">
               <span
                 placeholder="Enter your email address"
-                className="bg-sky-900 text-white border-0 rounded-md p-4 mb-4 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150 font-semibold text-[1.1rem] "
+                className="bg-sky-900 text-white border-0 rounded-md p-6 mb-4 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150 font-semibold text-[1.1rem] "
               >
                 <p>Where you always be reminded</p>
                 <p>Where you always can you plan</p>
