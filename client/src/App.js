@@ -1,28 +1,11 @@
-import { useState } from "react";
+import { useSession } from "@supabase/auth-helpers-react";
 import Home from "./components/home/Home";
-import { useAuth0 } from "@auth0/auth0-react";
-import Loading from "./components/loading/Loading";
-
-
-
-
+import Login from "./components/login/Login";
 
 function App() {
-  const [refreshModalData, setRefreshModalData] = useState(false);
-   const { isLoading } = useAuth0();
+  const session = useSession();
 
-   if (isLoading) {
-     return <div>{<Loading />}</div>;
-   }
-
-  return (
-    <div>
-        <Home
-          refreshModalData={refreshModalData}
-          setRefreshModalData={setRefreshModalData}
-        />
-    </div>
-  );
+  return <div>{session ? <Home session={session} /> : <Login />}</div>;
 }
 
 export default App;
