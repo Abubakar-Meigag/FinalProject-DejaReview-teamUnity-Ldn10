@@ -10,8 +10,8 @@ const redirectUri = window.location.origin;
 root.render(
   <React.StrictMode>
     <Auth0Provider
-      domain="dev-6she2stklqg8euth.us.auth0.com"
-      clientId="XbtWqy8pyx8f2qwOZfTtUmj4lOGspvtc"
+      domain="dev-pboa70gjrbjoz4ab.us.auth0.com"
+      clientId="afocggEWJPp2Hg4ufUBxwcH57PfgOla1"
       authorizationParams={{ redirect_uri: redirectUri }}
     >
       <App />

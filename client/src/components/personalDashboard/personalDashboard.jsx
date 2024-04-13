@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CreateNewTopic from "../createNewTopic/CreateNewTopic";
 import { useAuth0 } from "@auth0/auth0-react";
-import UpComingTopic from "../dashboard/UpComingTopic";
+import UpComingTopic from "../UpComingTopic/UpComingTopic";
 import IndividualTopicModalComponent from "../IndividualTopicModalComponent/IndividualTopicModalComponent";
 
 const PersonalDashboard = () => {
@@ -65,16 +65,48 @@ const PersonalDashboard = () => {
   };
 
   return (
-    <div className="min-h-screen p-6 flex flex-col items-center bg-secondary">
-      
-      <div className="flex flex-col gap-6">
-        <div className="flex justify-between flex-wrap md:flex-nowrap md:w-full gap-6">
-          <CreateNewTopic />
+    <div className="min-h-screen w-full flex bg-indigo-300">
+      <div className="flex flex-col items-center w-6/12">
+        <div className="flex w-full h-full justify-center items-center bg-indigo-400">
           <UpComingTopic userTopics={userTopics} />
         </div>
+        <div className="flex w-full h-full justify-center items-center bg-indigo-200">
+          <CreateNewTopic />
+        </div>
+      </div>
 
-        <div className="overflow-hidden rounded-lg">
-          <table className="table table-zebra border-collapse border-2 border-babyBlue">
+      <div className="flex flex-col content-center w-6/12 items-center gap-4 bg-indigo-600">
+        {userTopics.map((topic, index) => {
+          const dueDate = new Date(topic.due_date).toDateString();
+          return (
+            <div className="flex flex-col w-10/12 px-6  rounded-2xl bg-indigo-200">
+              <h1
+                className="border-2 border-babyBlue p-3 text-center cursor-pointer  hover:text-blue-500"
+                onClick={() => openModal(topic)}
+              >
+                {topic.topic_name}
+              </h1>
+              <h1 className="border-2 border-babyBlue p-3 text-center">
+                {topic.module_name}
+              </h1>
+              <h1 className="border-2 border-babyBlue p-3 text-center">
+                <a
+                  href={topic.reference_link}
+                  className="hover:text-blue-500"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Review Link
+                </a>
+              </h1>
+              <h1 className="border-2 border-babyBlue p-3 text-center">
+                {dueDate}
+              </h1>
+            </div>
+          );
+        })}
+
+        {/* <table className="table table-zebra border-collapse border-2 border-babyBlue">
             <thead className="bg-main">
               <tr className="text-base text-white">
                 <th className="font-semibold text-center">#</th>
@@ -93,7 +125,9 @@ const PersonalDashboard = () => {
                     key={topic.entry_id}
                     className={`font-semibold hover:text-black`}
                   >
-                    <td className="border-2 border-babyBlue p-3 text-center">{++rowNumber}</td>
+                    <td className="border-2 border-babyBlue p-3 text-center">
+                      {++rowNumber}
+                    </td>
                     <td
                       className="border-2 border-babyBlue p-3 text-center cursor-pointer  hover:text-blue-500"
                       onClick={() => openModal(topic)}
@@ -107,21 +141,21 @@ const PersonalDashboard = () => {
                       <a
                         href={topic.reference_link}
                         className="hover:text-blue-500"
-                        target="_blank" rel="noopener noreferrer"
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
                         Review Link
                       </a>
                     </td>
-                    <td className="border-2 border-babyBlue p-3 text-center">{dueDate}</td>
+                    <td className="border-2 border-babyBlue p-3 text-center">
+                      {dueDate}
+                    </td>
                   </tr>
                 );
               })}
             </tbody>
-          </table>
-        </div>
+          </table> */}
       </div>
-
-      {/* modal */}
       <IndividualTopicModalComponent
         isOpen={!!selectedTopic}
         onClose={closeModal}

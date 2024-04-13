@@ -63,22 +63,20 @@ const CreateNewTopic = () => {
   };
 
   return (
-    <div className="w-[28rem]  flex flex-col px-6 py-2 rounded-2xl bg-gray-100 border-1 border-solid border-main hover:border-green">
-      <div className=" text-2xl mb-1 mt-5 text-center">
-        CREATE NEW <span className="font-bold text-main">TOPIC</span>
-        <br></br>
-        <span className=" mb-6 inline-block h-1 w-[100px] rounded bg-main"></span>
+    <div className="w-10/12 flex flex-col bg-indigo-200">
+      <div className=" mb-2 mt-5 drop-shadow-lg">
+        <h1 className="text-4xl font-bold drop-shadow-lg">
+          CREATE NEW <span className="font-bold text-accent">TOPIC</span>
+        </h1>
       </div>
 
-      <form className="flex flex-col gap-3">
-        <div className="block relative">
+      <form className="flex flex-col gap-4">
+        <div className="flex flex-col gap-3">
           <div>
-            <label className="block cursor-text text-md leading-[140%] mb-1">
-              Modules
-            </label>
+            <label className="block text-lg leading-none mb-1">Modules</label>
             <select
               required
-              className="block p-2 w-full cursor-text text-sm leading-[140%] font-normal mb-1 bg-white bg-opacity-80 border-2 border-solid border-babyBlue rounded-md"
+              className="block p-2 w-full cursor-pointer text-base leading-[140%] font-normal mb-1 bg-white bg-opacity-80 rounded-md shadow-lg"
               onChange={(e) => setSelectedModuleId(e.target.value)}
             >
               <option>Choose module...</option>
@@ -89,52 +87,54 @@ const CreateNewTopic = () => {
               ))}
             </select>
           </div>
+          <div>
+            <label className="block text-lg leading-none mb-1">
+              Topic Name
+            </label>
+            <input
+              type="text"
+              placeholder={"Enter Topic"}
+              value={topic_name}
+              onChange={(e) => setTopicName(e.target.value)}
+              required
+              className="block p-2 text-base w-full font-normal leading-[18px] tracking-[0px] mb-1 bg-opacity-80 rounded-md shadow-lg bg-white"
+            />
+          </div>
 
-          <label className="block cursor-text text-md leading-[140%] mb-1">
-            Topic Name
-          </label>
-          <input
-            type="text"
-            placeholder={"Enter Topic"}
-            value={topic_name}
-            onChange={(e) => setTopicName(e.target.value)}
-            required
-            className="block p-2 text-sm w-full font-normal leading-[18px] tracking-[0px] appearance-none focus:ring-2 ring-offset-2 ring-sky-500 outline-0 mb-1 bg-white bg-opacity-80 border-2 border-solid border-babyBlue rounded-md"
-          />
-
-          <label className="block cursor-text text-md leading-[140%] mb-2">
-            Description
-          </label>
-          <input
-            type="text"
-            placeholder={"Enter Description"}
-            value={description}
-            required
-            onChange={(e) => setDescription(e.target.value)}
-            className="block p-2 text-sm w-full font-normal leading-[18px] tracking-[0px] appearance-none focus:ring-2 ring-offset-2 ring-sky-500 outline-0 mb-1 bg-white bg-opacity-80 border-2 border-solid border-babyBlue rounded-md"
-          />
-        </div>
-
-        <div className="block relative">
-          <label className="block cursor-text text-md leading-[140%] mb-2">
-            Reference Link
-          </label>
-          <input
-            type="url"
-            placeholder={"Enter Reference Link"}
-            value={reference_link}
-            required
-            onChange={(e) => setReferenceLink(e.target.value)}
-            className="block p-2 text-sm w-full font-normal leading-[18px] tracking-[0px] appearance-none focus:ring-2 ring-offset-2 ring-sky-500 outline-0 mb-1 bg-secondary bg-opacity-80 border-2 border-solid border-babyBlue rounded-md"
-          />
+          <div>
+            <label className="block text-lg leading-none mb-1">
+              Description
+            </label>
+            <input
+              type="text"
+              placeholder={"Enter Description"}
+              value={description}
+              required
+              onChange={(e) => setDescription(e.target.value)}
+              className="block p-2 text-base w-full font-normal leading-[18px] tracking-[0px] mb-1 bg-opacity-80 rounded-md shadow-lg bg-white"
+            />
+          </div>
+          <div>
+            <label className="block text-lg leading-none mb-1">
+              Reference Link
+            </label>
+            <input
+              type="url"
+              placeholder={"Enter Reference Link"}
+              value={reference_link}
+              required
+              onChange={(e) => setReferenceLink(e.target.value)}
+              className="block p-2 text-base w-full font-normal leading-[18px] tracking-[0px] mb-1 bg-opacity-80 rounded-md shadow-lg bg-white"
+            />
+          </div>
         </div>
 
         <button
           type="submit"
-          className="bg-green m-auto w-max px-8 py-2 rounded text-secondary text-m font-semibold hover:bg-main"
+          className="bg-indigo-500 m-auto w-max px-8 py-2 rounded-lg shadow-lg text-secondary text-lg font-bold hover:bg-indigo-700"
           onClick={(e) => handleSubmit(e)}
         >
-          Submit
+          SUBMIT
         </button>
       </form>
     </div>
