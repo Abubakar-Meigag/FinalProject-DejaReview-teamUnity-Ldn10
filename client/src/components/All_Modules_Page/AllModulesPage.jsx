@@ -46,7 +46,9 @@ export default function AllModulesPage({ refreshmodalData }) {
 
   return (
     <div className="modules-container min-h-screen min-w-screen">
-      <h1 className="all-modules-header underline text-zinc-600">CYF Modules & Topics</h1>
+      <h1 className="all-modules-header underline text-zinc-600">
+        CYF Modules and their Topics
+      </h1>
       <ul className="modules-list">
         {modalData.map((element, index) => (
           <li

@@ -8,6 +8,7 @@ const getDataForTable = async (req, res) => {
       SELECT
         ltt.id AS entry_id,
         modules.name AS module_name,
+        modules.color AS module_color,
         topics.topic_name,
         topics.reference_link,
         topics.description,

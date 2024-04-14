@@ -63,13 +63,7 @@ const CreateNewTopic = () => {
   };
 
   return (
-    <div className="w-10/12 flex flex-col bg-indigo-200">
-      <div className=" mb-2 mt-5 drop-shadow-lg">
-        <h1 className="text-4xl font-bold drop-shadow-lg">
-          CREATE NEW <span className="font-bold text-accent">TOPIC</span>
-        </h1>
-      </div>
-
+    <div className="w-11/12 flex flex-col p-3 rounded-md bg-indigo-100">
       <form className="flex flex-col gap-4">
         <div className="flex flex-col gap-3">
           <div>

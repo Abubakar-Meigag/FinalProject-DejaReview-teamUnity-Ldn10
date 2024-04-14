@@ -2,18 +2,11 @@ const UpComingTopic = ({ userTopics }) => {
   const firstThreeTopics = userTopics.slice(0, 3);
 
   return (
-    <div className="w-10/12 flex flex-col bg-indigo-400">
-      <div className="mb-6 drop-shadow-lg">
-        <h1 className="text-4xl font-bold drop-shadow-lg">
-          UPCOMING
-          <span className="font-bold text-accent"> TOPICS</span>
-          <br></br>
-        </h1>
-      </div>
+    <div className="w-11/12 p-3 flex flex-col rounded-md bg-indigo-100">
       <div className="flex flex-col gap-6">
         {firstThreeTopics.map((topic) => (
           <div
-            className="flex justify-between p-2 rounded-lg shadow-lg bg-purple-50"
+            className="flex justify-between p-2 rounded-lg shadow-lg bg-white"
             key={topic.entry_id}
           >
             <div>

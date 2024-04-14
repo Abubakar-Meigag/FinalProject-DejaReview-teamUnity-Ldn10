@@ -11,7 +11,8 @@ const PersonalDashboard = () => {
   const { sub } = user;
 
   const refreshData = () => {
-    fetch(`https://deja-review-backend.onrender.com/dataForTable?sub=${sub}`)
+    // fetch(`https://deja-review-backend.onrender.com/dataForTable?sub=${sub}`)
+    fetch(`http://localhost:5005/dataForTable?sub=${sub}`)
       .then((response) => response.json())
       .then((data) => {
         // console.log(data);
@@ -63,98 +64,64 @@ const PersonalDashboard = () => {
   const closeModal = () => {
     setSelectedTopic(null);
   };
-
+  console.log(userTopics);
   return (
-    <div className="min-h-screen w-full flex bg-indigo-300">
+    <div className="max-h-screen w-full flex m-0 bg-indigo-300">
       <div className="flex flex-col items-center w-6/12">
-        <div className="flex w-full h-full justify-center items-center bg-indigo-400">
+        <div className="flex flex-col w-full h-full justify-center items-center bg-white">
+          <div className="flex w-11/12 py-3">
+            <h1 className="text-4xl font-bold ">
+              UPCOMING
+              <span className="font-bold text-accent"> TOPICS</span>
+            </h1>
+          </div>
           <UpComingTopic userTopics={userTopics} />
         </div>
-        <div className="flex w-full h-full justify-center items-center bg-indigo-200">
+        <div className="flex flex-col w-full h-full justify-center items-center bg-white">
+          <div className="flex w-11/12 py-3">
+            <h1 className="text-4xl font-bold ">
+              CREATE NEW <span className="font-bold text-accent">TOPIC</span>
+            </h1>
+          </div>
           <CreateNewTopic />
         </div>
       </div>
 
-      <div className="flex flex-col content-center w-6/12 items-center gap-4 bg-indigo-600">
+      <div className="flex flex-col overflow-y-scroll content-center w-6/12 items-center gap-4 bg-white">
+        <div className="flex w-10/12 py-3 font-bold text-5xl gap-3">
+          <h1 className="">Topics left to review</h1>
+          <h4 className="rounded-md bg-main p-1">{userTopics.length}</h4>
+        </div>
         {userTopics.map((topic, index) => {
           const dueDate = new Date(topic.due_date).toDateString();
           return (
-            <div className="flex flex-col w-10/12 px-6  rounded-2xl bg-indigo-200">
-              <h1
-                className="border-2 border-babyBlue p-3 text-center cursor-pointer  hover:text-blue-500"
-                onClick={() => openModal(topic)}
-              >
-                {topic.topic_name}
-              </h1>
-              <h1 className="border-2 border-babyBlue p-3 text-center">
-                {topic.module_name}
-              </h1>
-              <h1 className="border-2 border-babyBlue p-3 text-center">
-                <a
-                  href={topic.reference_link}
-                  className="hover:text-blue-500"
-                  target="_blank"
-                  rel="noopener noreferrer"
+            <div
+              key={index}
+              className="flex w-10/12 justify-between  p-4 rounded-md bg-blue-50 items-start"
+            >
+              <div className="flex w-8/12 gap-2 items-center ">
+                <h1 className="">{topic.topic_name.toUpperCase()}</h1>
+                <div>
+                  <h1
+                    className="px-2 py-1 rounded-md"
+                    style={{ backgroundColor: topic.module_color }}
+                  >
+                    {topic.module_name}
+                  </h1>
+                </div>
+              </div>
+              <div className="w-4/12 flex flex-col items-end justify-center gap-3">
+                <h1 className="flex justify-self-end">{dueDate}</h1>
+                <button
+                  onClick={() => openModal(topic)}
+                  className="w-max px-8 py-1 text-lg outline border rounded-md border-gray-900 hover:bg-indigo-100"
                 >
-                  Review Link
-                </a>
-              </h1>
-              <h1 className="border-2 border-babyBlue p-3 text-center">
-                {dueDate}
-              </h1>
+                  Learn now
+                </button>
+              </div>
             </div>
           );
         })}
-
-        {/* <table className="table table-zebra border-collapse border-2 border-babyBlue">
-            <thead className="bg-main">
-              <tr className="text-base text-white">
-                <th className="font-semibold text-center">#</th>
-                <th className="font-semibold text-center">Topic Name</th>
-                <th className="font-semibold text-center">Module</th>
-                <th className="font-semibold text-center">Link</th>
-                <th className="font-semibold text-center">Due Date</th>
-              </tr>
-            </thead>
-
-            <tbody className="border-2 border-babyBlue">
-              {userTopics.map((topic, index) => {
-                const dueDate = new Date(topic.due_date).toDateString();
-                return (
-                  <tr
-                    key={topic.entry_id}
-                    className={`font-semibold hover:text-black`}
-                  >
-                    <td className="border-2 border-babyBlue p-3 text-center">
-                      {++rowNumber}
-                    </td>
-                    <td
-                      className="border-2 border-babyBlue p-3 text-center cursor-pointer  hover:text-blue-500"
-                      onClick={() => openModal(topic)}
-                    >
-                      {topic.topic_name}
-                    </td>
-                    <td className="border-2 border-babyBlue p-3 text-center">
-                      {topic.module_name}
-                    </td>
-                    <td className="border-2 border-babyBlue p-3 text-center">
-                      <a
-                        href={topic.reference_link}
-                        className="hover:text-blue-500"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Review Link
-                      </a>
-                    </td>
-                    <td className="border-2 border-babyBlue p-3 text-center">
-                      {dueDate}
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table> */}
       </div>
       <IndividualTopicModalComponent
         isOpen={!!selectedTopic}
