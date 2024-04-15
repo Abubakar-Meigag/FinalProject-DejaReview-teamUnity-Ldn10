@@ -65,9 +65,9 @@ const CreateNewTopic = () => {
   return (
     <div className="w-full flex flex-col p-3 rounded-md bg-indigo-100 gap-1">
       <h1 className="text-3xl font-bold">
-        CREATE NEW <span className="font-bold text-accent">TOPIC</span>
+        CREATE NEW <span className="font-bold text-blue-700">TOPIC</span>
       </h1>
-      <form className="flex flex-col gap-4">
+      <form className="lg:w-[24rem] flex flex-col gap-4">
         <div className="flex flex-col gap-3">
           <div>
             <label className="block text-lg leading-none mb-1">Modules</label>

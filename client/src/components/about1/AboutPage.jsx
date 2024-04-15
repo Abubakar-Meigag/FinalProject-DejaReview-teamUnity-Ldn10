@@ -43,7 +43,7 @@ function AboutPage() {
             </div>
             <span> </span>
             <Link to="content" smooth={true} duration={700}>
-              <button className="btn bg-green-400 text-secondary hover:bg-main mt-9">
+              <button className="btn bg-blue-700 text-secondary hover:bg-main mt-9">
                 Get Started
               </button>
             </Link>

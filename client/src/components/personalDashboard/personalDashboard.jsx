@@ -93,7 +93,7 @@ const PersonalDashboard = () => {
           <div className="flex w-full font-bold text-5xl">
             <h1 className="text-4xl font-bold">
               TOPICS TO REVIEW:
-              <span className="text-accent">{userTopics.length}</span>
+              <span className="text-blue-700 pl-2">{userTopics.length}</span>
             </h1>
           </div>
           <div className="rounded-md bg-indigo-100 p-4 flex flex-col gap-4">
@@ -118,7 +118,7 @@ const PersonalDashboard = () => {
                   </div>
                   <div className="w-6/12 p-2 flex flex-col items-end justify-center gap-3">
                     <h1
-                      className={`flex justify-self-end ${getStatus(
+                      className={`flex justify-self-end font-semibold ${getStatus(
                         topic.due_date
                       )}`}
                     >

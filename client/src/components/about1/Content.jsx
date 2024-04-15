@@ -47,7 +47,7 @@ function Content() {
           </div>
           <div className="mt-6 flex justify-center">
             <Link to="demo" smooth={true} duration={700}>
-              <button className="btn bg-green-400 hover:bg-main text-secondary">
+              <button className="btn bg-blue-700 hover:bg-main text-secondary">
                 Learn more
               </button>
             </Link>
