@@ -13,7 +13,7 @@ module.exports = {
         lightBlue: "#c6ebff", // blue for text hover
         greenDate: "#2ef514",
         orangeDate: "#f79f57",
-        redDate: "#fa5c81",
+        redDate: "#ffadc1",
       },
     },
   },
