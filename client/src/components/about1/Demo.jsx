@@ -4,7 +4,7 @@ import ReactPlayer from "react-player";
 function Demo() {
   return (
     <div className="flex items-start pt-2  justify-center bg-secondary min-h-screen">
-      <div className="max-w-lg px-4 py-8 text-neutral-content">
+      <div className="w-10/12 px-4 py-8 text-neutral-content">
         <h1 className="mb-6 text-3xl font-bold text-left text-zinc-800">
           How to use the app?
         </h1>
@@ -22,7 +22,9 @@ function Demo() {
         </div>
 
         <div className="mb-6">
-          <h2 className="text-2xl font-bold underline pb-4 text-zinc-800">Watch the Video:</h2>
+          <h2 className="text-2xl font-bold underline pb-4 text-zinc-800">
+            Watch the Video:
+          </h2>
           <div className="flex justify-center">
             <ReactPlayer
               controls={true}

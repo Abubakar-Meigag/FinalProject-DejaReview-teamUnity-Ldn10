@@ -46,36 +46,43 @@ export default function AllModulesPage({ refreshmodalData }) {
 
   return (
     <div className="modules-container min-h-screen min-w-screen">
-      <h1 className="all-modules-header underline text-zinc-600">CYF Modules & Topics</h1>
-      <ul className="modules-list">
+      <h1 className="all-modules-header self-start uppercase font-semibold">
+        CYF Modules & Topics
+      </h1>
+      <div className=" modules-list">
         {modalData.map((element, index) => (
-          <li
-            className={`list-item ${index === openListIndex ? "open" : ""}`}
+          <div
+            className={`flex w-full justify-between rounded-md items-start list-item ${
+              index === openListIndex ? "open" : ""
+            }`}
             key={index}
           >
             <div
-              className="module-info"
+              className="bg-indigo-300 module-info"
               onClick={() => handleListHeaderClick(index)}
             >
-              <h2 className="module-name">{element.module_name}</h2>
-              <p className="module-description">{element.module_description}</p>
+              <h2 className="text-3xl font-semibold text-white">
+                {element.module_name}
+              </h2>
+              <p className="py-1">{element.module_description}</p>
             </div>
-            <div className="topics-container">
-              <ul className="topics-list">
-                {element.topics.map((topic, subIndex) => (
-                  <li
-                    key={subIndex}
-                    onClick={() => openTopic(topic)}
-                    className="topics-container-inner"
-                  >
-                    <h2 className="cursor-pointer">{topic.topic_name}</h2>
-                  </li>
-                ))}
-              </ul>
+            <div className="flex flex-col my-2 gap-3 topics-container">
+              {element.topics.map((topic, subIndex) => (
+                <div
+                  key={subIndex}
+                  onClick={() => openTopic(topic)}
+                  className="flex justify-between p-2 bg-indigo-100 rounded-md"
+                >
+                  <h2 className="cursor-pointer">{topic.topic_name}</h2>
+                  <button className="w-max px-8 py-1 text-lg  border border-solid rounded-md border-gray-500 hover:bg-accent hover:text-white">
+                    Add topic
+                  </button>
+                </div>
+              ))}
             </div>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
       <CardForTopic
         isOpen={!!selectedTopic}
         onClose={closeTopic}

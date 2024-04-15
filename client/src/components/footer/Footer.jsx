@@ -16,7 +16,7 @@ function Footer() {
   }
 
   return (
-    <div className="">
+    <div className="mob-footer">
       <footer className="footer footer-center p-4 font-bold bg-main text-secondary static bottom-0">
         <aside className="">
           <nav className="grid grid-flow-col pb-2 gap-10">
@@ -38,9 +38,6 @@ function Footer() {
               </li>
             </ul>
           </nav>
-
-
-
           <aside>
             <p>
               Copyright © 2023 - All right reserved by Team Unity in

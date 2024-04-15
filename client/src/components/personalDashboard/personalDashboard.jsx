@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CreateNewTopic from "../createNewTopic/CreateNewTopic";
 import { useAuth0 } from "@auth0/auth0-react";
-import UpComingTopic from "../dashboard/UpComingTopic";
+import UpComingTopic from "../UpComingTopic/UpComingTopic";
 import IndividualTopicModalComponent from "../IndividualTopicModalComponent/IndividualTopicModalComponent";
 
 const PersonalDashboard = () => {
@@ -14,7 +14,6 @@ const PersonalDashboard = () => {
     fetch(`https://deja-review-backend.onrender.com/dataForTable?sub=${sub}`)
       .then((response) => response.json())
       .then((data) => {
-        // console.log(data);
         setUserTopics(data);
       })
       .catch((error) => console.error("Error fetching data:", error));
@@ -54,8 +53,6 @@ const PersonalDashboard = () => {
     refreshData();
   }, []);
 
-  let rowNumber = 0;
-
   const openModal = (topic) => {
     setSelectedTopic(topic);
   };
@@ -63,65 +60,83 @@ const PersonalDashboard = () => {
   const closeModal = () => {
     setSelectedTopic(null);
   };
+  console.log(userTopics);
+
+  function getStatus(date) {
+    const currentDate = new Date();
+    console.log("currentDate", currentDate);
+
+    const reviewDate = new Date(date);
+
+    const timeDiff = reviewDate.getTime() - currentDate.getTime();
+    console.log("timeDiff", timeDiff);
+    const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    console.log("daysDiff", daysDiff);
+    if (daysDiff >= 4) {
+      return "bg-greenDate";
+    } else if (daysDiff >= 1 && daysDiff <= 3) {
+      return "bg-orangeDate";
+    } else if (daysDiff <= 0) {
+      return "bg-redDate";
+    }
+  }
 
   return (
     <div className="min-h-screen p-6 flex flex-col items-center bg-secondary">
-      
       <div className="flex flex-col gap-6">
         <div className="flex justify-between flex-wrap md:flex-nowrap md:w-full gap-6">
           <CreateNewTopic />
           <UpComingTopic userTopics={userTopics} />
         </div>
 
-        <div className="overflow-hidden rounded-lg">
-          <table className="table table-zebra border-collapse border-2 border-babyBlue">
-            <thead className="bg-main">
-              <tr className="text-base text-white">
-                <th className="font-semibold text-center">#</th>
-                <th className="font-semibold text-center">Topic Name</th>
-                <th className="font-semibold text-center">Module</th>
-                <th className="font-semibold text-center">Link</th>
-                <th className="font-semibold text-center">Due Date</th>
-              </tr>
-            </thead>
-
-            <tbody className="border-2 border-babyBlue">
-              {userTopics.map((topic, index) => {
-                const dueDate = new Date(topic.due_date).toDateString();
-                return (
-                  <tr
-                    key={topic.entry_id}
-                    className={`font-semibold hover:text-black`}
-                  >
-                    <td className="border-2 border-babyBlue p-3 text-center">{++rowNumber}</td>
-                    <td
-                      className="border-2 border-babyBlue p-3 text-center cursor-pointer  hover:text-blue-500"
-                      onClick={() => openModal(topic)}
-                    >
-                      {topic.topic_name}
-                    </td>
-                    <td className="border-2 border-babyBlue p-3 text-center">
-                      {topic.module_name}
-                    </td>
-                    <td className="border-2 border-babyBlue p-3 text-center">
-                      <a
-                        href={topic.reference_link}
-                        className="hover:text-blue-500"
-                        target="_blank" rel="noopener noreferrer"
+        <div className="pt-6  bflex flex-col content-center w-full items-center gap-4">
+          <div className="flex w-full font-bold text-5xl">
+            <h1 className="text-4xl font-bold">
+              TOPICS TO REVIEW:
+              <span className="text-accent">{userTopics.length}</span>
+            </h1>
+          </div>
+          <div className="rounded-md bg-indigo-100 p-4 flex flex-col gap-4">
+            {userTopics.map((topic, index) => {
+              const dueDate = new Date(topic.due_date).toDateString();
+              return (
+                <div
+                  key={index}
+                  className="flex w-full justify-between rounded-md items-start"
+                  style={{ backgroundColor: "white" }}
+                >
+                  <div className="flex w-6/12 p-4 gap-2 items-start ">
+                    <h1 className="">{topic.topic_name.toUpperCase()}</h1>
+                    <div>
+                      <h1
+                        className="px-2 rounded-md"
+                        style={{ backgroundColor: topic.module_color }}
                       >
-                        Review Link
-                      </a>
-                    </td>
-                    <td className="border-2 border-babyBlue p-3 text-center">{dueDate}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+                        {topic.module_name}
+                      </h1>
+                    </div>
+                  </div>
+                  <div className="w-6/12 p-2 flex flex-col items-end justify-center gap-3">
+                    <h1
+                      className={`flex justify-self-end ${getStatus(
+                        topic.due_date
+                      )}`}
+                    >
+                      {dueDate}
+                    </h1>
+                    <button
+                      onClick={() => openModal(topic)}
+                      className="flex self-end w-max px-8 pt-1 text-lg border border-solid rounded-md border-gray-500 hover:bg-indigo-100"
+                    >
+                      Learn now
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
-
-      {/* modal */}
       <IndividualTopicModalComponent
         isOpen={!!selectedTopic}
         onClose={closeModal}

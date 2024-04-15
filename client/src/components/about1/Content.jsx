@@ -7,7 +7,7 @@ function Content() {
   return (
     <div>
       <div className="flex items-center justify-center bg-secondary min-h-screen">
-        <div className="max-w-lg px-4 py-8 text-neutral-content">
+        <div className="w-10/12 px-4 py-8 text-neutral-content">
           <h1 className="mb-3 text-3xl text-zinc-800 font-bold text-left">
             What is DEJA Review app?
           </h1>
@@ -27,8 +27,8 @@ function Content() {
                 className="underline font-bold"
               >
                 click here
-              </a>
-              {" "}or watch the video below.
+              </a>{" "}
+              or watch the video below.
             </p>
           </div>
 
@@ -47,7 +47,7 @@ function Content() {
           </div>
           <div className="mt-6 flex justify-center">
             <Link to="demo" smooth={true} duration={700}>
-              <button className="btn bg-green hover:bg-main text-secondary">
+              <button className="btn bg-green-400 hover:bg-main text-secondary">
                 Learn more
               </button>
             </Link>

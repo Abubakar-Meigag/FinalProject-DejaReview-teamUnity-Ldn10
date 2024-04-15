@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { BsArrowLeftShort } from "react-icons/bs";
-import { BsSearch } from "react-icons/bs";
 import NavBar from "./NavBar";
 import Profile from "./Profile";
 import "../navBar/navBar.css";
@@ -23,38 +22,19 @@ const SidePanel = () => {
 
           <div className="flex flex-col">
             <div
-              className={` text-secondary rounded cursor-pointer block float-left mr-4 text-[#fffff] text-2xl font-bold duration-500 ${open}`}
+              className={`cursor-pointer block float-left mr-4 text-accent text-3xl font-bold duration-500 ${open}`}
             >
               DEJA
             </div>
             <h1
-              className={`text-secondary origin-left font-semibold  text-[15px] duration-500 ${
+              className={`cursor-pointer block float-left mr-4 text-accent text-3xl font-bold duration-500 ${
                 !open && "scale-0"
               }`}
             >
-              Spaced Repetition
+              REVIEW
             </h1>
           </div>
-
-          <div
-            className={`flex item-center rounded-md bg-secondary mt-6 
-          ${!open ? "p-2.5" : "p-4"} py-2`}
-          >
-            <BsSearch
-              className={`text-black text-lg block float-left mb-1 cursor-pointer mr-2
-            ${open && "mt-2"}`}
-            />
-
-            <input
-              type={"search"}
-              placeholder="Search..."
-              className={`bg-secondary w-full text-black focus:outline-none ${
-                !open && "hidden"
-              }`}
-            />
-          </div>
-
-          <div>
+          <div className="flex flex-col gap-10">
             <div className="nav-items">
               <NavBar open={open} setOpen={setOpen} />
             </div>

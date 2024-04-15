@@ -1,1 +1,6 @@
-
+@media (min-width: 630px) {
+  .mob-footer {
+    display: none;
+    color: black;
+  }
+}

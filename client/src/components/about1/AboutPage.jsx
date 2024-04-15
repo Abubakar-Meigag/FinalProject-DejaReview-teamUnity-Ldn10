@@ -7,24 +7,22 @@ import "../about1/aboutPage.css";
 function AboutPage() {
   return (
     <div>
-      <div
-        className="hero min-h-screen bg-secondary"
-      >
-        <div className="hero-overlay bg-secondary"></div>
+      <div className="hero min-h-screen bg-lightIndigo">
+        <div className="hero-overlay bg-lightIndigo"></div>
         <div className="hero-content text-center text-neutral-content ">
           <div className="max-w-lx">
             <h1 className="text-[55px] font-medium  text-zinc-800">
-              Welcome to <span className="underline font-bold text-main">DEJA</span>{" "}
-              Review
+              Welcome to{" "}
+              <span className="font-semibold text-accent">DEJA REVIEW</span>
             </h1>
             <h1 className="mb-6 text-[32px] font-medium text-zinc-800">
-              Spaced Repetition technique
+              Spaced Repetition helper
             </h1>
 
             <div className="inline text-3xl  sm:text-3xl font-bold text-zinc-800">
               <h2 className="pl-16 text-4xl text-left">
                 Where you always{" "}
-                <TypeAnimation 
+                <TypeAnimation
                   sequence={[
                     "be reminded ",
                     3000,
@@ -35,13 +33,19 @@ function AboutPage() {
                   ]}
                   cursorStyle={true}
                   repeat={Infinity}
-                  style={{ fontSize: "1em", paddingLeft: "5px", color: "#2d42c6" }}
+                  style={{
+                    fontSize: "1em",
+                    paddingLeft: "5px",
+                    color: "#2d42c6",
+                  }}
                 />
               </h2>
             </div>
             <span> </span>
             <Link to="content" smooth={true} duration={700}>
-              <button className="btn bg-green text-secondary hover:bg-main mt-9">Get Started</button>
+              <button className="btn bg-green-400 text-secondary hover:bg-main mt-9">
+                Get Started
+              </button>
             </Link>
           </div>
         </div>
