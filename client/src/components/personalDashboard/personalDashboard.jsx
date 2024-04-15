@@ -11,11 +11,9 @@ const PersonalDashboard = () => {
   const { sub } = user;
 
   const refreshData = () => {
-    // fetch(`https://deja-review-backend.onrender.com/dataForTable?sub=${sub}`)
-    fetch(`http://localhost:5005/dataForTable?sub=${sub}`)
+    fetch(`https://deja-review-backend.onrender.com/dataForTable?sub=${sub}`)
       .then((response) => response.json())
       .then((data) => {
-        // console.log(data);
         setUserTopics(data);
       })
       .catch((error) => console.error("Error fetching data:", error));

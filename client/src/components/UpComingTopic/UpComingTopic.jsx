@@ -20,7 +20,7 @@ const UpComingTopic = ({ userTopics }) => {
               >
                 {topic.module_name}
               </p>
-              <h3 className="text-lg font-semibold text-1xl" dummy="w-[165px]">
+              <h3 className="text-lg font-semibold text-1xl">
                 {topic.topic_name}
               </h3>
             </div>
@@ -37,4 +37,3 @@ const UpComingTopic = ({ userTopics }) => {
 };
 
 export default UpComingTopic;
-/* <span className="mb-6 inline-block h-1 w-[100px] rounded bg-main"></span> */

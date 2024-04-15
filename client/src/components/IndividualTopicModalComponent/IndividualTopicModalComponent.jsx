@@ -1,5 +1,5 @@
 import React from "react";
-import DeleteVideo from "./DeleteTopic";
+// import DeleteVideo from "./DeleteTopic";
 
 const IndividualTopicModalComponent = ({
   isOpen,
