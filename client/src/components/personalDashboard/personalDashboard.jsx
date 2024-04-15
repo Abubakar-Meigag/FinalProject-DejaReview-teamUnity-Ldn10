@@ -63,6 +63,26 @@ const PersonalDashboard = () => {
     setSelectedTopic(null);
   };
   console.log(userTopics);
+
+  function getStatus(date) {
+    const currentDate = new Date();
+    console.log("currentDate", currentDate);
+
+    const reviewDate = new Date(date);
+
+    const timeDiff = reviewDate.getTime() - currentDate.getTime();
+    console.log("timeDiff", timeDiff);
+    const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    console.log("daysDiff", daysDiff);
+    if (daysDiff >= 4) {
+      return "bg-greenDate";
+    } else if (daysDiff >= 1 && daysDiff <= 3) {
+      return "bg-orangeDate";
+    } else if (daysDiff <= 0) {
+      return "bg-redDate";
+    }
+  }
+
   return (
     <div className="min-h-screen p-6 flex flex-col items-center bg-secondary">
       <div className="flex flex-col gap-6">
@@ -99,7 +119,13 @@ const PersonalDashboard = () => {
                     </div>
                   </div>
                   <div className="w-6/12 p-2 flex flex-col items-end justify-center gap-3">
-                    <h1 className="flex justify-self-end">{dueDate}</h1>
+                    <h1
+                      className={`flex justify-self-end ${getStatus(
+                        topic.due_date
+                      )}`}
+                    >
+                      {dueDate}
+                    </h1>
                     <button
                       onClick={() => openModal(topic)}
                       className="flex self-end w-max px-8 pt-1 text-lg border border-solid rounded-md border-gray-500 hover:bg-indigo-100"

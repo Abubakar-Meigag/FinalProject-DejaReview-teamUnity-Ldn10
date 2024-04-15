@@ -11,6 +11,9 @@ module.exports = {
         accent: "#4346d9",
         secondary: "#ffffff", // white
         lightBlue: "#c6ebff", // blue for text hover
+        greenDate: "#2ef514",
+        orangeDate: "#f57914",
+        redDate: "#f51448",
       },
     },
   },
