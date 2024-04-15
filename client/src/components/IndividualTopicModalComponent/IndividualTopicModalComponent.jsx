@@ -19,15 +19,15 @@ const IndividualTopicModalComponent = ({
       <div className="relative p-4 w-full max-w-4xl max-h-full">
         <div
           onClick={(e) => e.stopPropagation()}
-          className="relative bg-white rounded-lg shadow dark:bg-blue-500"
+          className="relative bg-lightIndigo rounded-lg shadow"
         >
           <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+            <h3 className="text-xl font-semibold text-gray-900">
               {topic.topic_name}
             </h3>
             <button
               onClick={onClose}
-              className="bg-blue-600 hover:bg-gray-200 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600"
+              className="bg-indigo-50 hover:bg-gray-200 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600"
               data-modal-hide="default-modal"
             >
               <svg
@@ -49,14 +49,14 @@ const IndividualTopicModalComponent = ({
             </button>
           </div>
           <div className="p-4 md:p-5 space-y-4">
-            <p className="text-normal leading-relaxed text-white">
+            <p className="text-normal leading-relaxed text-black pb-2 text-justify">
               {topic.description}
             </p>
             <a
               href={topic.reference_link}
               target="_blank"
               rel="noopener noreferrer"
-              className="underline underline-offset-8"
+              className="underline underline-offset-8 font-semibold"
             >
               More about this topic
             </a>

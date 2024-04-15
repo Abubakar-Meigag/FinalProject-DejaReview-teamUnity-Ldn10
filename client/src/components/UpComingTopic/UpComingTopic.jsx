@@ -3,14 +3,14 @@ const UpComingTopic = ({ userTopics }) => {
 
   return (
     <div className="w-full p-3 flex flex-col rounded-md bg-indigo-100 gap-1">
-      <h1 className="text-3xl font-bold ">
+      <h1 className="text-3xl font-bold pb-6 ">
         UPCOMING
-        <span className="font-bold text-accent"> TOPICS</span>
+        <span className="font-bold text-blue-700"> TOPICS</span>
       </h1>
       <div className="flex flex-col gap-6">
         {firstThreeTopics.map((topic) => (
           <div
-            className="flex justify-between p-2 rounded-lg shadow-lg bg-white"
+            className="flex lg:w-[24rem] justify-between p-2 rounded-lg shadow-lg bg-white"
             key={topic.entry_id}
           >
             <div className="w-7/12">
@@ -20,7 +20,7 @@ const UpComingTopic = ({ userTopics }) => {
               >
                 {topic.module_name}
               </p>
-              <h3 className="text-lg font-semibold text-1xl">
+              <h3 className="text-lg font-semibold text-1xl truncate w-[200px]">
                 {topic.topic_name}
               </h3>
             </div>
