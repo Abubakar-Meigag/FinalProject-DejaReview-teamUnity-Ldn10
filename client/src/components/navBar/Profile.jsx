@@ -17,21 +17,20 @@ const Profile = ({ open }) => {
 
   return (
     isAuthenticated && (
-      <div className={`flex mt-[16rem]`}>
+      <div className={`flex `}>
         <ul>
           <div>
             <li className="inline-flex mb-2">
-            <Link
-                to="/profilePage">
-              <img
-                src={user.picture}
-                alt="user-img"
-                className={`h-[35px] mr-2 cursor-pointer rounded-md border-2 border-sky-400 `}
-              />
+              <Link to="/profilePage">
+                <img
+                  src={user.picture}
+                  alt="user-img"
+                  className={`h-[35px] mr-2 cursor-pointer rounded-md border-2 border-sky-400 `}
+                />
               </Link>
               <Link
                 to="/profilePage"
-                className={`text-secondary origin-left font-semibold pt-3 cursor-pointer text-[15px] ${
+                className={`text-secondary origin-left font-semibold pt-3 cursor-pointer text-[20px] ${
                   !open && "hidden"
                 } hover:text-lightBlue`}
               >
@@ -44,13 +43,13 @@ const Profile = ({ open }) => {
             <li className="inline-flex">
               <TbLogout
                 style={{ color: "#ffffff" }}
-                className={`bg-modules p-2 rounded cursor-pointer  float-left text-4xl mr-2 duration-500 ${
+                className={`bg-accent p-1 rounded cursor-pointer float-left text-4xl mr-2 duration-500 ${
                   !open && "text-4xl"
                 }`}
                 onClick={handelLogout}
               />
               <h2
-                className={`text-secondary origin-left font-semibold pt-2 cursor-pointer text-[15px] ${
+                className={`text-secondary origin-left font-semibold text-[20px] cursor-pointer hover:text-accent ${
                   !open && "hidden"
                 } hover:text-lightBlue`}
                 onClick={handelLogout}

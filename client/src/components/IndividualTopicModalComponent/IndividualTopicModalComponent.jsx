@@ -1,4 +1,5 @@
 import React from "react";
+import DeleteVideo from "./DeleteTopic";
 
 const IndividualTopicModalComponent = ({
   isOpen,
@@ -14,7 +15,7 @@ const IndividualTopicModalComponent = ({
   };
 
   return (
-    <div onClick={onClose} className="new-video-form-container ">
+    <div onClick={onClose} className="selected-topic">
       <div className="relative p-4 w-full max-w-4xl max-h-full">
         <div
           onClick={(e) => e.stopPropagation()}
@@ -38,9 +39,9 @@ const IndividualTopicModalComponent = ({
               >
                 <path
                   stroke="#ff8c2e"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
                 />
               </svg>
@@ -68,6 +69,7 @@ const IndividualTopicModalComponent = ({
             >
               Reviewed
             </button>
+            {/* <DeleteVideo topic={topic} onClose={onClose} /> */}
           </div>
         </div>
       </div>

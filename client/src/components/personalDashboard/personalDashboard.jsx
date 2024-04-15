@@ -55,8 +55,6 @@ const PersonalDashboard = () => {
     refreshData();
   }, []);
 
-  let rowNumber = 0;
-
   const openModal = (topic) => {
     setSelectedTopic(topic);
   };
@@ -66,62 +64,54 @@ const PersonalDashboard = () => {
   };
   console.log(userTopics);
   return (
-    <div className="max-h-screen w-full flex m-0 bg-indigo-300">
-      <div className="flex flex-col items-center w-6/12">
-        <div className="flex flex-col w-full h-full justify-center items-center bg-white">
-          <div className="flex w-11/12 py-3">
-            <h1 className="text-4xl font-bold ">
-              UPCOMING
-              <span className="font-bold text-accent"> TOPICS</span>
-            </h1>
-          </div>
+    <div className="min-h-screen p-6 flex flex-col items-center bg-secondary">
+      <div className="flex flex-col gap-6">
+        <div className="flex justify-between flex-wrap md:flex-nowrap md:w-full gap-6">
+          <CreateNewTopic />
           <UpComingTopic userTopics={userTopics} />
         </div>
-        <div className="flex flex-col w-full h-full justify-center items-center bg-white">
-          <div className="flex w-11/12 py-3">
-            <h1 className="text-4xl font-bold ">
-              CREATE NEW <span className="font-bold text-accent">TOPIC</span>
+
+        <div className="pt-6  bflex flex-col content-center w-full items-center gap-4">
+          <div className="flex w-full font-bold text-5xl">
+            <h1 className="text-4xl font-bold">
+              TOPICS TO REVIEW:
+              <span className="text-accent">{userTopics.length}</span>
             </h1>
           </div>
-          <CreateNewTopic />
-        </div>
-      </div>
-
-      <div className="flex flex-col overflow-y-scroll content-center w-6/12 items-center gap-4 bg-white">
-        <div className="flex w-10/12 py-3 font-bold text-5xl gap-3">
-          <h1 className="">Topics left to review</h1>
-          <h4 className="rounded-md bg-main p-1">{userTopics.length}</h4>
-        </div>
-        {userTopics.map((topic, index) => {
-          const dueDate = new Date(topic.due_date).toDateString();
-          return (
-            <div
-              key={index}
-              className="flex w-10/12 justify-between  p-4 rounded-md bg-blue-50 items-start"
-            >
-              <div className="flex w-8/12 gap-2 items-center ">
-                <h1 className="">{topic.topic_name.toUpperCase()}</h1>
-                <div>
-                  <h1
-                    className="px-2 py-1 rounded-md"
-                    style={{ backgroundColor: topic.module_color }}
-                  >
-                    {topic.module_name}
-                  </h1>
-                </div>
-              </div>
-              <div className="w-4/12 flex flex-col items-end justify-center gap-3">
-                <h1 className="flex justify-self-end">{dueDate}</h1>
-                <button
-                  onClick={() => openModal(topic)}
-                  className="w-max px-8 py-1 text-lg outline border rounded-md border-gray-900 hover:bg-indigo-100"
+          <div className="rounded-md bg-indigo-100 p-4 flex flex-col gap-4">
+            {userTopics.map((topic, index) => {
+              const dueDate = new Date(topic.due_date).toDateString();
+              return (
+                <div
+                  key={index}
+                  className="flex w-full justify-between rounded-md items-start"
+                  style={{ backgroundColor: "white" }}
                 >
-                  Learn now
-                </button>
-              </div>
-            </div>
-          );
-        })}
+                  <div className="flex w-6/12 p-4 gap-2 items-start ">
+                    <h1 className="">{topic.topic_name.toUpperCase()}</h1>
+                    <div>
+                      <h1
+                        className="px-2 rounded-md"
+                        style={{ backgroundColor: topic.module_color }}
+                      >
+                        {topic.module_name}
+                      </h1>
+                    </div>
+                  </div>
+                  <div className="w-6/12 p-2 flex flex-col items-end justify-center gap-3">
+                    <h1 className="flex justify-self-end">{dueDate}</h1>
+                    <button
+                      onClick={() => openModal(topic)}
+                      className="flex self-end w-max px-8 pt-1 text-lg border border-solid rounded-md border-gray-500 hover:bg-indigo-100"
+                    >
+                      Learn now
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </div>
       <IndividualTopicModalComponent
         isOpen={!!selectedTopic}

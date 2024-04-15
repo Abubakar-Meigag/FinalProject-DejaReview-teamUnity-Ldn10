@@ -27,6 +27,7 @@ const getDataForTable = require("./endPoints-file/dataForTableEndpoint");
 const postTopicToPB = require("./endPoints-file/postTopicToPersonalBoardEndPoint");
 const createNewTopic = require("./endPoints-file/createNewTopicEndPoint");
 const updateDueDate = require("./endPoints-file/updateDueDateEndPoint");
+const deleteTopic = require("./endPoints-file/deleteTopic");
 
 app.get("/modules", getDataModules);
 app.get("/topics", getTopics);
@@ -35,3 +36,4 @@ app.get("/dataForTable", getDataForTable);
 app.post("/allModulesPage", postTopicToPB);
 app.post("/createNewTopic", createNewTopic);
 app.post("/updateDueDate", updateDueDate);
+app.delete("/deleteTopic", deleteTopic);
