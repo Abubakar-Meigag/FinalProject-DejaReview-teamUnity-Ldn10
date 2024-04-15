@@ -46,7 +46,9 @@ export default function AllModulesPage({ refreshmodalData }) {
 
   return (
     <div className="modules-container min-h-screen min-w-screen">
-      <h1 className="all-modules-header">CYF Modules & Topics</h1>
+      <h1 className="all-modules-header self-start uppercase font-semibold">
+        CYF Modules & Topics
+      </h1>
       <div className=" modules-list">
         {modalData.map((element, index) => (
           <div
