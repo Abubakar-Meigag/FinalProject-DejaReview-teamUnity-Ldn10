@@ -26,7 +26,7 @@ function AboutPage() {
                   sequence={[
                     "be reminded ",
                     3000,
-                    "can you plan ",
+                    "can plan ",
                     3000,
                     "be successful ",
                     3000,
