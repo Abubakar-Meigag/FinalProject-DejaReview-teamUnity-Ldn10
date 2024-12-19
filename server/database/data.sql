@@ -1,12 +1,45 @@
 --  All our data schema can be displayed here. For instance, we can split all tables, and each of us can create a table.
---  Add create modules table 
+
+
+-- Create modules table
 CREATE TABLE modules (
-	id SERIAL PRIMARY KEY,
-	name VARCHAR(100),
-	description VARCHAR,
-	created_at timestamp DEFAULT now()
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(100),
+  description VARCHAR,
+  created_at TIMESTAMP DEFAULT now()
 );
 
+-- Create topics table
+CREATE TABLE topics (
+  id SERIAL PRIMARY KEY,
+  module_id INTEGER REFERENCES modules(id),
+  topic_name VARCHAR(300),
+  description VARCHAR,
+  reference_link VARCHAR,
+  test_link VARCHAR,
+  is_user_generated BOOLEAN DEFAULT false
+);
+
+-- Create learning_topics_tracker table
+CREATE TABLE learning_topics_tracker (
+  id SERIAL PRIMARY KEY,
+  topic_id INTEGER REFERENCES topics(id),
+  user_id VARCHAR(700),
+  task_status INTEGER DEFAULT 0,
+  due_date TIMESTAMP,
+  reviews_remaining INTEGER DEFAULT 4
+);
+
+
+
+
+--  Add create modules table 
+-- CREATE TABLE modules (
+-- 	id SERIAL PRIMARY KEY,
+-- 	name VARCHAR(100),
+-- 	description VARCHAR,
+-- 	created_at timestamp DEFAULT now()
+-- );
 -- Add users table
 -- CREATE TABLE users (
 -- 	id SERIAL PRIMARY KEY,
@@ -23,32 +56,33 @@ CREATE TABLE modules (
 -- 	('Kristina', 'Dudnyk', 'kristina@gmail.com'),
 -- 	('Joseph', 'Mwanza' 'joseph@gmail.com');
 
--- topics table 
-CREATE TABLE topics (
-	id SERIAL PRIMARY KEY,
-	module_id INTEGER REFERENCES modules(id),
-	topic_name VARCHAR(300),
-	description VARCHAR,
-	reference_link VARCHAR,
-	test_link VARCHAR
-);
+-- -- topics table 
+-- CREATE TABLE topics (
+-- 	id SERIAL PRIMARY KEY,
+-- 	module_id INTEGER REFERENCES modules(id),
+-- 	topic_name VARCHAR(300),
+-- 	description VARCHAR,
+-- 	reference_link VARCHAR,
+-- 	test_link VARCHAR
+-- );
 
--- Dashboard table
-CREATE TABLE learning_topics_tracker (
-	id SERIAL PRIMARY KEY,
-	topic_id INT,
-	user_id INT,
-	task_status INT DEFAULT 0,
-	due_date timestamp,
-	reviews_remaining INT DEFAULT 4
-);
+-- -- Dashboard table
+-- CREATE TABLE learning_topics_tracker (
+-- 	id SERIAL PRIMARY KEY,
+-- 	topic_id INT,
+-- 	user_id INT,
+-- 	task_status INT DEFAULT 0,
+-- 	due_date timestamp,
+-- 	reviews_remaining INT DEFAULT 4
+-- );
 
--- NEW users table
-CREATE TABLE users (
-	id SERIAL PRIMARY KEY,
-	name VARCHAR(300) NOT NULL,
-	email VARCHAR(300) NOT NULL UNIQUE,
-	picture VARCHAR,
-	sub VARCHAR(700),
-	created_at timestamp DEFAULT now()
-);
+-- -- NEW users table
+-- CREATE TABLE users (
+-- 	id SERIAL PRIMARY KEY,
+-- 	name VARCHAR(300) NOT NULL,
+-- 	email VARCHAR(300) NOT NULL UNIQUE,
+-- 	picture VARCHAR,
+-- 	sub VARCHAR(700),
+-- 	created_at timestamp DEFAULT now()
+-- );
+
